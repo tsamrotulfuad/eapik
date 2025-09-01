@@ -19,26 +19,26 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
-class KepegawaianPanelProvider extends PanelProvider
+class SuperadminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->id('kepegawaian')
-            ->path('kepegawaian')
+            ->id('superadmin')
+            ->path('superadmin')
             ->login()
-            ->registration()
             ->colors([
-                'primary' => Color::Green,
+                'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Filament/Kepegawaian/Resources'), for: 'App\\Filament\\Kepegawaian\\Resources')
-            ->discoverPages(in: app_path('Filament/Kepegawaian/Pages'), for: 'App\\Filament\\Kepegawaian\\Pages')
+            ->discoverResources(in: app_path('Filament/Superadmin/Resources'), for: 'App\\Filament\\Superadmin\\Resources')
+            ->discoverPages(in: app_path('Filament/Superadmin/Pages'), for: 'App\\Filament\\Superadmin\\Pages')
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Kepegawaian/Widgets'), for: 'App\\Filament\\Kepegawaian\\Widgets')
+            ->discoverWidgets(in: app_path('Filament/Superadmin/Widgets'), for: 'App\\Filament\\Superadmin\\Widgets')
             ->widgets([
-                //
+                Widgets\AccountWidget::class,
+                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -51,11 +51,12 @@ class KepegawaianPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
-            ->authMiddleware([
-                Authenticate::class,
-            ])
             ->plugins([
                 FilamentShieldPlugin::make(),
+                \A21ns1g4ts\FilamentShortUrl\FilamentShortUrlPlugin::make()
+            ])
+            ->authMiddleware([
+                Authenticate::class,
             ]);
     }
 }

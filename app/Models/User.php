@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use Filament\Panel;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -17,16 +18,17 @@ class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
+    use HasPanelShield;
 
     public function canAccessPanel(Panel $panel): bool
     {
         return match ($panel->getId()) {
             default => false,
-            'admin' => str_starts_with($this->name, 'Super Admin') && $this->hasRole('super_admin'),
-            'kepegawaian' => str_starts_with($this->name, 'Admin') && $this->hasRole('panel_admin'),
-            'kemiskinan' => str_starts_with($this->name, 'Admin') && $this->hasRole('panel_admin'),
-            'perencanaan' => str_starts_with($this->name, 'Admin') && $this->hasRole('panel_admin'),
-            // 'perangkat_daerah' => $this->hasRole('panel_user'),
+            'superadmin' => $this->hasRole('super_admin'),
+            'admin' => $this->hasRole('panel_admin'),
+            'kepegawaian' => $this->hasRole('panel_user'),
+            'kemiskinan' => $this->hasRole('panel_user'),
+            'perencanaan' => $this->hasRole('panel_user'),
         };
     }
 
