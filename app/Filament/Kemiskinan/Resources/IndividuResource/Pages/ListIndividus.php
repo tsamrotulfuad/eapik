@@ -34,7 +34,10 @@ class ListIndividus extends ListRecords
                         ->required(),
                 ])
                 ->action(function (array $data): void {
-                    Excel::import(new IndividuImport, $data['file']->getRealPath());
+                    $filePath = storage_path('app/' . $data['file']);
+
+                    // Import ke database
+                    \Maatwebsite\Excel\Facades\Excel::import(new \App\Imports\IndividuImport, $filePath);
                 })
                 ->color('warning')
                 ->icon('heroicon-o-arrow-down-tray'),
