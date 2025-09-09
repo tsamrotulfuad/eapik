@@ -3,11 +3,12 @@
 namespace App\Imports;
 
 use App\Models\Individu;
+use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class IndividuImport implements ToCollection, WithHeadingRow, WithChunkReading, WithBatchInserts
 {
@@ -22,6 +23,7 @@ class IndividuImport implements ToCollection, WithHeadingRow, WithChunkReading, 
 
         foreach ($rows as $row) {
             $insertData[] = [
+                'uuid'              => (string) Str::uuid(), 
                 'nama'              => $row['nama'],
                 'nik'               => $row['nik'],
                 'tanggal_lahir'     => $row['tanggal_lahir'],
@@ -34,9 +36,12 @@ class IndividuImport implements ToCollection, WithHeadingRow, WithChunkReading, 
             ];
         }
 
-        // Bulk insert per chunk
         if (!empty($insertData)) {
-            Individu::insert($insertData);
+            // untuk safety: pecah menjadi chunk agar query tidak terlalu besar
+            $chunks = array_chunk($insertData, $this->batchSize());
+            foreach ($chunks as $chunk) {
+                Individu::insert($chunk);
+            }
         }
     }
 
