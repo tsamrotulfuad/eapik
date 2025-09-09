@@ -40,7 +40,7 @@ class ListIndividus extends ListRecords
                     $path = storage_path('app/' . $relative);
 
                     try {
-                        Excel::import(new IndividuImport, $path);
+                        Excel::queueImport(new IndividuImport, $path);
                     } catch (\Exception $e) {
                         Log::error('Import gagal: ' . $e->getMessage());
                         throw $e; // biarkan Filament menampilkan error
