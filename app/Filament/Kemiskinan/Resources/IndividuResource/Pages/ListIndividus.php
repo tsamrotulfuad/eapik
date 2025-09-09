@@ -26,6 +26,8 @@ class ListIndividus extends ListRecords
                     FileUpload::make('file')
                         ->label('Upload File Excel')
                         ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'])
+                        ->preserveFilenames()
+                        ->maxSize(64000)
                         ->required(),
                 ])
                 ->action(function (array $data): void {
