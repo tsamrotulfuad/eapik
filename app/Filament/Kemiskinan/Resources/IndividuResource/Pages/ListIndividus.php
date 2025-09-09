@@ -26,10 +26,18 @@ class ListIndividus extends ListRecords
                     FileUpload::make('file')
                         ->label('Upload File Excel')
                         ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'])
-                        ->directory('import/individu')
+                        ->disk('local')
+                        ->visibility('private')
+                        ->directory('imports/individu')
                         ->preserveFilenames()
                         ->maxSize(64000)
-                        ->required(),
+                        ->required()
+                 ->action(function (array $data): void {
+                        // Ambil path asli file
+                        $path = storage_path('app/' . $data['file']);
+                        
+                        \Maatwebsite\Excel\Facades\Excel::import(new \App\Imports\IndividuImport, $path);
+                    })
                 ])
                 ->action(function (array $data): void {
                     Excel::import(new IndividuImport, $data['file']->getRealPath());
