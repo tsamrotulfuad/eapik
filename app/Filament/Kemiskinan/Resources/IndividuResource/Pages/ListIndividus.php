@@ -31,13 +31,7 @@ class ListIndividus extends ListRecords
                         ->directory('imports/individu')
                         ->preserveFilenames()
                         ->maxSize(64000)
-                        ->required()
-                 ->action(function (array $data): void {
-                        // Ambil path asli file
-                        $path = storage_path('app/' . $data['file']);
-                        
-                        \Maatwebsite\Excel\Facades\Excel::import(new \App\Imports\IndividuImport, $path);
-                    })
+                        ->required(),
                 ])
                 ->action(function (array $data): void {
                     Excel::import(new IndividuImport, $data['file']->getRealPath());
