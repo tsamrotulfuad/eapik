@@ -27,6 +27,7 @@ class KemiskinanPanelProvider extends PanelProvider
             ->id('kemiskinan')
             ->path('kemiskinan')
             ->login()
+            ->registration()
             ->colors([
                 'primary' => Color::Lime,
             ])
