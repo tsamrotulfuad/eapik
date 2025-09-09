@@ -48,7 +48,7 @@ class IndividuImport implements ToCollection, WithHeadingRow, WithChunkReading, 
 
     public function chunkSize(): int
     {
-        return 500;
+        return 1000;
     }
 
     /**
@@ -56,6 +56,6 @@ class IndividuImport implements ToCollection, WithHeadingRow, WithChunkReading, 
      */
     public function batchSize(): int
     {
-        return 500;
+        return 1000;
     }
 }
