@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('individus', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique()->index();
+            $table->foreignId('keluarga_id')->constrained()->cascadeOnDelete();
             $table->string('nama');
             $table->string('nik', 16);
             $table->date('tanggal_lahir');

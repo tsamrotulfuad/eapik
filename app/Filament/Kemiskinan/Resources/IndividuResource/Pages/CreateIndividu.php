@@ -10,9 +10,13 @@ class CreateIndividu extends CreateRecord
 {
     protected static string $resource = IndividuResource::class;
 
-    // protected function mutateFormDataBeforeCreate(array $data): array
-    // {
-    //     $data['umur'] = auth()->id();
-    //     return $data;
-    // }
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        if ($data['is_verified'] ?? false) {
+            $data['verified_at'] = now();
+        } else {
+            $data['verified_at'] = null;
+        }
+        return $data;
+    }
 }

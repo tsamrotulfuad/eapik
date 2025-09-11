@@ -6,6 +6,7 @@ use App\Filament\Kemiskinan\Resources\BantuanResource\Pages;
 use App\Filament\Kemiskinan\Resources\BantuanResource\RelationManagers;
 use App\Models\Bantuan;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -18,7 +19,7 @@ class BantuanResource extends Resource
 {
     protected static ?string $model = Bantuan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-gift';
 
     protected static ?string $navigationLabel = 'Bantuan';
 
@@ -28,7 +29,16 @@ class BantuanResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama_bantuan'),
+                Forms\Components\TextInput::make('nama_bantuan')->required(),
+                Forms\Components\TextInput::make('deskripsi'),
+                Select::make('tahun')
+                     ->options([
+                        '2024' => '2024',
+                        '2025' => '2025',
+                        '2026' => '2026',
+                        '2027' => '2027',
+                    ])
+                    ->native(false),
             ]);
     }
 
@@ -36,8 +46,9 @@ class BantuanResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama_bantuan')->label('Nama Bantuan'),
-                TextColumn::make('user.name')->label('Perangkat Daerah')
+                TextColumn::make('nama_bantuan')->label('Nama Bantuan')->searchable(),
+                TextColumn::make('user.name')->label('Perangkat Daerah'),
+                TextColumn::make('tahun')->label('Tahun')
             ])
             ->filters([
                 //

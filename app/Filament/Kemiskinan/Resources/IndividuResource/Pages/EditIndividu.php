@@ -27,4 +27,14 @@ class EditIndividu extends EditRecord
 
         return $data;
     }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        if ($data['is_verified'] ?? false) {
+            $data['verified_at'] = now();
+        } else {
+            $data['verified_at'] = null;
+        }
+        return $data;
+    }
 }
