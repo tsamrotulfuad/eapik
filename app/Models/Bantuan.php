@@ -24,4 +24,11 @@ class Bantuan extends Model
                     ->withTimestamps();
     }
 
+    public function keluargas()
+    {
+        return $this->belongsToMany(Keluarga::class, 'bantuan_keluarga')
+                    ->withPivot('tanggal_terima')
+                    ->withTimestamps();
+    }
+
 }

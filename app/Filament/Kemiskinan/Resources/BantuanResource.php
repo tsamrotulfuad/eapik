@@ -23,7 +23,8 @@ class BantuanResource extends Resource
 
     protected static ?string $navigationLabel = 'Bantuan';
 
-    protected static ?string $title = 'Custom Page Title';
+    protected static ?string $navigationGroup = 'Master Data';
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {
@@ -33,7 +34,6 @@ class BantuanResource extends Resource
                 Forms\Components\TextInput::make('deskripsi'),
                 Select::make('tahun')
                      ->options([
-                        '2024' => '2024',
                         '2025' => '2025',
                         '2026' => '2026',
                         '2027' => '2027',

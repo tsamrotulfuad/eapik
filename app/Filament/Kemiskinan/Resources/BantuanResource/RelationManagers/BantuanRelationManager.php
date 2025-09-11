@@ -14,6 +14,8 @@ class BantuanRelationManager extends RelationManager
 {
     protected static string $relationship = 'bantuans';
 
+    protected static ?string $title = 'Bantuan';
+
     public function form(Form $form): Form
     {
         return $form->schema([

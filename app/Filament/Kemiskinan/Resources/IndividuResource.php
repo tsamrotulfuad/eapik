@@ -28,6 +28,7 @@ class IndividuResource extends Resource
     protected static ?string $navigationLabel = 'Individu';
 
     protected static ?string $navigationGroup = 'Master Data';
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {
