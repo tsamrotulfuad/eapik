@@ -7,6 +7,7 @@ use Filament\Tables;
 use App\Models\Individu;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -44,28 +45,58 @@ class IndividuesRelationManager extends RelationManager
                     ->label('Tambahkan Individu dari Data')
                     ->icon('heroicon-o-user-plus')
                     ->form([
-                        Forms\Components\Select::make('individu_id')
+                        Forms\Components\Select::make('individu_ids')
                             ->label('Pilih Individu')
-                            ->options(
-                                Individu::whereNull('keluarga_id') // hanya individu yang belum punya keluarga
-                                    ->pluck('nama', 'id')
+                            ->multiple()
+                            ->options(fn () => Individu::whereNull('keluarga_id')
+                                // ->orderBy('nama')
+                                ->pluck('nama', 'id')
+                                ->toArray()
                             )
                             ->searchable()
+                            ->preload()
                             ->required(),
                     ])
                     ->action(function (array $data, $livewire) {
-                        $parent = $livewire->ownerRecord; // record keluarga
-                        $individu = Individu::find($data['individu_id']);
-                        if ($individu) {
-                            $individu->update(['keluarga_id' => $parent->id]);
+                        // ambil parent keluarga (record yang sedang dibuka)
+                        $parent = $livewire->ownerRecord;
+                        // ambil id yang dikirim; aman jika tidak ada
+                        $ids = $data['individu_ids'] ?? [];
+
+                        if (empty($ids)) {
+                            Notification::make()
+                                ->title('Tidak ada individu yang dipilih')
+                                ->danger()
+                                ->send();
+
+                            return;
                         }
+
+                         // update banyak sekaligus; returns number of rows updated
+                        $updatedCount = Individu::whereIn('id', $ids)
+                            ->update(['keluarga_id' => $parent->id]);
+
+                        Notification::make()
+                            ->title('Sukses menambahkan anggota')
+                            ->body("{$updatedCount} individu berhasil ditautkan ke keluarga {$parent->kepala_keluarga}.")
+                            ->success()
+                            ->send();
                     }),
             ])
             ->actions([
-                Tables\Actions\DetachAction::make()
+                // aksi lepaskan per baris
+                Tables\Actions\Action::make('detach')
                     ->label('Lepas dari Keluarga')
-                    ->action(function ($record) {
+                    ->icon('heroicon-o-user-minus')
+                    ->action(function ($record, $livewire) {
                         $record->update(['keluarga_id' => null]);
+                        Notification::make()
+                            ->title('Anggota dilepas')
+                            ->success()
+                            ->send();
+
+                        // refresh
+                        $livewire->redirect($livewire->getUrl());
                     }),
             ])
             ->bulkActions([
