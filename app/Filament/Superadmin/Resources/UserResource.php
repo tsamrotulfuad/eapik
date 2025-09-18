@@ -26,6 +26,9 @@ class UserResource extends Resource
     {
          return $form
             ->schema([
+                TextInput::make('username')
+                    ->required()
+                    ->maxLength(255),
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -49,6 +52,9 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('username')
+                    ->default('-'),
+                TextColumn::make('name'),
                 TextColumn::make('email'),
                 TextColumn::make('roles.name')
             ])
