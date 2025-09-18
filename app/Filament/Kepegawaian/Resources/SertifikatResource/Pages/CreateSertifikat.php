@@ -9,4 +9,10 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateSertifikat extends CreateRecord
 {
     protected static string $resource = SertifikatResource::class;
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['user_id'] = auth()->id();
+        return $data;
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Kepegawaian\Pages\Auth\LoginPage;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
@@ -26,8 +27,7 @@ class KepegawaianPanelProvider extends PanelProvider
         return $panel
             ->id('kepegawaian')
             ->path('kepegawaian')
-            ->login()
-            ->registration()
+            ->login(LoginPage::class)
             ->colors([
                 'primary' => Color::Green,
             ])
