@@ -2,21 +2,22 @@
 
 namespace App\Filament\Brida\Resources;
 
-use App\Filament\Brida\Resources\InovasiResource\Pages;
-use App\Filament\Brida\Resources\InovasiResource\RelationManagers;
-use App\Models\Inovasi;
 use Filament\Forms;
+use Filament\Tables;
+use App\Models\Inovasi;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Storage;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Brida\Resources\InovasiResource\Pages;
+use App\Filament\Brida\Resources\InovasiResource\RelationManagers;
 
 class InovasiResource extends Resource
 {
@@ -116,6 +117,13 @@ class InovasiResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
+                ->after(function (Inovasi $record) {
+                    // delete file
+                    if ($record->file_inovasi_iga) {
+                        Storage::disk('public')->delete($record->file_inovasi_iga);
+                    }
+                }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
