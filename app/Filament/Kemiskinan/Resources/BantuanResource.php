@@ -4,6 +4,7 @@ namespace App\Filament\Kemiskinan\Resources;
 
 use App\Filament\Kemiskinan\Resources\BantuanResource\Pages;
 use App\Filament\Kemiskinan\Resources\BantuanResource\RelationManagers;
+use App\Filament\Kemiskinan\Resources\IndividuResource\RelationManagers\IndividuesRelationManager;
 use App\Models\Bantuan;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
@@ -48,7 +49,7 @@ class BantuanResource extends Resource
             ->columns([
                 TextColumn::make('nama_bantuan')->label('Nama Bantuan')->searchable(),
                 TextColumn::make('user.name')->label('Perangkat Daerah'),
-                TextColumn::make('tahun')->label('Tahun')
+                TextColumn::make('tahun')->label('Tahun'),
             ])
             ->filters([
                 //
@@ -76,6 +77,7 @@ class BantuanResource extends Resource
             'index' => Pages\ListBantuans::route('/'),
             'create' => Pages\CreateBantuan::route('/create'),
             'edit' => Pages\EditBantuan::route('/{record}/edit'),
+            'kelola-penerima' => Pages\KelolaPenerima::route('/{record}/kelola-penerima'),
         ];
     }
 }

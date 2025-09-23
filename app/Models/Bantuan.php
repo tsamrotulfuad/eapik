@@ -17,18 +17,11 @@ class Bantuan extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function individus()
+    public function individus() 
     {
         return $this->belongsToMany(Individu::class, 'bantuan_individu')
                     ->withPivot('tanggal_terima')
                     ->withTimestamps();
-    }
-
-    public function keluargas()
-    {
-        return $this->belongsToMany(Keluarga::class, 'bantuan_keluarga')
-                    ->withPivot('tanggal_terima')
-                    ->withTimestamps();
-    }
+    }   
 
 }

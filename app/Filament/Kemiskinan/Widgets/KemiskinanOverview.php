@@ -14,7 +14,6 @@ class KemiskinanOverview extends BaseWidget
     {
         return [
             Stat::make('Bantuan', Bantuan::count()),
-            Stat::make('Keluarga', Keluarga::count()),
             Stat::make('Individu', Individu::count()),
         ];
     }

@@ -14,9 +14,9 @@ use Filament\Resources\RelationManagers\RelationManager;
 
 class IndividuesRelationManager extends RelationManager
 {
-    protected static string $relationship = 'individues';
+    protected static string $relationship = 'individus';
 
-    protected static ?string $title = 'Anggota Keluarga';
+    protected static ?string $title = 'Penerima Bantuan';
 
     public function form(Form $form): Form
     {
@@ -94,9 +94,6 @@ class IndividuesRelationManager extends RelationManager
                             ->title('Anggota dilepas')
                             ->success()
                             ->send();
-
-                        // refresh
-                        $livewire->redirect($livewire->getUrl());
                     }),
             ])
             ->bulkActions([

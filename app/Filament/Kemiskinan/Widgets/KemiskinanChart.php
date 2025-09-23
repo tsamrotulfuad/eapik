@@ -13,13 +13,12 @@ class KemiskinanChart extends ChartWidget
     protected function getData(): array
     {
         $jumlahBantuan = \App\Models\Bantuan::count();
-        $jumlahKeluarga = \App\Models\Keluarga::count();
         $jumlahIndividu = \App\Models\Individu::count();
 
         return [
             [
                 'label' => 'Jumlah Data',
-                'data' => [$jumlahBantuan, $jumlahKeluarga, $jumlahIndividu],
+                'data' => [$jumlahBantuan, $jumlahIndividu],
                 'backgroundColor' => ['#36A2EB', '#FFCE56', '#FF6384'],
             ],
             'labels' => ['Bantuan', 'Keluarga', 'Individu'],
