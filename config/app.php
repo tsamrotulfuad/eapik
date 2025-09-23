@@ -172,6 +172,7 @@ return [
         App\Providers\Filament\KemiskinanPanelProvider::class,
         App\Providers\Filament\PerencanaanPanelProvider::class,
         App\Providers\Filament\SuperadminPanelProvider::class,
+        App\Providers\Filament\BridaPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
 

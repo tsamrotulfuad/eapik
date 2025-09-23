@@ -29,6 +29,7 @@ class User extends Authenticatable implements FilamentUser
             'kepegawaian' => $this->hasRole('panel_user'),
             'kemiskinan'  => $this->hasRole('panel_user'),
             'perencanaan' => $this->hasRole('panel_user'),
+            'brida'       => $this->hasRole('panel_brida'),
         };
     }
 

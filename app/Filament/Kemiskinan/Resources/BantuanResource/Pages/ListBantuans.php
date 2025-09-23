@@ -10,7 +10,7 @@ class ListBantuans extends ListRecords
 {
     protected static string $resource = BantuanResource::class;
 
-     public function getTitle(): string
+    public function getTitle(): string
     {
         return 'Bantuan';
     }
