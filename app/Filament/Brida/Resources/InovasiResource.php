@@ -103,12 +103,12 @@ class InovasiResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('no_regis_iga')->label('Nomor Register IGA'),
-                TextColumn::make('nama_inovasi')->label('Nama Inisiator'),
+                TextColumn::make('nama_inovasi')->label('Nama Inisiator')->searchable(),
                 TextColumn::make('nama_inisiator')->label('Nama Inisiator'),
                 TextColumn::make('inisiator_inovasi')->label('Inisiator'),
                 TextColumn::make('jenis_inovasi')->label('Jenis'),
                 TextColumn::make('bentuk_inovasi')->label('Bentuk'),
-                TextColumn::make('kematangan_inovasi')->label('Kematangan'),
+                TextColumn::make('kematangan_inovasi')->label('Kematangan')->sortable(),
                 TextColumn::make('tahun_iga')->label('Tahun'),
             ])
             ->emptyStateHeading('Tidak ada data')
