@@ -6,6 +6,8 @@ use App\Models\Bantuan;
 use App\Models\Individu;
 use Filament\Tables\Table;
 use App\Imports\IndividuImport;
+use App\Imports\PenerimaImport;
+use Illuminate\Http\UploadedFile;
 use Filament\Resources\Pages\Page;
 use Filament\Tables\Actions\Action;
 use Illuminate\Support\Facades\Log;
@@ -23,6 +25,7 @@ use Filament\Tables\Actions\DetachAction;
 use Filament\Tables\Actions\DetachBulkAction;
 use Filament\Tables\Concerns\InteractsWithTable;
 use App\Filament\Kemiskinan\Resources\BantuanResource;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class KelolaPenerima extends Page implements HasTable
 {
@@ -97,36 +100,53 @@ class KelolaPenerima extends Page implements HasTable
                             ->body(count($ids) . ' individu ditambahkan.')
                             ->success()
                             ->send();
-                    }),
-                    Action::make('import')
-                        ->label('Import')
-                        ->form([
-                            FileUpload::make('file')
-                                ->label('Upload File Excel')
-                                ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'])
-                                ->disk('local')
-                                ->visibility('private')
-                                ->directory('imports/individu')
-                                ->preserveFilenames()
-                                ->maxSize(64000)
-                                ->required(),
-                        ])
-                ->action(function (array $data): void {
-                    $relative = $data['file']; // ex: "imports/xxx.xlsx"
-                    $path = storage_path('app/' . $relative);
+                    }),   
+                Action::make('import')
+                    ->label('Import Excel')
+                    ->icon('heroicon-o-arrow-up-tray')
+                    ->form([
+                        FileUpload::make('file')
+                            ->label('File Excel')
+                            ->acceptedFileTypes([
+                                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                                'application/vnd.ms-excel',
+                            ])
+                            ->required(),
 
-                    try {
-                        Excel::queueImport(new IndividuImport, $path);
-                    } catch (\Exception $e) {
-                        Log::error('Import gagal: ' . $e->getMessage());
-                        throw $e; // biarkan Filament menampilkan error
-                    } finally {
-                        // hapus file upload agar storage tidak penuh
-                        Storage::disk('local')->delete($relative);
-                    }
-                })
-                ->color('warning')
-                ->icon('heroicon-o-arrow-down-tray'),
+                        DatePicker::make('tanggal_terima')
+                            ->label('Tanggal Terima')
+                            ->default(now())
+                            ->required(),
+                    ])
+                    ->action(function (array $data): void {
+                        $file = $data['file'];
+
+                        // handle UploadedFile / TemporaryUploadedFile
+                        if ($file instanceof UploadedFile || $file instanceof TemporaryUploadedFile) {
+                            $path = $file->getRealPath();
+                        } elseif (is_string($file) && file_exists(storage_path('app/' . $file))) {
+                            $path = storage_path('app/' . $file);
+                        } else {
+                            Notification::make()->title('File tidak valid')->danger()->send();
+                            return;
+                        }
+
+                        $import = new PenerimaImport();
+                        Excel::import($import, $path);
+
+                        $tanggal = $data['tanggal_terima'];
+                        foreach ($import->individuIds as $id) {
+                            $this->bantuan->individus()->syncWithoutDetaching([
+                                $id => ['tanggal_terima' => $tanggal],
+                            ]);
+                        }
+
+                        Notification::make()
+                            ->title('Import selesai')
+                            ->body(count($import->individuIds) . ' penerima ditambahkan. ' . (count($import->notFound) ? count($import->notFound) . ' NIK tidak ditemukan.' : ''))
+                            ->success()
+                            ->send();
+                    }),
             ])
              ->actions([
                 EditAction::make()

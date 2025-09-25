@@ -2,9 +2,13 @@
 
 namespace App\Filament\Brida\Resources\InovasiResource\Pages;
 
-use App\Filament\Brida\Resources\InovasiResource;
 use Filament\Actions;
+use App\Models\Inovasi;
+use Filament\Actions\Action;
+use App\Exports\InovasiExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Filament\Resources\Pages\ListRecords;
+use App\Filament\Brida\Resources\InovasiResource;
 
 class ListInovasis extends ListRecords
 {
@@ -20,6 +24,11 @@ class ListInovasis extends ListRecords
         return [
             Actions\CreateAction::make()
             ->label('Tambah data'),
+             Action::make('export')
+                ->label('Export')
+                ->action(fn () => Excel::download(new InovasiExport, 'inovasi.xlsx'))
+                ->color('success')
+                ->icon('heroicon-o-arrow-up-tray'),
         ];
     }
 
