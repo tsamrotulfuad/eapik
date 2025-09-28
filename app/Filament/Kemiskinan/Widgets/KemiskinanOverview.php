@@ -4,7 +4,6 @@ namespace App\Filament\Kemiskinan\Widgets;
 
 use App\Models\Bantuan;
 use App\Models\Individu;
-use App\Models\Keluarga;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 

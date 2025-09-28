@@ -1,6 +1,8 @@
 <?php
 
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
+use App\Exports\PenerimaTemplateExport;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/template/penerima', function () {
+    return Excel::download(new PenerimaTemplateExport, 'template_penerima.xlsx');
+})->name('template.penerima');

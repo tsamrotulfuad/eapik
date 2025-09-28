@@ -100,54 +100,46 @@ class KelolaPenerima extends Page implements HasTable
                             ->body(count($ids) . ' individu ditambahkan.')
                             ->success()
                             ->send();
-                    }),   
-                Action::make('import')
-                    ->label('Import Excel')
-                    ->icon('heroicon-o-arrow-up-tray')
-                    ->form([
-                        FileUpload::make('file')
-                            ->label('File Excel')
-                            ->acceptedFileTypes([
-                                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-                                'application/vnd.ms-excel',
-                            ])
-                            ->required(),
-
-                        DatePicker::make('tanggal_terima')
-                            ->label('Tanggal Terima')
-                            ->default(now())
-                            ->required(),
-                    ])
-                    ->action(function (array $data): void {
-                        $file = $data['file'];
-
-                        // handle UploadedFile / TemporaryUploadedFile
-                        if ($file instanceof UploadedFile || $file instanceof TemporaryUploadedFile) {
-                            $path = $file->getRealPath();
-                        } elseif (is_string($file) && file_exists(storage_path('app/' . $file))) {
-                            $path = storage_path('app/' . $file);
-                        } else {
-                            Notification::make()->title('File tidak valid')->danger()->send();
-                            return;
-                        }
-
-                        $import = new PenerimaImport();
-                        Excel::import($import, $path);
-
-                        $tanggal = $data['tanggal_terima'];
-                        foreach ($import->individuIds as $id) {
-                            $this->bantuan->individus()->syncWithoutDetaching([
-                                $id => ['tanggal_terima' => $tanggal],
-                            ]);
-                        }
-
-                        Notification::make()
-                            ->title('Import selesai')
-                            ->body(count($import->individuIds) . ' penerima ditambahkan. ' . (count($import->notFound) ? count($import->notFound) . ' NIK tidak ditemukan.' : ''))
-                            ->success()
-                            ->send();
                     }),
-            ])
+                     // Import Excel
+                    Action::make('importExcel')
+                        ->label('Import Excel')
+                        ->icon('heroicon-o-arrow-down-tray')
+                        ->form([
+                                FileUpload::make('file')
+                                    ->label('Pilih File Excel')
+                                    ->disk('public') // simpan di disk public
+                                    ->directory('imports/penerima') // folder khusus
+                                    ->preserveFilenames() // opsional: supaya nama file tetap
+                                    ->acceptedFileTypes([
+                                        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                                        'application/vnd.ms-excel'
+                                    ])
+                                    ->required(),
+                            ])
+                        ->action(function (array $data) {
+                            // $data['file'] akan berisi string relatif ke dalam disk public
+                            $relativePath = $data['file']; // contoh: imports/penerima/file.xlsx
+                            $fullPath = Storage::disk('public')->path($relativePath);
+
+                            if (! file_exists($fullPath)) {
+                                Notification::make()
+                                    ->title('Gagal Import')
+                                    ->body("File $fullPath tidak ditemukan.")
+                                    ->danger()
+                                    ->send();
+                                return;
+                            }
+
+                            Excel::import(new PenerimaImport($this->bantuan->id), $fullPath);
+
+                            Notification::make()
+                                ->title('Import Berhasil')
+                                ->body('Data penerima berhasil diimport.')
+                                ->success()
+                                ->send();
+                        }),  
+               ])
              ->actions([
                 EditAction::make()
                     ->label('Ubah Tanggal')

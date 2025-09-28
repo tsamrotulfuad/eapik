@@ -7,6 +7,8 @@ use Filament\Tables;
 use App\Models\Individu;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Imports\PenerimaImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
