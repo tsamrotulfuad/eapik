@@ -12,6 +12,7 @@ use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
@@ -116,14 +117,16 @@ class InovasiResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make()
-                ->after(function (Inovasi $record) {
-                    // delete file
-                    if ($record->file_inovasi_iga) {
-                        Storage::disk('public')->delete($record->file_inovasi_iga);
-                    }
-                }),
+                ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make()
+                    ->after(function (Inovasi $record) {
+                        // delete file
+                        if ($record->file_inovasi_iga) {
+                            Storage::disk('public')->delete($record->file_inovasi_iga);
+                        }
+                    }),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

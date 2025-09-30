@@ -3,6 +3,7 @@
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 use App\Exports\PenerimaTemplateExport;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,7 @@ use App\Exports\PenerimaTemplateExport;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/template/penerima', function () {
     return Excel::download(new PenerimaTemplateExport, 'template_penerima.xlsx');
