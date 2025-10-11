@@ -2,10 +2,11 @@
 
 namespace App\Filament\Perangkatdaerah\Pages\Auth;
 
+use Filament\Pages\Auth\Register;
 use Filament\Pages\Page;
 use Illuminate\Database\Eloquent\Model;
 
-class PerangkatDaerahRegister extends Page
+class PerangkatDaerahRegister extends Register
 {
     protected function handleRegistration(array $data): Model
     {
