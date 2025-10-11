@@ -29,8 +29,8 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
             'kemiskinan'  => $this->hasRole('panel_user'),
             'perencanaan' => $this->hasRole('panel_user'),
             'brida'       => $this->hasRole('panel_brida'),
-            'masyarakat'  => $this->hasRole('panel_masyarakat') || $this->hasVerifiedEmail(),
-            'perangkatdaerah' => $this->hasRole('panel_perangkat_daerah') || $this->hasVerifiedEmail(),
+            'masyarakat'  => $this->hasRole('masyarakat') || $this->hasVerifiedEmail(),
+            'perangkatdaerah' => $this->hasRole('perangkatdaerah') || $this->hasVerifiedEmail(),
         };
     }
 

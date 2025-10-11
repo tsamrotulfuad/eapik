@@ -11,7 +11,7 @@ class PerangkatDaerahRegister extends Register
     protected function handleRegistration(array $data): Model
     {
          $user = $this->getUserModel()::create($data);
-         $user->assignRole('panel_perangkat_daerah');
+         $user->assignRole('perangkatdaerah');
  
          return $user;
     }

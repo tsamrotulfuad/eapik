@@ -11,7 +11,7 @@ class MasyarakatRegister extends Register
     protected function handleRegistration(array $data): Model
     {
             $user = $this->getUserModel()::create($data);
-            $user->assignRole('panel_masyarakat');
+            $user->assignRole('masyarakat');
 
             return $user;
     }
