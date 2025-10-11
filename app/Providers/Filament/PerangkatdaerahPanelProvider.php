@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Perangkatdaerah\Pages\Auth\PerangkatDaerahRegister;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
@@ -27,7 +28,7 @@ class PerangkatdaerahPanelProvider extends PanelProvider
             ->id('perangkatdaerah')
             ->path('rekakarsacipta/perangkatdaerah')
             ->login()
-            ->registration()
+            ->registration(PerangkatDaerahRegister::class)
             ->emailVerification()
             ->maxContentWidth(MaxWidth::Full)
             ->sidebarCollapsibleOnDesktop(true)

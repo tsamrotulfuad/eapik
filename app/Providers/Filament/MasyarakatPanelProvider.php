@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Masyarakat\Pages\Auth\MasyarakatRegister;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
@@ -27,7 +28,7 @@ class MasyarakatPanelProvider extends PanelProvider
             ->id('masyarakat')
             ->path('rekakarsacipta/masyarakat')
             ->login()
-            ->registration()
+            ->registration(MasyarakatRegister::class)
             ->emailVerification()
             ->maxContentWidth(MaxWidth::Full)
             ->sidebarCollapsibleOnDesktop(true)
