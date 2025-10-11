@@ -3,8 +3,6 @@
 namespace App\Filament\Kemiskinan\Resources;
 
 use App\Filament\Kemiskinan\Resources\BantuanResource\Pages;
-use App\Filament\Kemiskinan\Resources\BantuanResource\RelationManagers;
-use App\Filament\Kemiskinan\Resources\IndividuResource\RelationManagers\IndividuesRelationManager;
 use App\Models\Bantuan;
 use Filament\Forms;
 use Filament\Forms\Components\Select;

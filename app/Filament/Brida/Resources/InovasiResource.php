@@ -26,7 +26,9 @@ class InovasiResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-wallet';
 
-    protected static ?string $navigationLabel = 'Inovasi Daerah';
+    protected static ?string $navigationLabel = 'Klinik Inovasi';
+
+    protected static ?string $navigationGroup = 'Riset dan Inovasi';
 
     protected static ?string $breadcrumb = 'Inovasi';
 

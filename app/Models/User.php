@@ -2,19 +2,18 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
-use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use Filament\Panel;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
@@ -30,6 +29,8 @@ class User extends Authenticatable implements FilamentUser
             'kemiskinan'  => $this->hasRole('panel_user'),
             'perencanaan' => $this->hasRole('panel_user'),
             'brida'       => $this->hasRole('panel_brida'),
+            'masyarakat'  => $this->hasRole('panel_masyarakat') || $this->hasVerifiedEmail(),
+            'perangkatdaerah' => $this->hasRole('panel_perangkat_daerah') || $this->hasVerifiedEmail(),
         };
     }
 

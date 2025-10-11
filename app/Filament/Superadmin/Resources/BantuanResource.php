@@ -17,7 +17,12 @@ class BantuanResource extends Resource
 {
     protected static ?string $model = Bantuan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-gift';
+
+    protected static ?string $navigationLabel = 'Bantuan';
+
+    protected static ?string $navigationGroup = 'Kemiskinan';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {

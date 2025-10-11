@@ -49,9 +49,7 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#about">Tentang</a></li>
-                    <li><a href="#services">Layanan</a></li>
-                    <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <li class="dropdown"><a href="#"><span>Perencanaan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="#">Dropdown 1</a></li>
                             <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -68,6 +66,25 @@
                             <li><a href="#">Dropdown 4</a></li>
                         </ul>
                     </li>
+                    <li class="dropdown"><a href="#"><span>Riset dan Inovasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="#">Klink Inovasi</a></li>
+                            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                                <ul>
+                                    <li><a href="#">Deep Dropdown 1</a></li>
+                                    <li><a href="#">Deep Dropdown 2</a></li>
+                                    <li><a href="#">Deep Dropdown 3</a></li>
+                                    <li><a href="#">Deep Dropdown 4</a></li>
+                                    <li><a href="#">Deep Dropdown 5</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Reka Karsa Cipta</a></li>
+                            <li><a href="#">Dropdown 3</a></li>
+                            <li><a href="#">Klinik HKI</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#about">Tentang</a></li>
                     <li><a href="#contact">Kontak</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -235,6 +252,18 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="service-item position-relative">
                             <div class="icon">
+                                <i class="bi bi-journal-check"></i>
+                            </div>
+                            <a href="service-details.html" class="stretched-link">
+                                <h3>Perencanaan</h3>
+                            </a>
+                            <p>Data Perencanaan Kota Pasuruan</p>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item position-relative">
+                            <div class="icon">
                                 <i class="bi bi-activity"></i>
                             </div>
                             <a href="service-details.html" class="stretched-link">
@@ -284,8 +313,8 @@
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Contact</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                <h2>Kontak</h2>
+                <p>Konsultasi Perihal <b><i>Perencanaan Pembangunan Perangkat Daerah</i></b> atau <b><i>Perihal Riset dan Inovasi Daerah</i></b> silahkan kontak kami dibawah ini</p>
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -298,24 +327,24 @@
                             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                                 <div>
-                                    <h3>Address</h3>
-                                    <p>A108 Adam Street, New York, NY 535022</p>
+                                    <h3>Alamat</h3>
+                                    <p>Jalan Sultan Agung No. 32 Kota Pasuruan</p>
                                 </div>
                             </div><!-- End Info Item -->
 
                             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
                                 <i class="bi bi-telephone flex-shrink-0"></i>
                                 <div>
-                                    <h3>Call Us</h3>
-                                    <p>+1 5589 55488 55</p>
+                                    <h3>Hubungi Kami</h3>
+                                    <p>(0343) 426919</p>
                                 </div>
                             </div><!-- End Info Item -->
 
                             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
                                 <i class="bi bi-envelope flex-shrink-0"></i>
                                 <div>
-                                    <h3>Email Us</h3>
-                                    <p>info@example.com</p>
+                                    <h3>Email Kami</h3>
+                                    <p>bappelitbangda@pasuruankota.go.id</p>
                                 </div>
                             </div><!-- End Info Item -->
 

@@ -173,6 +173,8 @@ return [
         App\Providers\Filament\PerencanaanPanelProvider::class,
         App\Providers\Filament\SuperadminPanelProvider::class,
         App\Providers\Filament\BridaPanelProvider::class,
+        App\Providers\Filament\MasyarakatPanelProvider::class,
+        App\Providers\Filament\PerangkatdaerahPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
 
