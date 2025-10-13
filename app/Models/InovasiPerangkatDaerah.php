@@ -25,6 +25,6 @@ class InovasiPerangkatDaerah extends Model
 
     public function indikators()
     {
-        return $this->hasMany(IndikatorInovasiPerangkatDaerah::class);
+        return $this->hasMany(IndikatorInovasiPerangkatDaerah::class, 'inovasi_id', 'id');
     }
 }

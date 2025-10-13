@@ -127,7 +127,7 @@ class InovasiMasyarakatResource extends Resource
     {
         return $table
             ->modifyQueryUsing(function (Builder $query) {
-                $query->where('user_id', auth()->id()); // Filters records by the authenticated user's ID
+                $query->where('user_id', auth()->id())->with('indikators'); // Filters records by the authenticated user's ID
             })
             ->columns([
                 TextColumn::make('nama_inovasi'),
