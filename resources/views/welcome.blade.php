@@ -68,19 +68,22 @@
                     </li>
                     <li class="dropdown"><a href="#"><span>Riset dan Inovasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="#">Klink Inovasi</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <li><a href="#">Infografis Hasil Kajian</a></li>
+                            <li><a href="#">Pengusulan Pelaksanaan dan Kerjasama Riset</a></li>
+                            <li class="dropdown"><a href="#"><span>Klinik Inovasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                                 <ul>
-                                    <li><a href="#">Deep Dropdown 1</a></li>
-                                    <li><a href="#">Deep Dropdown 2</a></li>
-                                    <li><a href="#">Deep Dropdown 3</a></li>
-                                    <li><a href="#">Deep Dropdown 4</a></li>
-                                    <li><a href="#">Deep Dropdown 5</a></li>
+                                    <li><a href="#">Daftar Inovasi Daerah Kota Pasuruan</a></li>
+                                    <li><a href="#">Inovasi Unggulan Kota Pasuruan</a></li>
+                                    <li><a href="#">Highlight RKC</a></li>
+                                    <li><a href="{{ route('rkc') }}">Reka Karsa Cipta</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Reka Karsa Cipta</a></li>
-                            <li><a href="#">Dropdown 3</a></li>
-                            <li><a href="#">Klinik HKI</a></li>
+                            <li class="dropdown"><a href="#"><span>Klinik KHI</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                                <ul>
+                                    <li><a href="#">Tata Cara Pengajuan HKI</a></li>
+                                    <li><a href="#">Pengajuan HKI</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li><a href="#services">Layanan</a></li>

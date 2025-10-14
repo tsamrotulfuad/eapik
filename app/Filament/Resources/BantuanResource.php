@@ -21,8 +21,7 @@ class BantuanResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-gift';
 
     protected static ?string $navigationLabel = 'Bantuan';
-
-    protected static ?string $navigationGroup = 'Master Data';
+    
     protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form

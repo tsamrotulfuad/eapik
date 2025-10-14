@@ -21,3 +21,5 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/template/penerima', function () {
     return Excel::download(new PenerimaTemplateExport, 'template_penerima.xlsx');
 })->name('template.penerima');
+
+Route::get('/rekakarsacipta', [HomeController::class, 'rekakarsacipta'])->name('rkc');

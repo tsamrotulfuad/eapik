@@ -156,22 +156,6 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                                     ->maxLength(3000)
                                     ->rows(5)
                                     ->required(),
-                                Select::make('parameter_kemudahan_proses')
-                                    ->label('Pilih Parameter')
-                                    ->default(false)
-                                    ->reactive()
-                                    ->dehydrated(false)
-                                    ->options([
-                                        10 => 'Kurang (10)',
-                                        20 => 'Cukup (20)',
-                                        30 => 'Baik (30)',
-                                    ])
-                                    ->afterStateUpdated(fn ($state, callable $get, callable $set) =>
-                                        $set('kematangan',
-                                            (intval($state))
-                                            + intval($get('parameter_keterlibatan_aktor'))
-                                        )
-                                    ),
                             ]),
                         Section::make('Keterlibatan Aktor')
                             ->description('Prevent abuse by limiting the number of requests per period')
@@ -182,22 +166,6 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                                     ->maxLength(3000)
                                     ->rows(5)
                                     ->required(),
-                                Select::make('parameter_keterlibatan_aktor')
-                                    ->label('Pilih Parameter')
-                                    ->default(false)
-                                    ->reactive()
-                                    ->dehydrated(false)
-                                    ->options([
-                                        10 => 'Kurang (10)',
-                                        20 => 'Cukup (20)',
-                                        30 => 'Baik (30)',
-                                    ])
-                                    ->afterStateUpdated(fn ($state, callable $get, callable $set) =>
-                                        $set('kematangan',
-                                            (intval($get('parameter_kemudahan_proses')))
-                                            + intval($state)
-                                        )
-                                    ),
                             ]),
                         Section::make('Kemanfaatan')
                             ->description('Prevent abuse by limiting the number of requests per period')
@@ -240,7 +208,7 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                             ->numeric()
                             ->default(0)
                             ->readOnly(),
-                        ])
+                            ])
                     ])
             ->bulkActions([
                 // ...
