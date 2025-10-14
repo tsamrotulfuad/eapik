@@ -44,7 +44,7 @@
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="{{ route('rkc') }}" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
                 <h1 class="sitename">Reka Karsa Cipta</h1>
@@ -78,8 +78,8 @@
                         <h1>Tunjukkan Karya Inovasimu di <span>Reka Karsa Cipta</span></h1>
                         <p>"Lomba Inovasi Daerah Kota Pasuruan"</p>
                         <div class="d-flex">
-                            <a href="#about" class="btn-get-started">Get Started</a>
-                            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                            <a href="#about" class="btn-get-started">Mulai</a>
+                            <!-- <a href="#" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Video</span></a> -->
                         </div>
                     </div>
 
@@ -148,7 +148,7 @@
                                     <a href="http://localhost:8100/rekakarsacipta/masyarakat">
                                         <i class="bi bi-people"></i>
                                         <h3>Masyarakat</h3>
-                                        <p>Individu, Kelompok/Komunitas, Lembaga/Organisasi</p>
+                                        <p>Individu, Kelompok / Komunitas, Lembaga / Organisasi</p>
                                     </a>
                                 </div>
                             </div> <!-- End Icon Box -->
@@ -219,10 +219,10 @@
                         <p><strong>Email:</strong> <span>litbangbappelitbangda@gmail.com</span></p>
                     </div>
                     <div class="social-links d-flex mt-4">
-                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-youtube"></i></a>
                         <a href=""><i class="bi bi-facebook"></i></a>
                         <a href=""><i class="bi bi-instagram"></i></a>
-                        <a href=""><i class="bi bi-linkedin"></i></a>
+                        <!-- <a href=""><i class="bi bi-linkedin"></i></a> -->
                     </div>
                 </div>
 
@@ -258,7 +258,7 @@
         </div>
 
         <div class="container copyright text-center mt-4">
-            <p>© <span></span> <strong class="px-1 sitename">Reka Karsa Cipta |</strong><span>Bidang Riset dan Inovasi - Bappelitbangda</span></p>
+            <p>© <span></span> <strong class="px-1 sitename">Reka Karsa Cipta |</strong><span>Bidang Riset dan Inovasi - Bappelitbangda Kota Pasuruan</span></p>
         </div>
 
     </footer>
