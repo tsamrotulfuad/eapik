@@ -52,15 +52,6 @@
                     <li class="dropdown"><a href="#"><span>Perencanaan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="#">Dropdown 1</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Dropdown 1</a></li>
-                                    <li><a href="#">Deep Dropdown 2</a></li>
-                                    <li><a href="#">Deep Dropdown 3</a></li>
-                                    <li><a href="#">Deep Dropdown 4</a></li>
-                                    <li><a href="#">Deep Dropdown 5</a></li>
-                                </ul>
-                            </li>
                             <li><a href="#">Dropdown 2</a></li>
                             <li><a href="#">Dropdown 3</a></li>
                             <li><a href="#">Dropdown 4</a></li>
@@ -109,8 +100,8 @@
                         <h1>e-APIK</h1>
                         <p>Sistem Informasi Terpadu Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Daerah Kota Pasuruan</p>
                         <div class="d-flex">
-                            <a href="#about" class="btn-get-started">Get Started</a>
-                            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                            <a href="#about" class="btn-get-started">Mulai</a>
+                            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Video</span></a>
                         </div>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="100">
@@ -160,41 +151,29 @@
 
         <!-- About Section -->
         <section id="about" class="about section">
-
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-
                 <h2>Tentang</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
             </div><!-- End Section Title -->
-
             <div class="container">
-
                 <div class="row gy-4">
                     <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
                         <img src="assets/img/about.png" class="img-fluid" alt="">
                         <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
                     </div>
                     <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
-                        <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-                        <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua.
-                        </p>
+                        <h3>Melalui e-APIK :</h3>
                         <ul>
-                            <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                            <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                            <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+                            <li><i class="bi bi-check2-all"></i> <span>Memetakan kondisi kemiskinan.</span></li>
+                            <li><i class="bi bi-check2-all"></i> <span>Menyusun perencanaan program.</span></li>
+                            <li><i class="bi bi-check2-all"></i> <span>Memonitor capaian kinerja dan inovasi.</span></li>
                         </ul>
                         <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+                            Dengan pendekatan digital dan analisis berbasis data, e-APIK hadir sebagai solusi inovatif dalam mewujudkan perencanaan yang lebih akurat, transparan, dan berkeadilan untuk Pasuruan yang lebih sejahtera.
                         </p>
                     </div>
                 </div>
-
             </div>
-
         </section><!-- /About Section -->
 
         <!-- Stats Section -->
@@ -301,9 +280,9 @@
                 <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
                     <div class="col-xl-10">
                         <div class="text-center">
-                            <h3>Call To Action</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <a class="cta-btn" href="#">Call To Action</a>
+                            <h3>Konsultasi Perencanaan ? atau Riset dan Inovasi ?</h3>
+                            <p></p>
+                            <a class="cta-btn" href="#">Kontak Kami</a>
                         </div>
                     </div>
                 </div>
