@@ -129,9 +129,11 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
 
     public function table(Table $table): Table
     {
+        $inovasi_id = $this->record->id;
+
         return $table
             ->query(\App\Models\IndikatorInovasiMasyarakat::query()
-                    ->where('user_id', auth()->id()))
+                    ->where('user_id', $inovasi_id->id()))
             ->columns([
                 TextColumn::make('kemudahan_proses'),
                 TextColumn::make('keterlibatan_aktor'),
