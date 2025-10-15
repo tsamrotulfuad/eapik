@@ -188,7 +188,7 @@ class InovasiMasyarakatResource extends Resource
             'index' => Pages\ListInovasiMasyarakats::route('/'),
             'create' => Pages\CreateInovasiMasyarakat::route('/create'),
             'edit' => Pages\EditInovasiMasyarakat::route('/{record}/edit'),
-            // 'indikator' => Pages\IndikatorInovasiMasyarakat::route('/{record}/indikator')
+            'indikator' => Pages\IndikatorInovasiMasyarakat::route('/{record}/indikator')
         ];
     }
 }

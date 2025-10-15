@@ -259,7 +259,7 @@ class InovasiPerangkatDaerahResource extends Resource
             'index' => Pages\ListInovasiPerangkatDaerahs::route('/'),
             'create' => Pages\CreateInovasiPerangkatDaerah::route('/create'),
             'edit' => Pages\EditInovasiPerangkatDaerah::route('/{record}/edit'),
-            // 'indikator' => Pages\IndikatorInovasiPerangkatDaerah::route('/{record}/indikator')
+            'indikator' => Pages\IndikatorInovasiPerangkatDaerah::route('/{record}/indikator')
         ];
     }
 }
