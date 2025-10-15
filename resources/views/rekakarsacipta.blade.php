@@ -135,7 +135,7 @@
 
                             <div class="col-md-12" data-aos="fade-up" data-aos-delay="200">
                                 <div class="icon-box">
-                                    <a href="http://localhost:8100/rekakarsacipta/perangkatdaerah">
+                                    <a href="https://eapik.pasuruankota.go.id/rekakarsacipta/perangkatdaerah">
                                         <i class="bi bi-buildings"></i>
                                         <h3>Perangkat Daerah</h3>
                                         <p>Perangkat Daerah (PD), Unit Pelaksana Teknis (UPT), Kelurahan</p>
@@ -145,7 +145,7 @@
 
                             <div class="col-md-12" data-aos="fade-up" data-aos-delay="300">
                                 <div class="icon-box">
-                                    <a href="http://localhost:8100/rekakarsacipta/masyarakat">
+                                    <a href="https://eapik.pasuruankota.go.id/rekakarsacipta/rekakarsacipta/masyarakat">
                                         <i class="bi bi-people"></i>
                                         <h3>Masyarakat</h3>
                                         <p>Individu, Kelompok / Komunitas, Lembaga / Organisasi</p>
