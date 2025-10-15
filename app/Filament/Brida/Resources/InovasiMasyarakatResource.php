@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Filament\Masyarakat\Resources;
+namespace App\Filament\Brida\Resources;
 
+use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
@@ -16,8 +17,8 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Masyarakat\Resources\InovasiMasyarakatResource\Pages;
-use App\Filament\Masyarakat\Resources\InovasiMasyarakatResource\RelationManagers;
+use App\Filament\Brida\Resources\InovasiMasyarakatResource\Pages;
+use App\Filament\Brida\Resources\InovasiMasyarakatResource\RelationManagers;
 
 class InovasiMasyarakatResource extends Resource
 {
@@ -87,6 +88,7 @@ class InovasiMasyarakatResource extends Resource
                     ->timezone('Asia/Jakarta')
                     ->closeOnDateSelection()
                     ->maxDate(now()->subMonths(6))
+                    ->default(now()->subMonths(6))
                     ->required(),
                 DatePicker::make('waktu_implementasi_inovasi')
                     ->label('Waktu Implementasi (Min. 6 Bulan)')
@@ -186,7 +188,8 @@ class InovasiMasyarakatResource extends Resource
             'index' => Pages\ListInovasiMasyarakats::route('/'),
             'create' => Pages\CreateInovasiMasyarakat::route('/create'),
             'edit' => Pages\EditInovasiMasyarakat::route('/{record}/edit'),
-            'indikator' => Pages\IndikatorInovasiMasyarakat::route('/{record}/indikator')
+            // 'indikator' => Pages\IndikatorInovasiMasyarakat::route('/{record}/indikator')
         ];
     }
 }
+

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Brida\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
@@ -10,24 +10,27 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use App\Models\InovasiPerangkatDaerah;
 use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\InovasiPerangkatDaerahResource\Pages;
-use App\Filament\Resources\InovasiPerangkatDaerahResource\RelationManagers;
+use App\Filament\Brida\Resources\InovasiPerangkatDaerahResource\Pages;
+use App\Filament\Brida\Resources\InovasiPerangkatDaerahResource\RelationManagers;
 
 class InovasiPerangkatDaerahResource extends Resource
 {
     protected static ?string $model = InovasiPerangkatDaerah::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-light-bulb';
+
+    protected static ?string $navigationGroup = "Proposal";
 
     protected static ?string $navigationLabel = 'Inovasi Perangkat Daerah';
 
-    protected static ?string $navigationGroup = 'Inovasi';
+    protected static ?string $breadcrumb = "Inovasi";
 
     public static function form(Form $form): Form
     {
@@ -209,13 +212,32 @@ class InovasiPerangkatDaerahResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('nama_inovasi'),
+                TextColumn::make('nama_inisiator'),
+                TextColumn::make('tahapan_inovasi'),
+                TextColumn::make('jenis_inovasi'),
+                TextColumn::make('waktu_implementasi_inovasi'),
+                TextColumn::make('tahun'),
+                TextColumn::make('indikators.kematangan')->label('Kematangan'),
             ])
+            ->modifyQueryUsing(function (Builder $query) {
+                $query->where('user_id', auth()->id())->with('indikators'); // Filters records by the authenticated user's ID
+            })
+            ->emptyStateHeading('Tidak ada data inovasi')
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('Indikator')
+                    ->url(fn($record): string => InovasiPerangkatDaerahResource::getUrl('indikator', ['record' => $record]))
+                    ->label('')
+                    ->icon('heroicon-o-folder'),
+                Tables\Actions\EditAction::make()
+                    ->label('')
+                    ->icon('heroicon-o-pencil'),
+                Tables\Actions\DeleteAction::make()
+                    ->label('')
+                    ->icon('heroicon-o-trash'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -237,6 +259,7 @@ class InovasiPerangkatDaerahResource extends Resource
             'index' => Pages\ListInovasiPerangkatDaerahs::route('/'),
             'create' => Pages\CreateInovasiPerangkatDaerah::route('/create'),
             'edit' => Pages\EditInovasiPerangkatDaerah::route('/{record}/edit'),
+            // 'indikator' => Pages\IndikatorInovasiPerangkatDaerah::route('/{record}/indikator')
         ];
     }
 }

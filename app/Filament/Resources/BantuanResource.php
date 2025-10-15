@@ -21,6 +21,8 @@ class BantuanResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-gift';
 
     protected static ?string $navigationLabel = 'Bantuan';
+
+    protected static ?string $navigationGroup = 'Kemiskinan';
     
     protected static ?int $navigationSort = 3;
 

@@ -133,22 +133,33 @@
                     <div class="col-xl-7">
                         <div class="row gy-4 icon-boxes">
 
-                            <div class="col-md-12" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
                                 <div class="icon-box">
                                     <a href="https://eapik.pasuruankota.go.id/rekakarsacipta/perangkatdaerah">
                                         <i class="bi bi-buildings"></i>
-                                        <h3>Perangkat Daerah</h3>
-                                        <p>Perangkat Daerah (PD), Unit Pelaksana Teknis (UPT), Kelurahan</p>
+                                        <h3>Tata Kelola dan Pelayanan Publik </h3>
+                                        <p>Perangkat Daerah (PD), Unit Pelaksana Teknis (UPT) Kesehatan, Kecamatan, Kelurahan</p>
                                     </a>
                                 </div>
                             </div> <!-- End Icon Box -->
 
-                            <div class="col-md-12" data-aos="fade-up" data-aos-delay="300">
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                                 <div class="icon-box">
                                     <a href="https://eapik.pasuruankota.go.id/rekakarsacipta/rekakarsacipta/masyarakat">
                                         <i class="bi bi-people"></i>
                                         <h3>Masyarakat</h3>
                                         <p>Individu, Kelompok / Komunitas, Lembaga / Organisasi</p>
+                                    </a>
+                                </div>
+                            </div> <!-- End Icon Box -->
+
+
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                                <div class="icon-box">
+                                    <a href="https://eapik.pasuruankota.go.id/rekakarsacipta/rekakarsacipta/masyarakat">
+                                        <i class="bi bi-people"></i>
+                                        <h3>Pendidikan</h3>
+                                        <p>Kelompok Satuan Pendidikan mulai dari PAUD / TK / SD dan SMP</p>
                                     </a>
                                 </div>
                             </div> <!-- End Icon Box -->

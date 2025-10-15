@@ -20,6 +20,8 @@ class IndividuResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Kemiskinan';
+
     public static function form(Form $form): Form
     {
         return $form
