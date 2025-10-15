@@ -140,9 +140,9 @@ class InovasiMasyarakatResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(function (Builder $query) {
-                $query->where('user_id', auth()->id())->with('indikators'); // Filters records by the authenticated user's ID
-            })
+            // ->modifyQueryUsing(function (Builder $query) {
+            //     $query->where('user_id', auth()->id())->with('indikators'); // Filters records by the authenticated user's ID
+            // })
             ->columns([
                 TextColumn::make('nama_inovasi'),
                 TextColumn::make('nama_inisiator'),

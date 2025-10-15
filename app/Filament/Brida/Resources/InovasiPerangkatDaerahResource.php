@@ -220,9 +220,9 @@ class InovasiPerangkatDaerahResource extends Resource
                 TextColumn::make('tahun'),
                 TextColumn::make('indikators.kematangan')->label('Kematangan'),
             ])
-            ->modifyQueryUsing(function (Builder $query) {
-                $query->where('user_id', auth()->id())->with('indikators'); // Filters records by the authenticated user's ID
-            })
+            // ->modifyQueryUsing(function (Builder $query) {
+            //     $query->where('user_id', auth()->id())->with('indikators'); // Filters records by the authenticated user's ID
+            // })
             ->emptyStateHeading('Tidak ada data inovasi')
             ->filters([
                 //
