@@ -6,9 +6,11 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Resources\Resource;
 use App\Models\InovasiMasyarakat;
 use Filament\Forms\Components\Select;
+use Illuminate\Support\Facades\Blade;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -26,7 +28,7 @@ class InovasiMasyarakatResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-light-bulb';
 
-    protected static ?string $navigationGroup = "Proposal";
+    protected static ?string $navigationGroup = "Proposal Inovasi";
 
     protected static ?string $navigationLabel = 'Inovasi Masyarakat';
 
@@ -65,7 +67,7 @@ class InovasiMasyarakatResource extends Resource
                 Select::make('jenis_inovasi')
                     ->options([
                         'Digital' => 'Digital',
-                        'Non_digital' => 'Non Digital',
+                        'Non Digital' => 'Non Digital',
                     ])
                     ->native(false)
                     ->required(),
@@ -161,6 +163,17 @@ class InovasiMasyarakatResource extends Resource
                     ->url(fn($record): string => InovasiMasyarakatResource::getUrl('indikator', ['record' => $record]))
                     ->label('')
                     ->icon('heroicon-o-folder'),
+                Tables\Actions\Action::make('Pdf')
+                    ->label('')
+                    ->icon('heroicon-o-document-text')
+                    ->color('success')
+                    ->action(function (InovasiMasyarakat $record) {
+                        return response()->streamDownload(function () use ($record) {
+                            echo Pdf::loadHtml(
+                                Blade::render('pdf-masyarakat', ['record' => $record])
+                            )->stream();
+                        }, $record->nama_inovasi . '.pdf');
+                    }),
                 Tables\Actions\EditAction::make()
                     ->label('')
                     ->icon('heroicon-o-pencil'),

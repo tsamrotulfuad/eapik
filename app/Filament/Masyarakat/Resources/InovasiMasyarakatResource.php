@@ -10,6 +10,7 @@ use App\Models\InovasiMasyarakat;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
@@ -64,7 +65,7 @@ class InovasiMasyarakatResource extends Resource
                 Select::make('jenis_inovasi')
                     ->options([
                         'Digital' => 'Digital',
-                        'Non_digital' => 'Non Digital',
+                        'Non Digital' => 'Non Digital',
                     ])
                     ->native(false)
                     ->required(),
@@ -164,7 +165,19 @@ class InovasiMasyarakatResource extends Resource
                     ->icon('heroicon-o-pencil'),
                 Tables\Actions\DeleteAction::make()
                     ->label('')
-                    ->icon('heroicon-o-trash'),
+                    ->icon('heroicon-o-trash')
+                    ->after(function (InovasiMasyarakat $record) {
+                        // delete file
+                        if ($record->hki_inovasi) {
+                            Storage::disk('public')->delete($record->hki_inovasi);
+                        }
+                        if ($record->penghargaan_inovasi) {
+                            Storage::disk('public')->delete($record->penghargaan_inovasi);
+                        }
+                        if ($record->skt) {
+                            Storage::disk('public')->delete($record->skt);
+                        }
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

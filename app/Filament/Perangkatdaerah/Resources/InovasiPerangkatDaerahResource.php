@@ -10,6 +10,8 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use App\Models\InovasiPerangkatDaerah;
 use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
@@ -18,7 +20,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Perangkatdaerah\Resources\InovasiPerangkatDaerahResource\Pages;
 use App\Filament\Perangkatdaerah\Resources\InovasiPerangkatDaerahResource\RelationManagers;
-use Filament\Tables\Columns\TextColumn;
 
 class InovasiPerangkatDaerahResource extends Resource
 {
@@ -74,7 +75,7 @@ class InovasiPerangkatDaerahResource extends Resource
                     ])->native(false)->required(),
                 Forms\Components\Select::make('bentuk_inovasi')
                     ->options([
-                        'Inovasi Pelayanan_Publik' => 'Inovasi Pelayanan Publik',
+                        'Inovasi Pelayanan Publik' => 'Inovasi Pelayanan Publik',
                         'Inovasi Tata Kelola' => 'Inovasi Tata Kelola Pemerintahan Daerah',
                         'Invosasi Daerah Lainnya' => 'Inovasi Daerah lainnya sesuai dengan Urusan Pemerintahan yang mejadi Kewenangan Daerah',
                     ])->native(false)->required(),
@@ -237,7 +238,22 @@ class InovasiPerangkatDaerahResource extends Resource
                     ->icon('heroicon-o-pencil'),
                 Tables\Actions\DeleteAction::make()
                     ->label('')
-                    ->icon('heroicon-o-trash'),
+                    ->icon('heroicon-o-trash')
+                    ->after(function (InovasiPerangkatDaerah $record) {
+                        // delete file
+                        if ($record->anggaran_inovasi) {
+                            Storage::disk('public')->delete($record->anggaran_inovasi);
+                        }
+                        if ($record->profilbisnis_inovasi) {
+                            Storage::disk('public')->delete($record->profilbisnis_inovasi);
+                        }
+                        if ($record->hki_inovasi) {
+                            Storage::disk('public')->delete($record->hki_inovasi);
+                        }
+                        if ($record->penghargaan_inovasi) {
+                            Storage::disk('public')->delete($record->penghargaan_inovasi);
+                        }
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

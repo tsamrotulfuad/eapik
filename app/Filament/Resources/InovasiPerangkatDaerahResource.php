@@ -71,7 +71,7 @@ class InovasiPerangkatDaerahResource extends Resource
                     ])->native(false)->required(),
                 Forms\Components\Select::make('bentuk_inovasi')
                     ->options([
-                        'Inovasi Pelayanan_Publik' => 'Inovasi Pelayanan Publik',
+                        'Inovasi Pelayanan Publik' => 'Inovasi Pelayanan Publik',
                         'Inovasi Tata Kelola' => 'Inovasi Tata Kelola Pemerintahan Daerah',
                         'Invosasi Daerah Lainnya' => 'Inovasi Daerah lainnya sesuai dengan Urusan Pemerintahan yang mejadi Kewenangan Daerah',
                     ])->native(false)->required(),

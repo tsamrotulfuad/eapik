@@ -6,8 +6,10 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
+use Illuminate\Support\Facades\Blade;
 use App\Models\InovasiPerangkatDaerah;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
@@ -26,7 +28,7 @@ class InovasiPerangkatDaerahResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-light-bulb';
 
-    protected static ?string $navigationGroup = "Proposal";
+    protected static ?string $navigationGroup = "Proposal Inovasi";
 
     protected static ?string $navigationLabel = 'Inovasi Perangkat Daerah';
 
@@ -74,7 +76,7 @@ class InovasiPerangkatDaerahResource extends Resource
                     ])->native(false)->required(),
                 Forms\Components\Select::make('bentuk_inovasi')
                     ->options([
-                        'Inovasi Pelayanan_Publik' => 'Inovasi Pelayanan Publik',
+                        'Inovasi Pelayanan Publik' => 'Inovasi Pelayanan Publik',
                         'Inovasi Tata Kelola' => 'Inovasi Tata Kelola Pemerintahan Daerah',
                         'Invosasi Daerah Lainnya' => 'Inovasi Daerah lainnya sesuai dengan Urusan Pemerintahan yang mejadi Kewenangan Daerah',
                     ])->native(false)->required(),
@@ -232,6 +234,17 @@ class InovasiPerangkatDaerahResource extends Resource
                     ->url(fn($record): string => InovasiPerangkatDaerahResource::getUrl('indikator', ['record' => $record]))
                     ->label('')
                     ->icon('heroicon-o-folder'),
+                Tables\Actions\Action::make('Pdf')
+                    ->label('')
+                    ->icon('heroicon-o-document-text')
+                    ->color('success')
+                    ->action(function (InovasiPerangkatDaerah $record) {
+                        return response()->streamDownload(function () use ($record) {
+                            echo Pdf::loadHtml(
+                                Blade::render('pdf-perangkatdaerah', ['record' => $record])
+                            )->stream();
+                        }, $record->nama_inovasi . '.pdf');
+                    }),
                 Tables\Actions\EditAction::make()
                     ->label('')
                     ->icon('heroicon-o-pencil'),
