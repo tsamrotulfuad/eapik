@@ -17,6 +17,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Brida\Resources\InovasiPerangkatDaerahResource\Pages;
@@ -214,10 +215,11 @@ class InovasiPerangkatDaerahResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama_inovasi'),
-                TextColumn::make('nama_inisiator'),
+                TextColumn::make('nama_inovasi')->searchable(),
+                TextColumn::make('nama_inisiator')->searchable(),
                 TextColumn::make('tahapan_inovasi'),
                 TextColumn::make('jenis_inovasi'),
+                TextColumn::make('bentuk_inovasi'),
                 TextColumn::make('waktu_implementasi_inovasi'),
                 TextColumn::make('tahun'),
                 TextColumn::make('indikators.kematangan')->label('Kematangan'),
@@ -227,7 +229,14 @@ class InovasiPerangkatDaerahResource extends Resource
             // })
             ->emptyStateHeading('Tidak ada data inovasi')
             ->filters([
-                //
+                SelectFilter::make('bentuk_inovasi')
+                    ->label('Bentuk Inovasi')
+                    ->options([
+                        'Inovasi Pelayanan Publik' => 'Inovasi Pelayanan Publik',
+                        'Inovasi Tata Kelola' => 'Inovasi Tata Kelola Pemerintahan Daerah',
+                        'Inovasi Pendidikan' => 'Inovasi Pendidikan',
+                        'Invosasi Daerah Lainnya' => 'Inovasi Daerah lainnya sesuai dengan Urusan Pemerintahan yang mejadi Kewenangan Daerah',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\Action::make('Indikator')

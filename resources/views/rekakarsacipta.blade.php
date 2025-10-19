@@ -156,7 +156,7 @@
 
                             <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                                 <div class="icon-box">
-                                    <a href="https://eapik.pasuruankota.go.id/rekakarsacipta/rekakarsacipta/masyarakat">
+                                    <a href="https://eapik.pasuruankota.go.id/rekakarsacipta/perangkatdaerah">
                                         <i class="bi bi-people"></i>
                                         <h3>Pendidikan</h3>
                                         <p>Kelompok Satuan Pendidikan mulai dari PAUD / TK / SD dan SMP</p>

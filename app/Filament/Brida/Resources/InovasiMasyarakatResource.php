@@ -17,6 +17,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Brida\Resources\InovasiMasyarakatResource\Pages;
@@ -146,8 +147,8 @@ class InovasiMasyarakatResource extends Resource
             //     $query->where('user_id', auth()->id())->with('indikators'); // Filters records by the authenticated user's ID
             // })
             ->columns([
-                TextColumn::make('nama_inovasi'),
-                TextColumn::make('nama_inisiator'),
+                TextColumn::make('nama_inovasi')->searchable(),
+                TextColumn::make('nama_inisiator')->searchable(),
                 TextColumn::make('tahapan_inovasi'),
                 TextColumn::make('jenis_inovasi'),
                 TextColumn::make('bentuk_inovasi'),
@@ -156,7 +157,13 @@ class InovasiMasyarakatResource extends Resource
             ])
             ->emptyStateHeading('Tidak ada data inovasi')
             ->filters([
-                //
+                SelectFilter::make('bentuk_inovasi')
+                    ->label('Bentuk Inovasi')
+                    ->options([
+                        'Aplikasi Teknologi' => 'Aplikasi dan Teknologi',
+                        'Produk dan Jasa' => 'Produk dan Jasa',
+                        'Program dan Pergerakan' => 'Program dan Pergerakan',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\Action::make('Indikator')

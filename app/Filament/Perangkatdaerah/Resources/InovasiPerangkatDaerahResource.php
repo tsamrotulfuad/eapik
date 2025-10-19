@@ -76,8 +76,9 @@ class InovasiPerangkatDaerahResource extends Resource
                 Forms\Components\Select::make('bentuk_inovasi')
                     ->options([
                         'Inovasi Pelayanan Publik' => 'Inovasi Pelayanan Publik',
-                        'Inovasi Tata Kelola' => 'Inovasi Tata Kelola Pemerintahan Daerah',
-                        'Invosasi Daerah Lainnya' => 'Inovasi Daerah lainnya sesuai dengan Urusan Pemerintahan yang mejadi Kewenangan Daerah',
+                        'Inovasi Tata Kelola Pemerintahan Daerah' => 'Inovasi Tata Kelola Pemerintahan Daerah',
+                        'Inovasi Pendidikan' => 'Inovasi Pendidikan',
+                        'Inovasi Daerah lainnya sesuai dengan Urusan Pemerintahan yang mejadi Kewenangan Daerah' => 'Inovasi Daerah lainnya sesuai dengan Urusan Pemerintahan yang mejadi Kewenangan Daerah',
                     ])->native(false)->required(),
                 Select::make('astacita_inovasi')
                     ->label('Asta Cita')
