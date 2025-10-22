@@ -14,4 +14,9 @@ class HomeController extends Controller
     {
         return view('rekakarsacipta');
     }
+
+    public function kajian()
+    {
+        return view('kajian');
+    }
 }

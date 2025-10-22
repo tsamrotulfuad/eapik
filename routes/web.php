@@ -23,3 +23,5 @@ Route::get('/template/penerima', function () {
 })->name('template.penerima');
 
 Route::get('/rekakarsacipta', [HomeController::class, 'rekakarsacipta'])->name('rkc');
+
+Route::get('/kajian', [HomeController::class, 'kajian'])->name('kajian');

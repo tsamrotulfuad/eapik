@@ -51,15 +51,14 @@
                     <li><a href="#hero" class="active">Home</a></li>
                     <li class="dropdown"><a href="#"><span>Perencanaan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="#">Dropdown 1</a></li>
-                            <li><a href="#">Dropdown 2</a></li>
-                            <li><a href="#">Dropdown 3</a></li>
-                            <li><a href="#">Dropdown 4</a></li>
+                            <li><a href="#">Comming Soon</a></li>
+                           
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#"><span>Riset dan Inovasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="#">Infografis Hasil Kajian</a></li>
+                            <li><a href="{{ route('kajian') }}">Kajian</a></li>
+                            <li><a href="#">Infografis</a></li>
                             <li><a href="#">Pengusulan Pelaksanaan dan Kerjasama Riset</a></li>
                             <li class="dropdown"><a href="#"><span>Klinik Inovasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                                 <ul>
@@ -112,34 +111,53 @@
 
         </section><!-- /Hero Section -->
 
-        <!-- Featured Services Section -->
-        <section id="featured-services" class="featured-services section">
+         <!-- Services Section -->
+        <section id="services" class="services section light-background">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+
+                <h2>Layanan Kami</h2>
+                <p>Berikut Beberapa Layanan yang ada di e-APIK Bappelitbangda Kota Pasuruan</p>
+            </div><!-- End Section Title -->
 
             <div class="container">
 
                 <div class="row gy-4">
 
-                    <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="service-item position-relative">
-                            <div class="icon"><i class="bi bi-activity icon"></i></div>
-                            <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                            <div class="icon">
+                                <i class="bi bi-journal-check"></i>
+                            </div>
+                            <a href="service-details.html" class="stretched-link">
+                                <h3>Perencanaan Pembangunan</h3>
+                            </a>
+                            <p>Data Perencanaan Pembangunan Kota Pasuruan</p>
                         </div>
                     </div><!-- End Service Item -->
 
-                    <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="service-item position-relative">
-                            <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-                            <h4><a href="" class="stretched-link">Sed ut perspici</a></h4>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                            <div class="icon">
+                                <i class="bi bi-activity"></i>
+                            </div>
+                            <a href="service-details.html" class="stretched-link">
+                                <h3>Kemiskinan</h3>
+                            </a>
+                            <p>Data Kemiskinan Kota Pasuruan</p>
                         </div>
                     </div><!-- End Service Item -->
 
-                    <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="300">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-item position-relative">
-                            <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-                            <h4><a href="" class="stretched-link">Magni Dolores</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                            <div class="icon">
+                                <i class="bi bi-broadcast"></i>
+                            </div>
+                            <a href="service-details.html" class="stretched-link">
+                                <h3>BRIDA</h3>
+                            </a>
+                            <p>Daftar Inovasi dan Kajian Kota Pasuruan</p>
                         </div>
                     </div><!-- End Service Item -->
 
@@ -147,7 +165,7 @@
 
             </div>
 
-        </section><!-- /Featured Services Section -->
+        </section><!-- /Services Section -->
 
         <!-- About Section -->
         <section id="about" class="about section">
@@ -217,61 +235,7 @@
 
         </section><!-- /Stats Section -->
 
-        <!-- Services Section -->
-        <section id="services" class="services section light-background">
-
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-
-                <h2>Layanan Kami</h2>
-                <p>Berikut Beberapa Layanan yang ada di e-APIK Bappelitbangda Kota Pasuruan</p>
-            </div><!-- End Section Title -->
-
-            <div class="container">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-item position-relative">
-                            <div class="icon">
-                                <i class="bi bi-journal-check"></i>
-                            </div>
-                            <a href="service-details.html" class="stretched-link">
-                                <h3>Perencanaan</h3>
-                            </a>
-                            <p>Data Perencanaan Kota Pasuruan</p>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-item position-relative">
-                            <div class="icon">
-                                <i class="bi bi-activity"></i>
-                            </div>
-                            <a href="service-details.html" class="stretched-link">
-                                <h3>Kemiskinan</h3>
-                            </a>
-                            <p>Data Kemiskinan Kota Pasuruan</p>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-item position-relative">
-                            <div class="icon">
-                                <i class="bi bi-broadcast"></i>
-                            </div>
-                            <a href="service-details.html" class="stretched-link">
-                                <h3>BRIDA</h3>
-                            </a>
-                            <p>Daftar Inovasi dan Kajian Kota Pasuruan</p>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Services Section -->
+       
 
         <!-- Call To Action Section -->
         <section id="call-to-action" class="call-to-action section accent-background">
