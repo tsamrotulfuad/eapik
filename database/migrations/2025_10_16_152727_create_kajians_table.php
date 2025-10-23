@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('kajians', function (Blueprint $table) {
             $table->id();
-            $table->uuid()->unique()->index();
             $table->string('nama_kajian');
+            $table->string('slug');
+            $table->string('ringkasan_kajian');
+            $table->year('tahun_kajian');
+            $table->string('file_kajian');
+            $table->string('kajian_link')->nullable();
+            $table->foreignId('bidang_id')->constrained('bidangs');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
