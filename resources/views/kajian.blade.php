@@ -24,19 +24,21 @@
 
       <div class="container" data-aos="fade-up">
       @foreach ($kajian as $data)
-        <div class="card mb-3" style="max-width: 540px;">
+        <div class="card mb-3 h-100" style="max-width: 540px;">
+          <a href="{{ url('/kajian/' . $data->slug) }}" class="text-decoration-none text-black">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="{{ asset('storage/' . $data->cover_kajian) }}" class="img-fluid rounded-start" height="120px" alt="...">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">{{ $data->nama_kajian }}</h5>
+                <h5 class="card-title"><strong>{{ $data->nama_kajian }}</strong></h5>
                 <p class="card-text">{{ $data->bidang->nama_bidang }}</p>
                 <p class="card-text"><small class="text-body-secondary">{{ $data->tahun_kajian }}</small></p>
               </div>
             </div>
           </div>
+          </a>
         </div>
       </div>
       @endforeach
