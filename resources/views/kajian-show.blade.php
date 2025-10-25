@@ -21,7 +21,7 @@
                 <p class="card-text mt-2">{{ $kajian->ringkasan_kajian }}</p>
                 <p class="card-text">{{ $kajian->bidang->nama_bidang }}</p>
                 <p class="card-text"><small class="text-body-secondary">{{ $kajian->tahun_kajian }}</small></p>
-                <a href="#" class="btn btn-primary">Review</a>
+                <a href="{{ $kajian->kajian_link }}" class="btn btn-primary">Review</a>
               </div>
             </div>
           </div>
