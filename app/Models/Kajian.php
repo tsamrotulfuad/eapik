@@ -20,7 +20,7 @@ class Kajian extends Model
 
     public function getQrCodeAttribute()
     {
-        $link = url('/kajian/' . $this->slug);
+        $link = route('kajian.show', $this->slug);
         // Log::info('Link QR Kajian: ' . $link); // 👈 Tambahkan baris ini
         $path = 'qrcodes/' . $this->slug . '.png';
 
