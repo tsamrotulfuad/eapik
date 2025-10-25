@@ -118,7 +118,7 @@ class KajianResource extends Resource
         return $infolist->schema([
             TextEntry::make('nama_kajian')->label('Nama Inovasi'),
             TextEntry::make('slug')->label('Slug'),
-            TextEntry::make('ringkasan_kajian')->label('Ringkasa Kajian'),
+            TextEntry::make('ringkasan_kajian')->label('Ringkasan Kajian'),
 
             // 🔹 Tampilkan QR Code di halaman detail
             Section::make('QR Code')

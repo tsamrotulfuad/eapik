@@ -18,7 +18,10 @@ class HomeController extends Controller
 
     public function kajian()
     {
-        return view('kajian');
+        $breadcrump = 'Daftar Kajian';
+        $kajian = Kajian::limit(9)->get();
+
+        return view('kajian', compact('breadcrump', 'kajian'));
     }
 
     public function kajian_show($slug)
