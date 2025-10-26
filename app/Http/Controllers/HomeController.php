@@ -40,7 +40,11 @@ class HomeController extends Controller
      public function infografis()
     {
         $breadcrump = 'Daftar Infografis';
-        $infografis = Infografis::groupBy('tahun_infografis')->limit(6)->get();
+        $infografis = DB::table('infografis')
+            ->join('bidangs', 'bidangs.id', '=', 'infografis.bidang_id')
+            ->orderBy('tahun_infografis', 'desc')
+            ->limit(9)
+            ->get();
 
         return view('kajian', compact('breadcrump', 'infografis'));
     }
