@@ -16,4 +16,10 @@ class Bidang extends Model
     {
         return $this->hasMany(Kajian::class);
     }
+
+    public function infografis() : HasMany
+    {
+        return $this->hasMany(Infografis::class);
+    }
+
 }

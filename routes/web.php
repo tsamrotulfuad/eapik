@@ -16,13 +16,15 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('beranda');
 
 Route::get('/rekakarsacipta', [HomeController::class, 'rekakarsacipta'])->name('rkc');
 
 Route::get('/kajian', [HomeController::class, 'kajian'])->name('kajian');
 
 Route::get('/kajian/{slug}', [HomeController::class, 'kajian_show'])->name('kajian.show');
+
+Route::get('/infografis', [HomeController::class, 'infografis'])->name('infografis');
 
 Route::get('/template/penerima', function () {
     return Excel::download(new PenerimaTemplateExport, 'template_penerima.xlsx');

@@ -1,5 +1,5 @@
 @extends('welcome')
-@section('title', 'Kajian - Bappelitbangda Kota Pasuruan')
+@section('title', 'Infografis - Bappelitbangda Kota Pasuruan')
 @section('content')
     <!-- Page Title -->
     <div class="page-title">
@@ -33,7 +33,7 @@
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title"><strong>{{ $data->nama_kajian }}</strong></h5>
-                <p class="card-text">{{ $data->nama_bidang }}</p>
+                <p class="card-text">{{ $data->bidang->nama_bidang }}</p>
                 <p class="card-text"><small class="text-body-secondary">{{ $data->tahun_kajian }}</small></p>
               </div>
             </div>

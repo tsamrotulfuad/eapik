@@ -40,7 +40,7 @@
     <header id="header" class="header d-flex align-items-center sticky-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-            <a href="index.html" class="logo d-flex align-items-center me-auto">
+            <a href="{{ route('beranda') }}" class="logo d-flex align-items-center me-auto">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
                 <h1 class="sitename">e-APIK</h1>
@@ -48,17 +48,17 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#hero" class="{{ request()->routeIs('/') ? 'active' : '' }}">Home</a></li>
                     <li class="dropdown"><a href="#"><span>Perencanaan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="#">Comming Soon</a></li>
                            
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#"><span>Riset dan Inovasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <li class="dropdown"><a href="#" class="{{ request()->routeIs('kajian.*') ? 'active' : '' }}"><span>Riset dan Inovasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="{{ route('kajian') }}">Kajian</a></li>
-                            <li><a href="#">Infografis</a></li>
+                            <li><a href="{{ route('kajian') }}" class="{{ request()->routeIs('kajian') ? 'active' : '' }}">Kajian</a></li>
+                            <li><a href="{{ route('infografis') }}"  class="{{ request()->routeIs('infografis') ? 'active' : '' }}">Infografis</a></li>
                             <li><a href="#">Pengusulan Pelaksanaan dan Kerjasama Riset</a></li>
                             <li class="dropdown"><a href="#"><span>Klinik Inovasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                                 <ul>
@@ -94,7 +94,7 @@
 
     <footer id="footer" class="footer">
 
-        <div class="footer-newsletter">
+        {{-- <div class="footer-newsletter">
             <div class="container">
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-6">
@@ -109,7 +109,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="container footer-top">
             <div class="row gy-4">

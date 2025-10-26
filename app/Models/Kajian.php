@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Endroid\QrCode\ErrorCorrectionLevel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Kajian extends Model
 {
@@ -46,8 +47,28 @@ class Kajian extends Model
         return asset('storage/' . $path);
     }
 
+    protected static function booted() 
+    {
+        static::updating(function ($model) {
+            if ($model->isDirty('file_kajian') && ($model->getOriginal('file_kajian') !== null)) {
+                Storage::disk('public')->delete($model->getOriginal('file_kajian'));
+            }
+        });
+
+        static::updating(function ($model) {
+            if ($model->isDirty('cover_kajian') && ($model->getOriginal('cover_kajian') !== null)) {
+                Storage::disk('public')->delete($model->getOriginal('cover_kajian'));
+            }
+        });
+    }
+
     public function bidang(): BelongsTo
     {
         return $this->belongsTo(Bidang::class);
+    }
+
+    public function infografis(): HasOne
+    {
+        return $this->hasOne(Infografis::class);
     }
 }
