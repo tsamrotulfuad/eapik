@@ -4,6 +4,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 use App\Exports\PenerimaTemplateExport;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InfografisController;
 
 /*
 |--------------------------------------------------------------------------

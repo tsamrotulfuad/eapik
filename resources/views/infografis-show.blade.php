@@ -19,7 +19,7 @@
             <div class="col-md-8">
               <div class="card-body">
                 <div class="card-title display-6 fw-bold">{{ $infografis->nama_infografis }}</div>
-                <p class="card-text"><small class="text-body-secondary">Tanggal Publikasi : {{ Carbon\Carbon::parse($infografis->tanggal_publikasi)->isoFormat('D MMMM YYYY') }}</small></p>
+                <p class="card-text"><small class="text-body-secondary">Tanggal Publikasi : {{ Carbon\Carbon::parse($infografis->tanggal_publikasi)->isoFormat('D MMMM YYYY') }} | {{ number_format($infografis->views) }} kali dilihat</small></p>
                 <p class="card-text">{{ $infografis->deskripsi_infografis }}</p>
                 <p class="card-text"><small class="text-body-secondary">Kategori : {{ $infografis->kategori }}, Tags : #{!! implode('#', $infografis->tag) !!}</small></p>
                 <p class="card-text"><small class="text-body-secondary">Sumber data Kajian : <a href="{{ route('kajian.show',  $infografis->kajian->slug ) }}"> {{ $infografis->kajian->nama_kajian }} </a></small></p>

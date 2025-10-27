@@ -56,6 +56,13 @@ class HomeController extends Controller
     {
         $infografis = Infografis::with('kajian')
             ->where('slug', $slug)->firstOrFail();
+         // ✅ Tambah views hanya sekali per sesi agar tidak spam
+        $sessionKey = 'post_viewed_' . $infografis->id;
+
+        if (!session()->has($sessionKey)) {
+            $infografis->increment('views');
+            session([$sessionKey => true]);
+        }
         
         return view('infografis-show', compact('infografis'));
     }
