@@ -192,6 +192,8 @@
     <!-- Main JS File -->
     <script src="{{ asset('assets/js/main.js')}}"></script>
     <script id="dsq-count-scr" src="//eapik.disqus.com/count.js" async></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    @stack('scripts')
 
 </body>
 

@@ -6,6 +6,7 @@ use App\Exports\PenerimaTemplateExport;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfografisController;
 use App\Http\Controllers\SocialMediaShareButtonController;
+use App\Models\Infografis;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,9 @@ Route::get('/kajian', [HomeController::class, 'kajian'])->name('kajian');
 
 Route::get('/kajian/{slug}', [HomeController::class, 'kajian_show'])->name('kajian.show');
 
-Route::get('/infografis', [HomeController::class, 'infografis'])->name('infografis');
+Route::get('/infografis', [InfografisController::class, 'index'])->name('infografis');
+
+Route::get('/infografis/search', [InfografisController::class, 'search'])->name('infografis.search'); // AJAX route
 
 Route::get('/infografis/{slug}', [HomeController::class, 'infografis_show'])->name('infografis.show');
 
