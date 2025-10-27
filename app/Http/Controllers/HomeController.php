@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kajian;
+use Jorenvh\Share\Share;
 use App\Models\Infografis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -37,15 +38,25 @@ class HomeController extends Controller
         return view('kajian-show', compact('kajian'));
     }
 
-     public function infografis()
+    public function infografis()
     {
         $breadcrump = 'Daftar Infografis';
-        $infografis = DB::table('infografis')
-            ->join('bidangs', 'bidangs.id', '=', 'infografis.bidang_id')
-            ->orderBy('tahun_infografis', 'desc')
-            ->limit(9)
-            ->get();
+        // $infografis = DB::table('infografis')
+        //     ->join('bidangs', 'bidangs.id', '=', 'infografis.bidang_id')
+        //     ->orderBy('tahun_infografis', 'desc')
+        //     ->limit(9)
+        //     ->get();
+
+        $infografis = Infografis::all();
 
         return view('infografis', compact('breadcrump', 'infografis'));
+    }
+
+    public function infografis_show($slug)
+    {
+        $infografis = Infografis::with('kajian')
+            ->where('slug', $slug)->firstOrFail();
+        
+        return view('infografis-show', compact('infografis'));
     }
 }

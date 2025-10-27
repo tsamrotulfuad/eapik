@@ -26,6 +26,8 @@ Route::get('/kajian/{slug}', [HomeController::class, 'kajian_show'])->name('kaji
 
 Route::get('/infografis', [HomeController::class, 'infografis'])->name('infografis');
 
+Route::get('/infografis/{slug}', [HomeController::class, 'infografis_show'])->name('infografis.show');
+
 Route::get('/template/penerima', function () {
     return Excel::download(new PenerimaTemplateExport, 'template_penerima.xlsx');
 })->name('template.penerima');

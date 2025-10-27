@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -14,8 +15,17 @@ class Infografis extends Model
 
     protected $casts = [
         'tag' => 'array',
-        'file_infografis' => 'array',
+        'file_infografis' => 'array'
     ];
+
+    protected static function booted() 
+    {
+        static::updating(function ($model) {
+            if ($model->isDirty('file_infografis') && ($model->getOriginal('file_infografis') !== null)) {
+                Storage::disk('public')->delete($model->getOriginal('file_infografis'));
+            }
+        });
+    }
 
     public function kajian(): BelongsTo
     {

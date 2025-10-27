@@ -92,7 +92,9 @@ class KajianResource extends Resource
                     ->height(120),
                 TextColumn::make('nama_kajian')
                     ->wrap(),
-                TextColumn::make('ringkasan_kajian'),
+                TextColumn::make('ringkasan_kajian')
+                    ->wrap()
+                    ->limit(50),
                 TextColumn::make('tahun_kajian'),
                 TextColumn::make('bidang.nama_bidang'),
                 ViewColumn::make('qr_code')
