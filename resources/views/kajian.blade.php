@@ -22,25 +22,30 @@
         <h2>{{ $breadcrump }}</h2>
       </div><!-- End Section Title -->
 
-      <div class="container" data-aos="fade-up">
-      @foreach ($kajian as $data)
-        <div class="card mb-3 h-100" style="max-width: 540px;">
-          <a href="{{ route('kajian.show', $data->slug) }}" class="text-decoration-none text-black">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="{{ asset('storage/' . $data->cover_kajian) }}" class="img-fluid rounded-start" height="120px" alt="...">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title"><strong>{{ $data->nama_kajian }}</strong></h5>
-                <p class="card-text">{{ $data->nama_bidang }}</p>
-                <p class="card-text"><small class="text-body-secondary">{{ $data->tahun_kajian }}</small></p>
+      <div class="container px-3 text-left" data-aos="fade-up">
+        <div class="row g-2">
+          @foreach ($kajian as $data)
+          <div class="col-6">
+            <div class="p-3">
+              <div class="card mb-3 h-100" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="{{ asset('storage/' . $data->cover_kajian) }}" class="rounded-start" height="240px" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title"><strong>{{ $data->nama_kajian }}</strong></h5>
+                      <p class="card-text">{{ $data->nama_bidang }}</p>
+                      <p class="card-text"><small class="text-body-secondary">{{ $data->tahun_kajian }}</small></p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          </a>
+          @endforeach
         </div>
       </div>
-      @endforeach
     </section><!-- /Starter Section Section -->
 @endsection
+

@@ -203,7 +203,9 @@
                             </div>
                         </div><!-- End Info Item -->
 
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.192284913654!2d112.90022087594546!3d-7.6624650758291395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7cf5582d7bc5b%3A0xfcadb12f9b666463!2sBAPPEDA%20Kota%20Pasuruan!5e0!3m2!1sen!2sid!4v1759211045734!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.192284913654!2d112.90022087594546!3d-7.6624650758291395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7cf5582d7bc5b%3A0xfcadb12f9b666463!2sBAPPEDA%20Kota%20Pasuruan!5e0!3m2!1sen!2sid!4v1759211045734!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div><!-- End Info Item -->
                     </div>
                 </div>
 

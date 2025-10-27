@@ -24,6 +24,7 @@
                 <p class="card-text"><small class="text-body-secondary">Kategori : {{ $infografis->kategori }}, Tags : #{!! implode('#', $infografis->tag) !!}</small></p>
                 <p class="card-text"><small class="text-body-secondary">Sumber data Kajian : <a href="{{ route('kajian.show',  $infografis->kajian->slug ) }}"> {{ $infografis->kajian->nama_kajian }} </a></small></p>
                 <a href="{{ $infografis->kajian->kajian_link }}" class="btn btn-primary">Unduh</a>
+                <a href="{{ $infografis->kajian->kajian_link }}" class="btn btn-primary">Cetak</a>
               </div>
             </div>
           </div>
