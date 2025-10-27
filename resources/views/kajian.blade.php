@@ -27,6 +27,7 @@
           @foreach ($kajian as $data)
           <div class="col-6">
             <div class="p-3">
+              <a href="{{ route('kajian.show', $data->slug) }}" class="text-decoration-none text-black">
               <div class="card mb-3 h-100" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4">
@@ -41,6 +42,7 @@
                   </div>
                 </div>
               </div>
+              </a>
             </div>
           </div>
           @endforeach
