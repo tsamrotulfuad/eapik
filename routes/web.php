@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Exports\PenerimaTemplateExport;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfografisController;
+use App\Http\Controllers\SocialMediaShareButtonController;
 
 /*
 |--------------------------------------------------------------------------

@@ -56,6 +56,7 @@ class HomeController extends Controller
     {
         $infografis = Infografis::with('kajian')
             ->where('slug', $slug)->firstOrFail();
+
          // ✅ Tambah views hanya sekali per sesi agar tidak spam
         $sessionKey = 'post_viewed_' . $infografis->id;
 
@@ -63,7 +64,10 @@ class HomeController extends Controller
             $infografis->increment('views');
             session([$sessionKey => true]);
         }
+
+        $url = route('infografis.show', $infografis->slug);
+        $title = $infografis->nama_infografis;
         
-        return view('infografis-show', compact('infografis'));
+        return view('infografis-show', compact('infografis', 'url', 'title'));
     }
 }

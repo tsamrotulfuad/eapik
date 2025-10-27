@@ -26,6 +26,18 @@
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css')}}" rel="stylesheet">
 
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .share-buttons ul {
+            list-style: none;
+            display: flex;
+            gap: 8px;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
     <!-- =======================================================
     * Template Name: eNno
     * Template URL: https://bootstrapmade.com/enno-free-simple-bootstrap-template/
@@ -177,7 +189,6 @@
     <script src="{{ asset('assets/vendor/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
     <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
     <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-
     <!-- Main JS File -->
     <script src="{{ asset('assets/js/main.js')}}"></script>
 
