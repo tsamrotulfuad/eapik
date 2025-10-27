@@ -191,6 +191,7 @@
     <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
     <!-- Main JS File -->
     <script src="{{ asset('assets/js/main.js')}}"></script>
+    <script id="dsq-count-scr" src="//eapik.disqus.com/count.js" async></script>
 
 </body>
 
