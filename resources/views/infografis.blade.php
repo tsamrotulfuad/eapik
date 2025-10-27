@@ -22,12 +22,11 @@
         <h2>{{ $breadcrump }}</h2>
       </div><!-- End Section Title -->
 
-      <div class="container" data-aos="fade-up">
-
-        @foreach ($infografis as $data)
-          <div class="mb-3 h-100 mx-3" style="max-width: 70%;">
-            <div class="row g-0">
-              <div class="col-md-4">
+      <div class="container px-3 text-left" data-aos="fade-up">
+          <div class="row g-2">
+             @foreach ($infografis as $data)
+              <div class="col-6">
+  
                 @if (!empty($data->file_infografis))
                   <img src="{{ asset('storage/' . $data->file_infografis[0]) }}" 
                     class="img-fluid rounded-start" 
@@ -35,7 +34,7 @@
                     height="120px" 
                     data-bs-toggle="modal"  
                     data-bs-target="#galleryModal-{{ $data->id }}">
-                 @endif
+                @endif
                 <div class="mt-3">
                   <a href="{{ route('infografis.show',  $data->slug) }}" class="text-decoration-none text-black">
                      <p class="text-center">{{ $data->nama_infografis }}</p>
@@ -76,9 +75,8 @@
                 </div>
             </div>
             </div>
+            @endforeach
           </div>
-          
-        @endforeach
       </div>
       
     </section><!-- /Starter Section Section -->

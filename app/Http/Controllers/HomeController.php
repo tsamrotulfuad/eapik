@@ -47,7 +47,7 @@ class HomeController extends Controller
         //     ->limit(9)
         //     ->get();
 
-        $infografis = Infografis::with('kajian')->where('kajian_id', )->get();
+        $infografis = Infografis::with('kajian')->get();
 
         return view('infografis', compact('breadcrump', 'infografis'));
     }
