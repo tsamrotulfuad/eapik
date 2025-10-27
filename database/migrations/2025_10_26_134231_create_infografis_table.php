@@ -14,7 +14,12 @@ return new class extends Migration
         Schema::create('infografis', function (Blueprint $table) {
             $table->id();
             $table->string('nama_infografis');
-            $table->string('deskripsi_infografis');
+            $table->string('slug');
+            $table->text('deskripsi_infografis');
+            $table->string('kategori');
+            $table->text('tag');
+            $table->json('file_infografis');
+            $table->date('tanggal_publikasi');
             $table->year('tahun_infografis');
             $table->foreignId('bidang_id')->constrained('bidangs');
             $table->foreignId('kajian_id')->constrained('kajians');

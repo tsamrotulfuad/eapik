@@ -46,6 +46,6 @@ class HomeController extends Controller
             ->limit(9)
             ->get();
 
-        return view('kajian', compact('breadcrump', 'infografis'));
+        return view('infografis', compact('breadcrump', 'infografis'));
     }
 }
