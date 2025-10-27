@@ -24,7 +24,11 @@
                 <p class="card-text"><small class="text-body-secondary">Kategori : {{ $infografis->kategori }}, Tags : #{!! implode('#', $infografis->tag) !!}</small></p>
                 <p class="card-text"><small class="text-body-secondary">Sumber data Kajian : <a href="{{ route('kajian.show',  $infografis->kajian->slug ) }}"> {{ $infografis->kajian->nama_kajian }} </a></small></p>
                 <a href="{{ $infografis->kajian->kajian_link }}" class="btn btn-primary">Unduh Kajian</a>
-                <a href="{{ $infografis->kajian->kajian_link }}" class="btn btn-primary">Unduh Infografis</a>
+                @if (!empty($infografis->file_infografis))
+                    <a href="{{ route('infografis.downloadAll', $infografis->id) }}" class="btn btn-primary">
+                        Unduh Infografis
+                    </a>
+                @endif
                 <div class="mt-4">Bagikan dengan :</div>
                 <div class="share-buttons fa-2x"> 
                     {{-- langsung render tombol dari package --}}

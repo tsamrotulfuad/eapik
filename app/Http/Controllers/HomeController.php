@@ -38,37 +38,6 @@ class HomeController extends Controller
         return view('kajian-show', compact('kajian'));
     }
 
-    // public function infografis()
-    // {
-    //     $breadcrump = 'Daftar Infografis';
-    //     // $infografis = DB::table('infografis')
-    //     //     ->join('bidangs', 'bidangs.id', '=', 'infografis.bidang_id')
-    //     //     ->orderBy('tahun_infografis', 'desc')
-    //     //     ->limit(9)
-    //     //     ->get();
-
-    //     $infografis = Infografis::with('kajian')->get();
-
-    //     return view('infografis', compact('breadcrump', 'infografis'));
-    // }
-
-    // public function search(Request $request)
-    // {
-    //     $search = $request->query('search');
-
-    //     if (!$search) {
-    //         return response()->json([]);
-    //     }
-
-    //     $infografis = Infografis::where('nama_infografis', 'like', "%{$search}%")
-    //         // ->orWhere('content', 'like', "%{$search}%")
-    //         ->orderByDesc('created_at')
-    //         ->take(10)
-    //         ->get();
-
-    //     return response()->json($infografis);
-    // }
-
     public function infografis_show($slug)
     {
         $infografis = Infografis::with('kajian')

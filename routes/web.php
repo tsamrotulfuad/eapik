@@ -33,6 +33,8 @@ Route::get('/infografis/search', [InfografisController::class, 'search'])->name(
 
 Route::get('/infografis/{slug}', [HomeController::class, 'infografis_show'])->name('infografis.show');
 
+Route::get('/infografis/{id}/download-all', [InfografisController::class, 'downloadAll'])->name('infografis.downloadAll');
+
 Route::get('/template/penerima', function () {
     return Excel::download(new PenerimaTemplateExport, 'template_penerima.xlsx');
 })->name('template.penerima');

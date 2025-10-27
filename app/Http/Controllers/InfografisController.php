@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use ZipArchive;
 use App\Models\Infografis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class InfografisController extends Controller
 {
@@ -61,6 +63,32 @@ class InfografisController extends Controller
         });
 
         return response()->json($result);
+    }
+
+    public function downloadAll($id)
+    {
+        $infografis = Infografis::findOrFail($id);
+        $files = $infografis->file_infografis;
+
+        if (empty($files)) {
+            return back()->with('error', 'Tidak ada file untuk diunduh.');
+        }
+
+        $zipFileName = 'infografis-' . $infografis->slug . '.zip';
+        $zipPath = storage_path('app/public/' . $zipFileName);
+
+        $zip = new ZipArchive;
+        if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+            foreach ($files as $file) {
+                $filePath = storage_path('app/public/' . $file);
+                if (file_exists($filePath)) {
+                    $zip->addFile($filePath, basename($file));
+                }
+            }
+            $zip->close();
+        }
+
+        return response()->download($zipPath)->deleteFileAfterSend(true);
     }
 
 }
