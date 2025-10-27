@@ -31,4 +31,9 @@ class Infografis extends Model
     {
         return $this->belongsTo(Kajian::class);
     }
+
+    public function bidang(): BelongsTo
+    {
+        return $this->belongsTo(Bidang::class);
+    }
 }
