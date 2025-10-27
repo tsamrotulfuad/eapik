@@ -12,6 +12,11 @@ class Infografis extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'tag' => 'array',
+        'file_infografis' => 'array',
+    ];
+
     public function kajian(): BelongsTo
     {
         return $this->belongsTo(Kajian::class);

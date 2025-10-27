@@ -12,6 +12,7 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -36,7 +37,16 @@ class InfografisResource extends Resource
         return $form
             ->schema([
                 TextInput::make('nama_infografis'),
-                Textarea::make('deskripsi_infografis'),
+                TextInput::make('slug'),
+                Textarea::make('deskripsi_infografis')
+                    ->columnSpanFull(),
+                Select::make('kategori')
+                    ->options([
+                            'Tematik' => 'Tematik',
+                        ])
+                    ->native(false),
+                TagsInput::make('tag')
+                    ->label('Tags'),
                 Select::make('tahun_infografis')
                     ->options([
                         '2019' => '2019',
