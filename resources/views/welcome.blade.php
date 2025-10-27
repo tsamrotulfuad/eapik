@@ -48,7 +48,7 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="#hero" class="{{ request()->routeIs('/') ? 'active' : '' }}">Home</a></li>
+                    <li><a href="{{ route('beranda') }}" class="{{ request()->routeIs('/') ? 'active' : '' }}">Home</a></li>
                     <li class="dropdown"><a href="#"><span>Perencanaan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="#">Comming Soon</a></li>
