@@ -22,7 +22,7 @@
             <h2>{{ $breadcrump }}</h2>
         </div><!-- End Section Title -->
 
-        <div class="container mb-4">
+        <div class="container mb-4" data-aos="fade-up">
             <h6 class="mb-2 text-center">Pencarian</h6>
 
             <!-- Form Pencarian -->
