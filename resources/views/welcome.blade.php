@@ -29,12 +29,30 @@
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        @media (max-width: 576px) {
+            .card-body a h6 {
+                font-size: 14px;
+            }
+            img.object-fit-cover {
+                max-height: 130px !important;
+            }
+            .uniform-img {
+                height: 150px;
+            }
+        }
         .share-buttons ul {
             list-style: none;
             display: flex;
             gap: 8px;
             padding: 0;
             margin: 0;
+        }
+        .uniform-img {
+            width: 100%;
+            height: 180px; /* Anda bisa ganti ke 200px jika mau lebih tinggi */
+            object-fit: cover;
+            object-position: center;
+            border-radius: 8px;
         }
     </style>
 

@@ -26,13 +26,12 @@
             <h6 class="mb-2 text-center">Pencarian</h6>
 
             <!-- Form Pencarian -->
-            <div class="card-body text-center">
-                <form id="searchForm" class="d-inline-block" style="max-width: 400px; width: 100%;">
-                    <div class="input-group input-group-md">
+            <div class="text-center">
+                <form id="searchForm" class="mx-auto" style="max-width: 400px;">
+                    <div class="input-group input-group-sm">
                         <input type="text" id="searchInput" name="search" 
-                            class="form-control form-control-md" 
-                            placeholder="Ketik kata kunci...">
-                        <button class="btn btn-success btn-md" type="submit">Cari</button>
+                            class="form-control" placeholder="Ketik kata kunci...">
+                        <button class="btn btn-success" type="submit">Cari</button>
                     </div>
                 </form>
             </div>
@@ -44,20 +43,20 @@
         </div>
 
         <div class="container px-3 text-left" data-aos="fade-up">
-            <div class="row g-2">
+            <div class="row g-3">
                 @foreach ($infografis as $data)
-                    <div class="col-6">
+                    <div class="col-12 col-sm-6 col-lg-4">
                         <div class="p-3">
-                            <div class="card mb-3 h-100" style="max-width: 540px;">
+                            <div class="card h-100 w-100 border-0" style="max-width: 540px;">
                                 <div class="row g-0">
-                                    <div class="col-md-4">
+                                    <div class="col-4 col-md-4">
                                         @if (!empty($data->file_infografis))
                                             <img src="{{ asset('storage/' . $data->file_infografis[0]) }}"
-                                                class="rounded-start" style="cursor: pointer;" height="240px"
+                                                class="img-fluid rounded-start w-100 uniform-img" style="cursor: pointer;" height="240px"
                                                 data-bs-toggle="modal" data-bs-target="#galleryModal-{{ $data->id }}">
                                         @endif
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-8 col-md-8">
                                         <div class="card-body">
                                             <div class="px-2">
                                                 <a href="{{ route('infografis.show', $data->slug) }}"

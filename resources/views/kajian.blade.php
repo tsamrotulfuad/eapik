@@ -23,17 +23,17 @@
       </div><!-- End Section Title -->
 
       <div class="container px-3 text-left" data-aos="fade-up">
-        <div class="row g-2">
+        <div class="row g-3">
           @foreach ($kajian as $data)
-          <div class="col-6">
+          <div class="col-12 col-sm-6 col-lg-4">
             <div class="p-3">
               <a href="{{ route('kajian.show', $data->slug) }}" class="text-decoration-none text-black">
-              <div class="card mb-3 h-100" style="max-width: 540px;">
+              <div class="card h-100 w-100 border-0" style="max-width: 540px;">
                 <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="{{ asset('storage/' . $data->cover_kajian) }}" class="rounded-start" height="240px" alt="...">
+                  <div class="col-4 col-md-4">
+                    <img src="{{ asset('storage/' . $data->cover_kajian) }}" class="img-fluid rounded-start w-100 uniform-img" height="240px" alt="...">
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-8 col-md-8">
                     <div class="card-body">
                       <h5 class="card-title"><strong>{{ $data->nama_kajian }}</strong></h5>
                       <p class="card-text">{{ $data->nama_bidang }}</p>
