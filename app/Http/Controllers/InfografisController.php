@@ -11,11 +11,6 @@ class InfografisController extends Controller
 {
     public function index() {
         $breadcrump = 'Daftar Infografis';
-        // $infografis = DB::table('infografis')
-        //     ->join('bidangs', 'bidangs.id', '=', 'infografis.bidang_id')
-        //     ->orderBy('tahun_infografis', 'desc')
-        //     ->limit(9)
-        //     ->get();
 
         $infografis = Infografis::with('kajian')->get();
 

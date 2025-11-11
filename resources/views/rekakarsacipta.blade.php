@@ -78,7 +78,7 @@
                         <h1>Tunjukkan Karya Inovasimu di <span>Reka Karsa Cipta</span></h1>
                         <p>"Lomba Inovasi Daerah Kota Pasuruan"</p>
                         <div class="d-flex">
-                            <a href="#about" class="btn-get-started">Mulai</a>
+                            <a href="#lomba-rkc" class="btn-get-started">Mulai</a>
                             <!-- <a href="#" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Video</span></a> -->
                         </div>
                     </div>
@@ -118,7 +118,7 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="about section">
+        <section id="lomba-rkc" class="about section">
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row align-items-xl-center gy-5">
@@ -127,7 +127,6 @@
                         <h2>Lomba Inovasi Daerah</h2>
                         <br>
                         <h5>"Wujudkan Kota Pasuruan yang Kreatif dan Inovatif melalui Lomba Inovasi Daerah 2025!"</h5>
-                        <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                     </div>
 
                     <div class="col-xl-7">
