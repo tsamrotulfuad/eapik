@@ -175,6 +175,7 @@ return [
         App\Providers\Filament\BridaPanelProvider::class,
         App\Providers\Filament\MasyarakatPanelProvider::class,
         App\Providers\Filament\PerangkatdaerahPanelProvider::class,
+        App\Providers\Filament\JuriPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
 

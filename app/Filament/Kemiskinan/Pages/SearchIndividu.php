@@ -9,7 +9,7 @@ use Filament\Pages\Page;
 class SearchIndividu extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-magnifying-glass';
-    protected static ?string $navigationGroup = 'Data Kemiskinan';
+    // protected static ?string $navigationGroup = 'Data Kemiskinan';
     protected static ?string $title = 'Pencarian Individu';
     protected static string $view = 'filament.kemiskinan.pages.search-individu';
 

@@ -1,0 +1,215 @@
+<?php
+
+namespace App\Filament\Juri\Resources;
+
+use Filament\Forms;
+use Filament\Tables;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Filament\Resources\Resource;
+use App\Models\InovasiMasyarakat;
+use Filament\Forms\Components\Select;
+use Illuminate\Support\Facades\Blade;
+use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Brida\Resources\InovasiMasyarakatResource\Pages;
+use App\Filament\Brida\Resources\InovasiMasyarakatResource\RelationManagers;
+
+class InovasiMasyarakatResource extends Resource
+{
+    protected static ?string $model = InovasiMasyarakat::class;
+
+    protected static ?string $navigationIcon = 'heroicon-o-light-bulb';
+
+    protected static ?string $navigationGroup = "Proposal Inovasi";
+
+    protected static ?string $navigationLabel = 'Inovasi Masyarakat';
+
+    protected static ?string $breadcrumb = "Inovasi";
+
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                TextInput::make('nama_inovasi')
+                    ->columnSpanFull()
+                    ->label('Nama Inovasi')
+                    ->required(),
+                TextInput::make('nama_inisiator')
+                    ->label('Nama Inisiator')
+                    ->required(),
+                TextInput::make('ktp_inisiator')
+                    ->label('Nomor KTP')
+                    ->numeric()
+                    ->maxLength(16)
+                    ->minLength(16)
+                    ->required(),
+                TextInput::make('hp_inisiator')
+                    ->label('Nomor HP')
+                    ->tel()
+                    ->telRegex('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/')
+                    ->required(),
+                Select::make('tahapan_inovasi')
+                    ->options([
+                        'Inisiatif' => 'Inisiatif',
+                        'Uji coba' => 'Uji Coba',
+                        'Penerapan' => 'Penerapan',
+                    ])
+                    ->native(false)
+                    ->required(),
+                Select::make('jenis_inovasi')
+                    ->options([
+                        'Digital' => 'Digital',
+                        'Non Digital' => 'Non Digital',
+                    ])
+                    ->native(false)
+                    ->required(),
+                Select::make('bentuk_inovasi')
+                    ->options([
+                        'Aplikasi Teknologi' => 'Aplikasi dan Teknologi',
+                        'Produk dan Jasa' => 'Produk dan Jasa',
+                        'Program dan Pergerakan' => 'Program dan Pergerakan',
+                    ])
+                    ->native(false)
+                    ->required(),
+                TextInput::make('koordinat_inovasi')
+                    ->label('Koordinat')
+                    ->columnSpanFull()
+                    ->required(),
+                DatePicker::make('waktu_ujicoba_inovasi')
+                    ->label('Waktu Ujicoba (Min. 6 Bulan)')
+                    ->native(false)
+                    ->displayFormat('d/m/Y')
+                    ->timezone('Asia/Jakarta')
+                    ->closeOnDateSelection()
+                    ->maxDate(now()->subMonths(6))
+                    ->default(now()->subMonths(6))
+                    ->required(),
+                DatePicker::make('waktu_implementasi_inovasi')
+                    ->label('Waktu Implementasi (Min. 6 Bulan)')
+                    ->native(false)
+                    ->displayFormat('d/m/Y')
+                    ->timezone('Asia/Jakarta')
+                    ->closeOnDateSelection()
+                    ->maxDate(now()->subMonths(6))
+                    ->required(),
+                RichEditor::make('rancang_bangun_inovasi')
+                    ->columnSpanFull()
+                    ->required(),
+                Textarea::make('tujuan_inovasi')
+                    ->columnSpanFull()
+                    ->rows(5)
+                    ->required(),
+                Textarea::make('manfaat_inovasi')
+                    ->columnSpanFull()
+                    ->rows(5)
+                    ->required(),
+                Textarea::make('hasil_inovasi')
+                    ->columnSpanFull()
+                    ->rows(5)
+                    ->required(),
+                FileUpload::make('hki_inovasi')
+                    ->label('Dokumen HKI')
+                    ->disk('public')
+                    ->directory('hki-document')
+                    ->visibility('public')
+                    ->preserveFilenames()
+                    ->openable(),
+                FileUpload::make('penghargaan_inovasi')
+                    ->label('Penghargaan')
+                    ->disk('public')
+                    ->directory('penghargaan-inovasi')
+                    ->visibility('public')
+                    ->preserveFilenames()
+                    ->openable(),
+                FileUpload::make('skt')
+                    ->label('SK / SKT')
+                    ->disk('public')
+                    ->directory('skt')
+                    ->visibility('public')
+                    ->preserveFilenames()
+                    ->openable(),
+            ]);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            // ->modifyQueryUsing(function (Builder $query) {
+            //     $query->where('user_id', auth()->id())->with('indikators'); // Filters records by the authenticated user's ID
+            // })
+            ->columns([
+                TextColumn::make('nama_inovasi')->searchable(),
+                TextColumn::make('nama_inisiator')->searchable(),
+                TextColumn::make('tahapan_inovasi'),
+                TextColumn::make('jenis_inovasi'),
+                TextColumn::make('bentuk_inovasi'),
+                TextColumn::make('waktu_implementasi_inovasi'),
+                TextColumn::make('tahun'),
+            ])
+            ->emptyStateHeading('Tidak ada data inovasi')
+            ->filters([
+                SelectFilter::make('bentuk_inovasi')
+                    ->label('Bentuk Inovasi')
+                    ->options([
+                        'Aplikasi Teknologi' => 'Aplikasi dan Teknologi',
+                        'Produk dan Jasa' => 'Produk dan Jasa',
+                        'Program dan Pergerakan' => 'Program dan Pergerakan',
+                    ]),
+            ])
+            ->actions([
+                Tables\Actions\Action::make('Indikator')
+                    ->url(fn($record): string => InovasiMasyarakatResource::getUrl('indikator', ['record' => $record]))
+                    ->label('')
+                    ->icon('heroicon-o-folder'),
+                Tables\Actions\Action::make('Pdf')
+                    ->label('')
+                    ->icon('heroicon-o-document-text')
+                    ->color('success')
+                    ->action(function (InovasiMasyarakat $record) {
+                        return response()->streamDownload(function () use ($record) {
+                            echo Pdf::loadHtml(
+                                Blade::render('pdf-masyarakat', ['record' => $record])
+                            )->stream();
+                        }, $record->nama_inovasi . '.pdf');
+                    }),
+                Tables\Actions\EditAction::make()
+                    ->label('')
+                    ->icon('heroicon-o-pencil'),
+                Tables\Actions\DeleteAction::make()
+                    ->label('')
+                    ->icon('heroicon-o-trash'),
+            ])
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListInovasiMasyarakats::route('/'),
+            'create' => Pages\CreateInovasiMasyarakat::route('/create'),
+            'edit' => Pages\EditInovasiMasyarakat::route('/{record}/edit'),
+            'indikator' => Pages\IndikatorInovasiMasyarakat::route('/{record}/indikator')
+        ];
+    }
+}
+

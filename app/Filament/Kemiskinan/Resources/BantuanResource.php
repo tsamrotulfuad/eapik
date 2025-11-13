@@ -22,7 +22,7 @@ class BantuanResource extends Resource
 
     protected static ?string $navigationLabel = 'Bantuan';
 
-    protected static ?string $navigationGroup = 'Master Data';
+    protected static ?string $navigationGroup = 'Monitoring dan Evaluasi';
     protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form

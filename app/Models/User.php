@@ -28,7 +28,8 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
             'kepegawaian' => $this->hasRole('panel_user') || $this->hasRole('super_admin'),
             'kemiskinan'  => $this->hasRole('panel_user') || $this->hasRole('super_admin'),
             'perencanaan' => $this->hasRole('panel_user') || $this->hasRole('super_admin'),
-            'brida'       => $this->hasRole('panel_brida') || $this->hasRole('super_admin'),
+            'brida'       => $this->hasRole(['panel_brida', 'super_admin', 'panel_admin']),
+            'juri'        => $this->hasRole('panel_juri'),
             'masyarakat'  => $this->hasRole('panel_masyarakat'),
             'perangkatdaerah' => $this->hasRole('panel_perangkat_daerah'),
         };
@@ -64,6 +65,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'role' => 'array',
     ];
 
     public function bantuan() : HasMany
