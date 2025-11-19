@@ -53,7 +53,7 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#lomba-rkc">Tentang</a></li>
                     <li><a href="#contact">Kontak</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

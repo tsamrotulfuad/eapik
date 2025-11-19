@@ -11,7 +11,7 @@
                     <p>Sistem Informasi Terpadu Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Daerah Kota Pasuruan</p>
                     <div class="d-flex">
                         <a href="#about" class="btn-get-started">Mulai</a>
-                        <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Video</span></a>
+                        <a href="#" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Video</span></a>
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="100">
@@ -87,8 +87,8 @@
         <div class="container">
             <div class="row gy-4">
                 <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
-                    <img src="assets/img/about.png" class="img-fluid" alt="">
-                    <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
+                    <img src="assets/img/portfolio/product-3.jpg" class="img-fluid" alt="">
+                    <a href="#" class="glightbox pulsating-play-btn"></a>
                 </div>
                 <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
                     <h3>Melalui e-APIK :</h3>
@@ -114,29 +114,29 @@
 
                 <div class="col-lg-3 col-md-6">
                     <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                        <p>Clients</p>
+                        <span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1" class="purecounter"></span>
+                        <p>Dokumen</p>
                     </div>
                 </div><!-- End Stats Item -->
 
                 <div class="col-lg-3 col-md-6">
                     <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                        <p>Projects</p>
+                        <span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="1" class="purecounter"></span>
+                        <p>Perencanaan</p>
                     </div>
                 </div><!-- End Stats Item -->
 
                 <div class="col-lg-3 col-md-6">
                     <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-                        <p>Hours Of Support</p>
+                        <span data-purecounter-start="0" data-purecounter-end="129" data-purecounter-duration="1" class="purecounter"></span>
+                        <p>Inovasi</p>
                     </div>
                 </div><!-- End Stats Item -->
 
                 <div class="col-lg-3 col-md-6">
                     <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-                        <p>Workers</p>
+                        <span data-purecounter-start="0" data-purecounter-end="39" data-purecounter-duration="1" class="purecounter"></span>
+                        <p>Pegawai</p>
                     </div>
                 </div><!-- End Stats Item -->
 
