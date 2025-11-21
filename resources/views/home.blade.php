@@ -33,15 +33,15 @@
         </div><!-- End Section Title -->
 
         <div class="container">
-
-            <div class="row gy-4">
+            
+            <div class="row gy-4 mb-3">
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-item position-relative">
                         <div class="icon">
                             <i class="bi bi-journal-check"></i>
                         </div>
-                        <a href="service-details.html" class="stretched-link">
+                        <a href="/perencanaan" class="stretched-link">
                             <h3>Perencanaan Pembangunan</h3>
                         </a>
                         <p>Data Perencanaan Pembangunan Kota Pasuruan</p>
@@ -53,7 +53,7 @@
                         <div class="icon">
                             <i class="bi bi-activity"></i>
                         </div>
-                        <a href="service-details.html" class="stretched-link">
+                        <a href="/kemiskinan" class="stretched-link">
                             <h3>Kemiskinan</h3>
                         </a>
                         <p>Data Kemiskinan Kota Pasuruan</p>
@@ -65,13 +65,28 @@
                         <div class="icon">
                             <i class="bi bi-broadcast"></i>
                         </div>
-                        <a href="service-details.html" class="stretched-link">
+                        <a href="/kajian" class="stretched-link">
                             <h3>BRIDA</h3>
                         </a>
                         <p>Daftar Inovasi dan Kajian Kota Pasuruan</p>
                     </div>
                 </div><!-- End Service Item -->
 
+            </div>
+
+            <div class="row text-center mb-3 ">
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item position-relative">
+                        <div class="icon">
+                            <i class="bi bi-lightbulb"></i>
+                        </div>
+                        <a href="/rekakarsacipta" class="stretched-link">
+                            <h3>Reka Karsa Cipta</h3>
+                        </a>
+                        <p>Lomba Inovasi Daerah Kota Pasuruan</p>
+                    </div>
+                </div><!-- End Service Item -->
             </div>
 
         </div>

@@ -126,7 +126,7 @@
                     <div class="col-xl-5 content">
                         <h2>Lomba Inovasi Daerah</h2>
                         <br>
-                        <h5>"Wujudkan Kota Pasuruan yang Kreatif dan Inovatif melalui Lomba Inovasi Daerah 2025!"</h5>
+                        <h5>"Wujudkan Kota Pasuruan yang Kreatif dan Inovatif melalui Reka Karsa Cipta 2025!"</h5>
                     </div>
 
                     <div class="col-xl-7">
@@ -156,7 +156,7 @@
                             <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                                 <div class="icon-box">
                                     <a href="https://eapik.pasuruankota.go.id/rekakarsacipta/perangkatdaerah">
-                                        <i class="bi bi-people"></i>
+                                        <i class="bi bi-book"></i>
                                         <h3>Pendidikan</h3>
                                         <p>Kelompok Satuan Pendidikan mulai dari PAUD / TK / SD dan SMP</p>
                                     </a>
