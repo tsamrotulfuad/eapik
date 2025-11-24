@@ -30,6 +30,7 @@ class PerangkatdaerahPanelProvider extends PanelProvider
             ->login()
             ->registration(PerangkatDaerahRegister::class)
             ->emailVerification()
+            ->passwordReset()
             ->maxContentWidth(MaxWidth::Full)
             ->sidebarCollapsibleOnDesktop(true)
             ->colors([

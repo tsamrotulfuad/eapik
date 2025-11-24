@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\InovasiPerangkatDaerahResource\Pages;
 use App\Filament\Resources\InovasiPerangkatDaerahResource\RelationManagers;
+use Filament\Tables\Columns\TextColumn;
 
 class InovasiPerangkatDaerahResource extends Resource
 {
@@ -209,7 +210,9 @@ class InovasiPerangkatDaerahResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('nama_inovasi'),
+                TextColumn::make('registrasi_iga'),
+                TextColumn::make('tahapan_inovasi'),
             ])
             ->filters([
                 //

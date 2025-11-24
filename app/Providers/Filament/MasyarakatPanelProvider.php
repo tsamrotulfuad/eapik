@@ -30,6 +30,7 @@ class MasyarakatPanelProvider extends PanelProvider
             ->login()
             ->registration(MasyarakatRegister::class)
             ->emailVerification()
+            ->passwordReset()
             ->maxContentWidth(MaxWidth::Full)
             ->sidebarCollapsibleOnDesktop(true)
             ->colors([
