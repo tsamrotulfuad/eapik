@@ -22,7 +22,7 @@ class InovasiMasyarakat extends Model
 
     public function indikators()
     {
-        return $this->hasMany(IndikatorInovasiMasyarakat::class);
+        return $this->hasMany(IndikatorInovasiMasyarakat::class, 'inovasi_id', 'id');
     }
 
     protected static function booted() 
