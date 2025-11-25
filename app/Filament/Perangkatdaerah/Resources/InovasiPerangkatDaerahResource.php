@@ -142,28 +142,28 @@ class InovasiPerangkatDaerahResource extends Resource
                     ->label('Koordinat')
                     ->required(),
                 DatePicker::make('waktu_ujicoba_inovasi')
-                    ->label('Waktu Ujicoba (Min. 6 Bulan)')
+                    ->label('Waktu Ujicoba')
                     ->native(false)
                     ->displayFormat('d/m/Y')
                     ->timezone('Asia/Jakarta')
                     ->closeOnDateSelection()
-                    ->maxDate(now()->subMonths(6))
+                    // ->maxDate(now()->subMonths(6))
                     ->required(),
                 DatePicker::make('waktu_implementasi_inovasi')
-                    ->label('Waktu Implementasi (Min. 6 Bulan)')
+                    ->label('Waktu Implementasi')
                     ->native(false)
                     ->displayFormat('d/m/Y')
                     ->timezone('Asia/Jakarta')
                     ->closeOnDateSelection()
-                    ->maxDate(now()->subMonths(6))
+                    // ->maxDate(now()->subMonths(6))
                     ->required(),
                 DatePicker::make('waktu_pengembangan_inovasi')
                     ->label('Waktu Pengembangan')
                     ->native(false)
                     ->displayFormat('d/m/Y')
                     ->timezone('Asia/Jakarta')
-                    ->closeOnDateSelection()
-                    ->maxDate(now()->subMonths(6)),
+                    ->closeOnDateSelection(),
+                    // ->maxDate(now()->subMonths(6)),
                 RichEditor::make('rancang_bangun_inovasi')
                     ->columnSpanFull()
                     ->required(),
