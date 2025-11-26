@@ -107,14 +107,9 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                 ->schema([
                     FileUpload::make('video_inovasi')
                     ->required()
-                ]),
-            TextInput::make('kematangan')
-                ->label('Kematangan')
-                ->numeric()
-                ->default(0)
-                ->readOnly(),
                 ])
-        ->statePath('data');;
+        ])
+        ->statePath('data');
     }
 
     public function create(): void
@@ -137,7 +132,6 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
             ->columns([
                 TextColumn::make('kemudahan_proses'),
                 TextColumn::make('keterlibatan_aktor'),
-                TextColumn::make('kematangan'),
                 TextColumn::make('tahun'),
             ])
             ->emptyStateHeading("Tidak Ada Data")
@@ -204,17 +198,9 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                             ->schema([
                                 FileUpload::make('video_inovasi')
                                 ->required()
-                            ]),
-                        TextInput::make('kematangan')
-                            ->label('Kematangan')
-                            ->numeric()
-                            ->default(0)
-                            ->readOnly(),
                             ])
                     ])
-            ->bulkActions([
-                // ...
-            ]);
+        ]);
     }
 
 }
