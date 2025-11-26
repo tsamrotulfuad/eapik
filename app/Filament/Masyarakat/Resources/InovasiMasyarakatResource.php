@@ -159,13 +159,16 @@ class InovasiMasyarakatResource extends Resource
                 Tables\Actions\Action::make('Indikator')
                     ->url(fn($record): string => InovasiMasyarakatResource::getUrl('indikator', ['record' => $record]))
                     ->label('')
-                    ->icon('heroicon-o-folder'),
+                    ->icon('heroicon-o-folder')
+                    ->tooltip('Indikator'),
                 Tables\Actions\EditAction::make()
                     ->label('')
-                    ->icon('heroicon-o-pencil'),
+                    ->icon('heroicon-o-pencil')
+                    ->tooltip('Edit'),
                 Tables\Actions\DeleteAction::make()
                     ->label('')
                     ->icon('heroicon-o-trash')
+                    ->tooltip('Hapus')
                     ->after(function (InovasiMasyarakat $record) {
                         // delete file
                         if ($record->hki_inovasi) {

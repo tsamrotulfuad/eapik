@@ -107,14 +107,9 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                 ->schema([
                     FileUpload::make('video_inovasi')
                     ->required()
-                ]),
-            TextInput::make('kematangan')
-                ->label('Kematangan')
-                ->numeric()
-                ->default(0)
-                ->readOnly(),
                 ])
-        ->statePath('data');;
+        ])
+        ->statePath('data');
     }
 
     public function create(): void
