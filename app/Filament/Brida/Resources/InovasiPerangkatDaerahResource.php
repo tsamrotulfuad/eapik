@@ -250,7 +250,7 @@ class InovasiPerangkatDaerahResource extends Resource
                     ->action(function (InovasiPerangkatDaerah $record) {
                         return response()->streamDownload(function () use ($record) {
                             echo Pdf::loadHtml(
-                                Blade::render('pdf-perangkatdaerah', ['record' => $record])
+                                Blade::render('pdf', ['record' => $record])
                             )->stream();
                         }, $record->nama_inovasi . '.pdf');
                     }),
