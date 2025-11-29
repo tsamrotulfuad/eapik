@@ -214,7 +214,8 @@ class InovasiPerangkatDaerahResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama_inovasi'),
+                TextColumn::make('nama_inovasi')
+                    ->wrap(),
                 TextColumn::make('nama_inisiator'),
                 TextColumn::make('tahapan_inovasi'),
                 TextColumn::make('jenis_inovasi'),

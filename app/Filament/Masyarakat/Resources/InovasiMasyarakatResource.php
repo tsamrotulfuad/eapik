@@ -112,22 +112,30 @@ class InovasiMasyarakatResource extends Resource
                     ->columnSpanFull()
                     ->rows(5)
                     ->required(),
+                FileUpload::make('ktp_file')
+                    ->label('KTP (pdf/jpg)')
+                    ->disk('public')
+                    ->directory('ktp')
+                    ->visibility('public')
+                    ->preserveFilenames()
+                    ->openable()
+                    ->required(),
                 FileUpload::make('hki_inovasi')
-                    ->label('Dokumen HKI')
+                    ->label('Dokumen HKI (pdf)')
                     ->disk('public')
                     ->directory('hki-document')
                     ->visibility('public')
                     ->preserveFilenames()
                     ->openable(),
                 FileUpload::make('penghargaan_inovasi')
-                    ->label('Penghargaan')
+                    ->label('Penghargaan (pdf)')
                     ->disk('public')
                     ->directory('penghargaan-inovasi')
                     ->visibility('public')
                     ->preserveFilenames()
                     ->openable(),
                 FileUpload::make('skt')
-                    ->label('SK / SKT')
+                    ->label('SK / SKT (pdf)')
                     ->disk('public')
                     ->directory('skt')
                     ->visibility('public')
@@ -143,7 +151,8 @@ class InovasiMasyarakatResource extends Resource
                 $query->where('user_id', auth()->id())->with('indikators'); // Filters records by the authenticated user's ID
             })
             ->columns([
-                TextColumn::make('nama_inovasi'),
+                TextColumn::make('nama_inovasi')
+                    ->wrap(),
                 TextColumn::make('nama_inisiator'),
                 TextColumn::make('tahapan_inovasi'),
                 TextColumn::make('jenis_inovasi'),
