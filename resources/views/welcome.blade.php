@@ -9,22 +9,24 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="{{ asset('logo/favicon.ico')}}" rel="icon">
+    <link href="{{ asset('logo/favicon.ico') }}" rel="icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="{{ asset('assets/css/main.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -33,13 +35,16 @@
             .card-body a h6 {
                 font-size: 14px;
             }
+
             img.object-fit-cover {
                 max-height: 130px !important;
             }
+
             .uniform-img {
                 height: 150px;
             }
         }
+
         .share-buttons ul {
             list-style: none;
             display: flex;
@@ -47,9 +52,11 @@
             padding: 0;
             margin: 0;
         }
+
         .uniform-img {
             width: 100%;
-            height: 180px; /* Anda bisa ganti ke 200px jika mau lebih tinggi */
+            height: 180px;
+            /* Anda bisa ganti ke 200px jika mau lebih tinggi */
             object-fit: cover;
             object-position: center;
             border-radius: 8px;
@@ -78,19 +85,26 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="{{ route('beranda') }}" class="{{ request()->routeIs('/') ? 'active' : '' }}">Home</a></li>
-                    <li class="dropdown"><a href="#"><span>Perencanaan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <li><a href="{{ route('beranda') }}" class="{{ request()->routeIs('/') ? 'active' : '' }}">Home</a>
+                    </li>
+                    <li class="dropdown"><a href="#"><span>Perencanaan</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="#">Comming Soon</a></li>
-                           
+
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#" class="{{ request()->routeIs('kajian.*') ? 'active' : '' }}"><span>Riset dan Inovasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <li class="dropdown"><a href="#"
+                            class="{{ request()->routeIs('kajian.*') ? 'active' : '' }}"><span>Riset dan Inovasi</span>
+                            <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="{{ route('kajian') }}" class="{{ request()->routeIs('kajian') ? 'active' : '' }}">Kajian</a></li>
-                            <li><a href="{{ route('infografis') }}"  class="{{ request()->routeIs('infografis') ? 'active' : '' }}">Infografis</a></li>
+                            <li><a href="{{ route('kajian') }}"
+                                    class="{{ request()->routeIs('kajian') ? 'active' : '' }}">Kajian</a></li>
+                            <li><a href="{{ route('infografis') }}"
+                                    class="{{ request()->routeIs('infografis') ? 'active' : '' }}">Infografis</a></li>
                             <li><a href="#">Pengusulan Pelaksanaan dan Kerjasama Riset</a></li>
-                            <li class="dropdown"><a href="#"><span>Klinik Inovasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <li class="dropdown"><a href="#"><span>Klinik Inovasi</span> <i
+                                        class="bi bi-chevron-down toggle-dropdown"></i></a>
                                 <ul>
                                     <li><a href="#">Daftar Inovasi Daerah Kota Pasuruan</a></li>
                                     <li><a href="#">Inovasi Unggulan Kota Pasuruan</a></li>
@@ -98,7 +112,8 @@
                                     <li><a href="{{ route('rkc') }}">Reka Karsa Cipta</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="#"><span>Klinik KHI</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <li class="dropdown"><a href="#"><span>Klinik KHI</span> <i
+                                        class="bi bi-chevron-down toggle-dropdown"></i></a>
                                 <ul>
                                     <li><a href="#">Tata Cara Pengajuan HKI</a></li>
                                     <li><a href="#">Pengajuan HKI</a></li>
@@ -120,6 +135,26 @@
 
     <main class="main">
         @yield('content')
+
+        <!-- Modal -->
+        <div class="modal fade" id="popupImage" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+
+                <div class="modal-content border-0" style="background: transparent !important; box-shadow:none;">
+
+                    <div class="modal-body p-0 text-center">
+                        <a href="https://eapik.pasuruankota.go.id/rekakarsacipta" style="display:block;">
+                            <!-- Gambar Pop-up -->
+                            <img src="{{ asset('img/rekakarsacipta-baliho.jpg') }}" 
+                                class="img-fluid rounded"
+                                style="max-width: 100%; border-radius: 10px;">
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
     </main>
 
     <footer id="footer" class="footer">
@@ -193,24 +228,34 @@
     </footer>
 
     <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Preloader -->
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{ asset('assets/vendor/php-email-form/validate.js')}}"></script>
-    <script src="{{ asset('assets/vendor/aos/aos.js')}}"></script>
-    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
-    <script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
-    <script src="{{ asset('assets/vendor/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
-    <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <script src="{{ asset('assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
     <!-- Main JS File -->
-    <script src="{{ asset('assets/js/main.js')}}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
     <script id="dsq-count-scr" src="//eapik.disqus.com/count.js" async></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var myModal = new bootstrap.Modal(document.getElementById('popupImage'), {
+                backdrop: true,
+                keyboard: true
+            });
+            myModal.show();
+        });
+    </script>
     @stack('scripts')
 
 </body>
