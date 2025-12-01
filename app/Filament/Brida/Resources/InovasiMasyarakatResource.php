@@ -116,6 +116,14 @@ class InovasiMasyarakatResource extends Resource
                     ->columnSpanFull()
                     ->rows(5)
                     ->required(),
+                FileUpload::make('ktp_file')
+                    ->label('KTP (pdf/jpg)')
+                    ->disk('public')
+                    ->directory('ktp')
+                    ->visibility('public')
+                    ->preserveFilenames()
+                    ->openable()
+                    ->required(),
                 FileUpload::make('hki_inovasi')
                     ->label('Dokumen HKI')
                     ->disk('public')

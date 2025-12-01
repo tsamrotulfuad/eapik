@@ -53,7 +53,7 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#lomba-rkc">Unduhan</a></li>
+                    <li><a href="#lomba-rkc">Panduan</a></li>
                     <li><a href="#lomba-rkc">Tentang</a></li>
                     <li><a href="#contact">Kontak</a></li>
                 </ul>
@@ -104,7 +104,7 @@
 
         </section><!-- /Hero Section -->
 
-        <section id="features" class="features section">
+        <section id="features" class="features section" data-aos="fade-up" data-aos-delay="300">
 
             <div class="container text-center">
                 <h4>Hitung Mundur Pengisian</h4>
