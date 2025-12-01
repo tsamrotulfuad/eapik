@@ -670,6 +670,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                         ->visibility('public')
                         ->preserveFilenames()
                         ->downloadable()
+                        ->openable()
                         ->required(),
                     ]),
                         Section::make('Ketersediaan SDM')
@@ -721,6 +722,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ->visibility('public')
                                     ->preserveFilenames()
                                     ->downloadable()
+                                    ->openable()
                                     ->required(),
                             ]),
                         Section::make('Dukungan Anggaran')
@@ -774,6 +776,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ->visibility('public')
                                     ->preserveFilenames()
                                     ->downloadable()
+                                    ->openable()
                                     ->required(),
                             ]),
                         Section::make('Kecepatan Penciptaan')
@@ -825,6 +828,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ->visibility('public')
                                     ->preserveFilenames()
                                     ->downloadable()
+                                    ->openable()
                                     ->required(),
                             ]),
                         Section::make('Kemanfaatan')
@@ -920,6 +924,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ->visibility('public')
                                     ->preserveFilenames()
                                     ->downloadable()
+                                    ->openable()
                                     ->required(),
                             ]),
                         Section::make('Sosialisasi')
@@ -971,6 +976,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ->visibility('public')
                                     ->preserveFilenames()
                                     ->downloadable()
+                                    ->openable()
                                     ->required(),
                             ]),
                         Section::make('Kemudahan Proses')
@@ -1022,6 +1028,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ->visibility('public')
                                     ->preserveFilenames()
                                     ->downloadable()
+                                    ->openable()
                                     ->required(),
                             ]),
                         Section::make('Alat Kerja')
@@ -1073,6 +1080,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ->visibility('public')
                                     ->preserveFilenames()
                                     ->downloadable()
+                                    ->openable()
                                     ->required(),
                             ]),
                         Section::make('Kualitas Inovasi (Video)')
@@ -1080,6 +1088,8 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                             ->aside()
                             ->schema([
                                 FileUpload::make('kualitas')
+                                ->downloadable()
+                                ->openable()
                                 ->required()
                             ]),
                         TextInput::make('kematangan')
