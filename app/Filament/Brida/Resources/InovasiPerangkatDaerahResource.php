@@ -222,7 +222,8 @@ class InovasiPerangkatDaerahResource extends Resource
                     ->searchable(),
                 TextColumn::make('tahapan_inovasi'),
                 TextColumn::make('jenis_inovasi'),
-                TextColumn::make('bentuk_inovasi'),
+                TextColumn::make('bentuk_inovasi')
+                    ->wrap(),
                 TextColumn::make('waktu_implementasi_inovasi'),
                 TextColumn::make('tahun'),
                 TextColumn::make('indikators.kematangan')->label('Kematangan'),
