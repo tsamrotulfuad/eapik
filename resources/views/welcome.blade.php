@@ -149,6 +149,11 @@
                                 class="img-fluid rounded"
                                 style="max-width: 100%; border-radius: 10px;">
                         </a>
+                        <div class="mt-2">
+                            <a href="https://eapik.pasuruankota.go.id/rekakarsacipta" class="btn btn-primary px-4 py-2" style="border-radius: 20px;">
+                                Daftar Sekarang
+                            </a>
+                        </div>
                     </div>
 
                 </div>
