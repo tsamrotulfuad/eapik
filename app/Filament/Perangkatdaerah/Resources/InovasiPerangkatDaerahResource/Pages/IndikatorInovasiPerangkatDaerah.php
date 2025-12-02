@@ -613,11 +613,13 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
 
     public function table(Table $table): Table
     {
+        $inovasi_id = $this->record->id;
+
         return $table
             ->query(\App\Models\IndikatorInovasiPerangkatDaerah::query()
-                    ->where('user_id', auth()->id()))
+                    ->where('inovasi_id', $inovasi_id))
             ->columns([
-                TextColumn::make('regulasi_inovasi'),
+                TextColumn::make('inovasi.nama_inovasi')->label('Nama Inovasi'),
                 TextColumn::make('kematangan'),
                 TextColumn::make('tahun'),
             ])
@@ -643,6 +645,17 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     'Peraturan Kepala Daerah / Peraturan Daerah' => 'Peraturan Kepala Daerah / Peraturan Daerah',
                                 ])
                                 ->reactive()
+                                // Saat form di-load, tampilkan nilai regulasi berdasarkan record lama
+                                ->afterStateHydrated(function ($state, Set $set) {
+                                    $mapRegulasi = [
+                                        'SK Kepala UPT' => 5,
+                                        'SK Kepala Perangkat Daerah' => 10,
+                                        'SK Kepala Daerah' => 15,
+                                        'Peraturan Kepala Daerah / Peraturan Daerah' => 25,
+                                    ];
+
+                                    $set('regulasi_nilai', $mapRegulasi[$state] ?? 0);
+                                })
                                 ->afterStateUpdated(function ($state, Get $get, Set $set) {
                                     // mapping nilai berdasarkan parameter
                                     $mapRegulasi = [
@@ -696,6 +709,15 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                         'Lebih dari 30 SDM' => 'Lebih dari 30 SDM',
                                     ])
                                     ->reactive()
+                                    ->afterStateHydrated(function ($state, Set $set) {
+                                        $mapKetersediaan = [
+                                            '1-10 SDM' => 5,
+                                            '11-30 SDM' => 10,
+                                            'Lebih dari 30 SDM' => 15,
+                                        ];
+
+                                            $set('ketersediaan_nilai', $mapKetersediaan[$state] ?? 0);
+                                    })
                                     ->afterStateUpdated(function ($state, Get $get, Set $set) {
                                         // mapping nilai berdasarkan parameter
                                         $mapKetersediaan = [
@@ -748,6 +770,16 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                 'Anggaran dialokasikan pada kegiatan penerapan inovasi di T-0,T-1 dan T-2' => 'Anggaran dialokasikan pada kegiatan penerapan inovasi di T-0,T-1 dan T-2',
                             ])
                             ->reactive()
+                             ->afterStateHydrated(function ($state, Set $set) {
+                                        $mapAnggaran = [
+                                            'Tidak ada dukungan anggaran' => 5,
+                                            'Anggaran dialokasikan pada kegiatan penerapan inovasi di T-0 (Tahun Berjalan)' => 10,
+                                            'Anggaran dialokasikan pada kegiatan penerapan inovasi di T-1 atau T-2' => 15,
+                                            'Anggaran dialokasikan pada kegiatan penerapan inovasi di T-0,T-1 dan T-2' => 20,
+                                        ];
+
+                                            $set('dukungan_anggaran_nilai', $mapAnggaran[$state] ?? 0);
+                                    })
                             ->afterStateUpdated(function ($state, Get $get, Set $set) {
                                 // mapping nilai berdasarkan parameter
                                 $mapAnggaran = [
@@ -800,6 +832,15 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                         'Inovasi dapat diciptakan dalam waktu 1-4 bulan' => 'Inovasi dapat diciptakan dalam waktu 1-4 bulan',
                                     ])
                                     ->reactive()
+                                    ->afterStateHydrated(function ($state, Set $set) {
+                                        $mapKecepatan = [
+                                            'Inovasi dapat diciptakan dalam waktu 9 bulan atau lebih' => 5,
+                                            'Inovasi dapat diciptakan dalam waktu 5-8 bulan' => 10,
+                                            'Inovasi dapat diciptakan dalam waktu 1-4 bulan' => 15,
+                                        ];
+
+                                            $set('kecepatan_penciptaan_nilai', $mapKecepatan[$state] ?? 0);
+                                    })
                                     ->afterStateUpdated(function ($state, Get $get, Set $set) {
                                         // mapping nilai berdasarkan parameter
                                         $mapKecepatan = [
@@ -854,31 +895,6 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ])
                                     ->live()
                                     ->reactive()
-                                    ->afterStateUpdated(function ($state, Get $get, Set $set) {
-                                        // mapping nilai berdasarkan parameter
-                                        $mapKemanfaatan = [
-                                            'Satuan Orang' => 5,
-                                            'Satuan Unit' => 10,
-                                            'Satuan Biaya' => 15,
-                                            'Satuan Pendapatan' => 15,
-                                            'Satuan Hasil' => 25,
-                                        ];
-                                        // ambil nilai dari pilihan user
-                                        $nilai = $mapKemanfaatan[$state] ?? 0;
-
-                                        // set ke hasil section ini (misal regulasi_nilai)
-                                        $set('kemanfaatan_nilai', $nilai);
-
-                                        $total = (float) $get('regulasi_nilai') 
-                                                + (float) $get('ketersediaan_nilai') 
-                                                + (float) $get('dukungan_anggaran_nilai')
-                                                + (float) $get('kecepatan_penciptaan_nilai')
-                                                + (float) $get('kemanfaatan_nilai')
-                                                + (float) $get('sosialisasi_nilai')
-                                                + (float) $get('kemudahan_proses_nilai')
-                                                + (float) $get('alat_kerja_nilai');
-                                        $set('kematangan', $total);
-                                    })
                                     ->native(false)
                                     ->required(),
                                 Select::make('kemanfaatan_do')
@@ -912,13 +928,78 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                             'Tidak dapat diukur' => 'Tidak dapat diukur',
                                             'Jumah produk yang dihasilkan atau diperjualbelikan 1-100 barang' => 'Jumah produk yang dihasilkan atau diperjualbelikan 1-100 barang',
                                             'Jumlah produk yang dihasilkan atau diperjualbelikan 101-200 barang' => 'Jumlah produk yang dihasilkan atau diperjualbelikan 101-200 barang',
-                                            'jumlah produk yang dihasilkan atau diperjualbelikan lebih dari 200 barang' => 'jumlah produk yang dihasilkan atau diperjualbelikan lebih dari 200 barang',
+                                            'Jumlah produk yang dihasilkan atau diperjualbelikan lebih dari 200 barang' => 'Jumlah produk yang dihasilkan atau diperjualbelikan lebih dari 200 barang',
                                         ],
                                         default => [],
                                     })
+                                    ->afterStateHydrated(function ($state, Set $set) {
+                                        $mapKemanfaatan_do = [
+                                            'Tidak dapat diukur' => 0,
+                                            'Jumlah pengguna atau penerima manfaat 1-100 orang' => 5,
+                                            'Jumlah pengguna atau penerima manfaat 101-200 orang' => 10,
+                                            'Jumlah pengguna atau penerima manfaat 201 orang atau lebih' => 15,
+
+                                            'Persentase peningkatan Jumlah Unit 5,00% - 20,00%' => 5,
+                                            'Persentase peningkatan Jumlah Unit 20,01% - 50%' => 10,
+                                            'Persentase peningkatan Jumlah Unit > 50%' => 15,
+
+                                            'Efisiensi belanja sebesar 0,01% - 10%' => 5,
+                                            'Efisiensi belanja sebesar 10,01% - 20,00%' => 10,
+                                            'Efisiensi belanja sebesar 20,01% - 30,00%' => 15,
+
+                                            'Penambahan pendapatan bagi pemda atau perangkat daerah atau unit kerja yang menerapkan inovasi 0,01% - 49,99%' => 5,
+                                            'Penambahan pendapatan bagi pemda atau perangkat daerah atau unit kerja yang menerapkan inovasi 50,00% -99,99%' => 10,
+                                            'Penambahan pendapatan bagi pemda atau perangkat daerah atau unit kerja yang menerapkan inovasi dari sama dengan 100%' => 15,
+
+                                            'Jumah produk yang dihasilkan atau diperjualbelikan 1-100 barang' => 5,
+                                            'Jumlah produk yang dihasilkan atau diperjualbelikan 101-200 barang' => 10,
+                                            'Jumlah produk yang dihasilkan atau diperjualbelikan lebih dari 200 barang' => 15,
+                                        ];
+
+                                            $set('kemanfaatan_nilai', $mapKemanfaatan_do[$state] ?? 0);
+                                    })
+                                    ->afterStateUpdated(function ($state, Get $get, Set $set) {
+                                        // mapping nilai berdasarkan pilihan definisi operasional
+                                        $mapKemanfaatan_do = [
+                                            'Tidak dapat diukur' => 0,
+                                            'Jumlah pengguna atau penerima manfaat 1-100 orang' => 5,
+                                            'Jumlah pengguna atau penerima manfaat 101-200 orang' => 10,
+                                            'Jumlah pengguna atau penerima manfaat 201 orang atau lebih' => 15,
+
+                                            'Persentase peningkatan Jumlah Unit 5,00% - 20,00%' => 5,
+                                            'Persentase peningkatan Jumlah Unit 20,01% - 50%' => 10,
+                                            'Persentase peningkatan Jumlah Unit > 50%' => 15,
+
+                                            'Efisiensi belanja sebesar 0,01% - 10%' => 5,
+                                            'Efisiensi belanja sebesar 10,01% - 20,00%' => 10,
+                                            'Efisiensi belanja sebesar 20,01% - 30,00%' => 15,
+
+                                            'Penambahan pendapatan bagi pemda atau perangkat daerah atau unit kerja yang menerapkan inovasi 0,01% - 49,99%' => 5,
+                                            'Penambahan pendapatan bagi pemda atau perangkat daerah atau unit kerja yang menerapkan inovasi 50,00% -99,99%' => 10,
+                                            'Penambahan pendapatan bagi pemda atau perangkat daerah atau unit kerja yang menerapkan inovasi dari sama dengan 100%' => 15,
+
+                                            'Jumah produk yang dihasilkan atau diperjualbelikan 1-100 barang' => 5,
+                                            'Jumlah produk yang dihasilkan atau diperjualbelikan 101-200 barang' => 10,
+                                            'Jumlah produk yang dihasilkan atau diperjualbelikan lebih dari 200 barang' => 15,
+                                        ];
+
+                                        $nilai = $mapKemanfaatan_do[$state] ?? 0;
+                                        $set('kemanfaatan_nilai', $nilai);
+
+                                        // hitung total skor
+                                        $total = (float) $get('regulasi_nilai') 
+                                                + (float) $get('ketersediaan_nilai') 
+                                                + (float) $get('dukungan_anggaran_nilai')
+                                                + (float) $get('kecepatan_penciptaan_nilai')
+                                                + (float) $get('kemanfaatan_nilai')
+                                                + (float) $get('sosialisasi_nilai')
+                                                + (float) $get('kemudahan_proses_nilai')
+                                                + (float) $get('alat_kerja_nilai')
+                                                + (float) $get('kualitas_nilai');
+                                        $set('kematangan', $total);
+                                    })
                                     ->columnSpanFull()
                                     ->native(false)
-                                    ->dehydrated(false)
                                     ->required(),
                                 TextInput::make('kemanfaatan_nilai')
                                     ->numeric()
@@ -946,6 +1027,15 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                         'Media Berita' => 'Media Berita',
                                     ])
                                     ->reactive()
+                                     ->afterStateHydrated(function ($state, Set $set) {
+                                        $MapSosialisasi = [
+                                            'Sosialisasi Tatap Muka' => 5,
+                                            'Konten Media Sosial' => 10,
+                                            'Media Berita' => 15,
+                                        ];
+
+                                            $set('sosialisasi_nilai', $MapSosialisasi[$state] ?? 0);
+                                    })
                                     ->afterStateUpdated(function ($state, Get $get, Set $set) {
                                         // mapping nilai berdasarkan parameter
                                         $MapSosialisasi = [
@@ -997,6 +1087,15 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                         'Hasil inovasi diperoleh dalam waktu 1 hari' => 'Hasil inovasi diperoleh dalam waktu 1 hari',
                                     ])
                                     ->reactive()
+                                    ->afterStateHydrated(function ($state, Set $set) {
+                                        $mapKemudahan = [
+                                            'Hasil inovasi diperoleh dalam waktu 6 hari atau lebih' => 5,
+                                            'Hasil inovasi diperoleh dalam waktu 2-5 hari' => 10,
+                                            'Hasil inovasi diperoleh dalam waktu 1 hari' => 15,
+                                        ];
+
+                                            $set('kemudahan_proses_nilai', $mapKemudahan[$state] ?? 0);
+                                    })
                                     ->afterStateUpdated(function ($state, Get $get, Set $set) {
                                         // mapping nilai berdasarkan parameter
                                         $mapKemudahan = [
@@ -1048,6 +1147,15 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                         'Pelaksanaan kerja sudah didukung sistem informasi online' => 'Pelaksanaan kerja sudah didukung sistem informasi online',
                                     ])
                                     ->reactive()
+                                     ->afterStateHydrated(function ($state, Set $set) {
+                                        $mapAlatKerja = [
+                                            'Pelaksanaan kerja secara Manual' => 5,
+                                            'Pelaksanaan kerja secara Elektronik' => 10,
+                                            'Pelaksanaan kerja sudah didukung sistem informasi online' => 15,
+                                        ];
+
+                                            $set('alat_kerja_nilai', $mapAlatKerja[$state] ?? 0);
+                                    })
                                     ->afterStateUpdated(function ($state, Get $get, Set $set) {
                                         // mapping nilai berdasarkan parameter
                                         $mapAlatKerja = [
@@ -1087,10 +1195,58 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ->downloadable()
                                     ->required(),
                             ]),
-                        Section::make('Kualitas Inovasi (Video)')
-                            ->description('Kualitasi inovasi dibuktkan dengan video tentang inovasinya')
+                         Section::make('Kualitas Inovasi (Video)')
+                            ->description('Unsur Video Inovasi Daerah meliputi: Latar Belakang Inovasi, Penjaringan Ide Inovasi, Pemilihan Ide, Manfaat, Dampak')
                             ->aside()
                             ->schema([
+                                Select::make('kualitas_parameter')
+                                    ->label('Parameter Kualitas Video')
+                                    ->options([
+                                        'Memenuhi 1 atau 2 unsur substansi' => 'Memenuhi 1 atau 2 unsur substansi',
+                                        'Memenuhi 3 atau 4 unsur substansi' => 'Memenuhi 3 atau 4 unsur substansi',
+                                        'Memenuhi 5 unsur substansi' => 'Memenuhi 5 unsur substansi',
+                                    ])
+                                    ->reactive()
+                                    ->afterStateHydrated(function ($state, Set $set) {
+                                        $mapKualitas = [
+                                            'Memenuhi 1 atau 2 unsur substansi' => 5,
+                                            'Memenuhi 3 atau 4 unsur substansi' => 10,
+                                            'Memenuhi 5 unsur substansi' => 15,
+                                        ];
+
+                                            $set('kualitas_nilai', $mapKualitas[$state] ?? 0);
+                                    })
+                                    ->afterStateUpdated(function ($state, Get $get, Set $set) {
+                                        // mapping nilai berdasarkan parameter
+                                        $mapKualitas = [
+                                            'Memenuhi 1 atau 2 unsur substansi' => 5,
+                                            'Memenuhi 3 atau 4 unsur substansi' => 10,
+                                            'Memenuhi 5 unsur substansi' => 15,
+                                        ];
+                                        // ambil nilai dari pilihan user
+                                        $nilai = $mapKualitas[$state] ?? 0;
+
+                                        // set ke hasil section ini (misal regulasi_nilai)
+                                        $set('kualitas_nilai', $nilai);
+
+                                        $total = (float) $get('regulasi_nilai') 
+                                                + (float) $get('ketersediaan_nilai') 
+                                                + (float) $get('dukungan_anggaran_nilai')
+                                                + (float) $get('kecepatan_penciptaan_nilai')
+                                                + (float) $get('kemanfaatan_nilai')
+                                                + (float) $get('sosialisasi_nilai')
+                                                + (float) $get('kemudahan_proses_nilai')
+                                                + (float) $get('alat_kerja_nilai')
+                                                + (float) $get('kualitas_nilai');
+                                        $set('kematangan', $total);
+                                    })
+                                    ->native(false)
+                                    ->required(),
+                                TextInput::make('kualitas_nilai')
+                                    ->numeric()
+                                    ->default(0)
+                                    ->disabled()
+                                    ->dehydrated(false),
                                 FileUpload::make('kualitas')
                                     ->label('Bukti Dukung')
                                     ->disk('public')
@@ -1098,6 +1254,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ->visibility('public')
                                     ->preserveFilenames()
                                     ->downloadable()
+                                    ->openable()
                                     ->required(),
                             ]),
                         TextInput::make('kematangan')

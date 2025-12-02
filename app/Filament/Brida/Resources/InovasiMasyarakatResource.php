@@ -155,13 +155,24 @@ class InovasiMasyarakatResource extends Resource
             //     $query->where('user_id', auth()->id())->with('indikators'); // Filters records by the authenticated user's ID
             // })
             ->columns([
-                TextColumn::make('nama_inovasi')->searchable(),
+                TextColumn::make('nama_inovasi')
+                ->wrap()
+                ->searchable(),
                 TextColumn::make('nama_inisiator')->searchable(),
-                TextColumn::make('tahapan_inovasi'),
+                TextColumn::make('tahapan_inovasi')
+                ->wrap(),
                 TextColumn::make('jenis_inovasi'),
                 TextColumn::make('bentuk_inovasi'),
                 TextColumn::make('waktu_implementasi_inovasi'),
                 TextColumn::make('tahun'),
+                TextColumn::make('is_kirim')
+                    ->label('Status')
+                    ->formatStateUsing(fn($record) => $record->is_kirim ? 'Selesai' : 'Draft')
+                    ->badge()
+                    ->colors([
+                        'info' => fn($record) => !$record->is_kirim,
+                        'success' => fn($record) => $record->is_kirim,
+                    ]),
             ])
             ->emptyStateHeading('Tidak ada data inovasi')
             ->filters([

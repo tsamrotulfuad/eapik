@@ -169,15 +169,18 @@ class InovasiMasyarakatResource extends Resource
                     ->url(fn($record): string => InovasiMasyarakatResource::getUrl('indikator', ['record' => $record]))
                     ->label('')
                     ->icon('heroicon-o-folder')
-                    ->tooltip('Indikator'),
+                    ->tooltip('Indikator')
+                    ->visible(fn($record) => !$record->is_kirim),
                 Tables\Actions\EditAction::make()
                     ->label('')
                     ->icon('heroicon-o-pencil')
-                    ->tooltip('Edit'),
+                    ->tooltip('Edit')
+                    ->visible(fn($record) => !$record->is_kirim),
                 Tables\Actions\DeleteAction::make()
                     ->label('')
                     ->icon('heroicon-o-trash')
                     ->tooltip('Hapus')
+                    ->visible(fn($record) => !$record->is_kirim)
                     ->after(function (InovasiMasyarakat $record) {
                         // delete file
                         if ($record->hki_inovasi) {
@@ -189,6 +192,21 @@ class InovasiMasyarakatResource extends Resource
                         if ($record->skt) {
                             Storage::disk('public')->delete($record->skt);
                         }
+                    }),
+                Tables\Actions\Action::make('kirim')
+                    ->label('')
+                    ->color('success')
+                    ->tooltip('Kirim')
+                    ->icon('heroicon-o-paper-airplane')
+                    ->requiresConfirmation()
+                    ->modalHeading('Kirim Inovasi')
+                    ->modalSubheading('Setelah dikirim, Anda tidak dapat lagi mengubah data inovasi. Apakah Anda yakin ingin melanjutkan?')
+                    ->modalButton('Ya, Kirim Sekarang')
+                    ->visible(fn($record) => !$record->is_kirim) // hanya tampil jika belum dikirim
+                    ->action(function ($record) {
+                        $record->update([
+                            'is_kirim' => true
+                        ]);
                     }),
             ])
             ->bulkActions([

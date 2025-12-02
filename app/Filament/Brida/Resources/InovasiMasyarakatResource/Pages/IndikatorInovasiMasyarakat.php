@@ -130,8 +130,7 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
             ->query(\App\Models\IndikatorInovasiMasyarakat::query()
                 ->where('inovasi_id', $inovasi_id))
             ->columns([
-                TextColumn::make('kemudahan_proses'),
-                TextColumn::make('keterlibatan_aktor'),
+                TextColumn::make('inovasi.nama_inovasi')->label('Nama Inovasi'),
                 TextColumn::make('tahun'),
             ])
             ->emptyStateHeading("Tidak Ada Data")

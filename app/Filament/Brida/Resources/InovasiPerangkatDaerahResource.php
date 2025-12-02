@@ -227,6 +227,14 @@ class InovasiPerangkatDaerahResource extends Resource
                 TextColumn::make('waktu_implementasi_inovasi'),
                 TextColumn::make('tahun'),
                 TextColumn::make('indikators.kematangan')->label('Kematangan'),
+                TextColumn::make('is_kirim')
+                    ->label('Status')
+                    ->formatStateUsing(fn($record) => $record->is_kirim ? 'Selesai' : 'Draft')
+                    ->badge()
+                    ->colors([
+                        'info' => fn($record) => !$record->is_kirim,
+                        'success' => fn($record) => $record->is_kirim,
+                    ]),
             ])
             // ->modifyQueryUsing(function (Builder $query) {
             //     $query->where('user_id', auth()->id())->with('indikators'); // Filters records by the authenticated user's ID
