@@ -1142,9 +1142,9 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ->reactive()
                                     ->afterStateHydrated(function ($state, Set $set) {
                                         $mapAlatKerja = [
-                                            'Hasil inovasi diperoleh dalam waktu 6 hari atau lebih' => 5,
-                                            'Hasil inovasi diperoleh dalam waktu 2-5 hari' => 10,
-                                            'Hasil inovasi diperoleh dalam waktu 1 hari' => 15,
+                                            'Pelaksanaan kerja secara Manual' => 5,
+                                            'Pelaksanaan kerja secara Elektronik' => 10,
+                                            'Pelaksanaan kerja sudah didukung sistem informasi online' => 15,
                                         ];
 
                                             $set('alat_kerja_nilai', $mapAlatKerja[$state] ?? 0);
