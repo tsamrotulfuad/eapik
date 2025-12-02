@@ -290,32 +290,6 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                         ])
                         ->live()
                         ->reactive()
-                        ->afterStateUpdated(function ($state, Get $get, Set $set) {
-                            // mapping nilai berdasarkan parameter
-                            $mapKemanfaatan = [
-                                'Satuan Orang' => 5,
-                                'Satuan Unit' => 10,
-                                'Satuan Biaya' => 15,
-                                'Satuan Pendapatan' => 15,
-                                'Satuan Hasil' => 25,
-                            ];
-                            // ambil nilai dari pilihan user
-                            $nilai = $mapKemanfaatan[$state] ?? 0;
-
-                            // set ke hasil section ini (misal regulasi_nilai)
-                            $set('kemanfaatan_nilai', $nilai);
-
-                            $total = (float) $get('regulasi_nilai') 
-                                    + (float) $get('ketersediaan_nilai') 
-                                    + (float) $get('dukungan_anggaran_nilai')
-                                    + (float) $get('kecepatan_penciptaan_nilai')
-                                    + (float) $get('kemanfaatan_nilai')
-                                    + (float) $get('sosialisasi_nilai')
-                                    + (float) $get('kemudahan_proses_nilai')
-                                    + (float) $get('alat_kerja_nilai')
-                                    + (float) $get('kualitas_nilai');
-                            $set('kematangan', $total);
-                        })
                         ->native(false)
                         ->required(),
                     Select::make('kemanfaatan_do')
@@ -349,9 +323,49 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                 'Tidak dapat diukur' => 'Tidak dapat diukur',
                                 'Jumah produk yang dihasilkan atau diperjualbelikan 1-100 barang' => 'Jumah produk yang dihasilkan atau diperjualbelikan 1-100 barang',
                                 'Jumlah produk yang dihasilkan atau diperjualbelikan 101-200 barang' => 'Jumlah produk yang dihasilkan atau diperjualbelikan 101-200 barang',
-                                'jumlah produk yang dihasilkan atau diperjualbelikan lebih dari 200 barang' => 'jumlah produk yang dihasilkan atau diperjualbelikan lebih dari 200 barang',
+                                'Jumlah produk yang dihasilkan atau diperjualbelikan lebih dari 200 barang' => 'Jumlah produk yang dihasilkan atau diperjualbelikan lebih dari 200 barang',
                             ],
                             default => [],
+                        })
+                        ->afterStateUpdated(function ($state, Get $get, Set $set) {
+                            // mapping nilai berdasarkan pilihan definisi operasional
+                            $mapKemanfaatan_do = [
+                                'Tidak dapat diukur' => 0,
+                                'Jumlah pengguna atau penerima manfaat 1-100 orang' => 5,
+                                'Jumlah pengguna atau penerima manfaat 101-200 orang' => 10,
+                                'Jumlah pengguna atau penerima manfaat 201 orang atau lebih' => 15,
+
+                                'Persentase peningkatan Jumlah Unit 5,00% - 20,00%' => 5,
+                                'Persentase peningkatan Jumlah Unit 20,01% - 50%' => 10,
+                                'Persentase peningkatan Jumlah Unit > 50%' => 15,
+
+                                'Efisiensi belanja sebesar 0,01% - 10%' => 5,
+                                'Efisiensi belanja sebesar 10,01% - 20,00%' => 10,
+                                'Efisiensi belanja sebesar 20,01% - 30,00%' => 15,
+
+                                'Penambahan pendapatan bagi pemda atau perangkat daerah atau unit kerja yang menerapkan inovasi 0,01% - 49,99%' => 5,
+                                'Penambahan pendapatan bagi pemda atau perangkat daerah atau unit kerja yang menerapkan inovasi 50,00% -99,99%' => 10,
+                                'Penambahan pendapatan bagi pemda atau perangkat daerah atau unit kerja yang menerapkan inovasi dari sama dengan 100%' => 15,
+
+                                'Jumah produk yang dihasilkan atau diperjualbelikan 1-100 barang' => 5,
+                                'Jumlah produk yang dihasilkan atau diperjualbelikan 101-200 barang' => 10,
+                                'Jumlah produk yang dihasilkan atau diperjualbelikan lebih dari 200 barang' => 15,
+                            ];
+
+                            $nilai = $mapKemanfaatan_do[$state] ?? 0;
+                            $set('kemanfaatan_nilai', $nilai);
+
+                            // hitung total skor
+                            $total = (float) $get('regulasi_nilai') 
+                                    + (float) $get('ketersediaan_nilai') 
+                                    + (float) $get('dukungan_anggaran_nilai')
+                                    + (float) $get('kecepatan_penciptaan_nilai')
+                                    + (float) $get('kemanfaatan_nilai')
+                                    + (float) $get('sosialisasi_nilai')
+                                    + (float) $get('kemudahan_proses_nilai')
+                                    + (float) $get('alat_kerja_nilai')
+                                    + (float) $get('kualitas_nilai');
+                            $set('kematangan', $total);
                         })
                         ->columnSpanFull()
                         ->native(false)
