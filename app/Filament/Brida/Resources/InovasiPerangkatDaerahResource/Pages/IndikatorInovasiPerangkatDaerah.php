@@ -990,7 +990,6 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     })
                                     ->columnSpanFull()
                                     ->native(false)
-                                    ->dehydrated(false)
                                     ->required(),
                                 TextInput::make('kemanfaatan_nilai')
                                     ->numeric()
@@ -1202,7 +1201,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ])
                                     ->reactive()
                                     ->afterStateHydrated(function ($state, Set $set) {
-                                         $mapKualitas = [
+                                        $mapKualitas = [
                                             'Memenuhi 1 atau 2 unsur substansi' => 5,
                                             'Memenuhi 3 atau 4 unsur substansi' => 10,
                                             'Memenuhi 5 unsur substansi' => 15,
@@ -1235,7 +1234,6 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                         $set('kematangan', $total);
                                     })
                                     ->native(false)
-                                    ->dehydrated(false)
                                     ->required(),
                                 TextInput::make('kualitas_nilai')
                                     ->numeric()
