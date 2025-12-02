@@ -355,7 +355,6 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                         })
                         ->columnSpanFull()
                         ->native(false)
-                        ->dehydrated(false)
                         ->required(),
                     TextInput::make('kemanfaatan_nilai')
                         ->numeric()
