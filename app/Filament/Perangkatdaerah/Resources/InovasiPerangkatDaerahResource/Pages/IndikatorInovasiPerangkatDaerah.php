@@ -1248,7 +1248,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                     ->disabled()
                                     ->dehydrated(false),
                                 FileUpload::make('kualitas')
-                                    ->label('Bukti Dukung')
+                                    ->label('Bukti Dukung (50mb)')
                                     ->disk('public')
                                     ->directory('kualitas')
                                     ->visibility('public')
