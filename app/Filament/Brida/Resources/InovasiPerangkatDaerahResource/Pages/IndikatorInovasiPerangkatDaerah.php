@@ -563,7 +563,6 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                             $set('kematangan', $total);
                         })
                         ->native(false)
-                        ->dehydrated(false)
                         ->required(),
                     TextInput::make('kualitas_nilai')
                         ->numeric()
