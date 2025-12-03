@@ -106,7 +106,13 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                 ->aside()
                 ->schema([
                     FileUpload::make('video_inovasi')
-                    ->required()
+                        ->label('Bukti Dukung Video')
+                        ->disk('public')
+                        ->maxSize(60)
+                        ->directory('video/masyarakat')
+                        ->visibility('public')
+                        ->preserveFilenames()
+                        ->required(),
                 ])
         ])
         ->statePath('data');
