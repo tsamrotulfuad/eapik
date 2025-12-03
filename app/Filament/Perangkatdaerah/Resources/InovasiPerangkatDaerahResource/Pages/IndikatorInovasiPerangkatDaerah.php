@@ -586,7 +586,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                     FileUpload::make('kualitas')
                         ->label('Bukti Dukung')
                         ->disk('public')
-                        ->maxSize(60)
+                        ->maxSize(60000)
                         ->directory('kualitas')
                         ->visibility('public')
                         ->preserveFilenames()
