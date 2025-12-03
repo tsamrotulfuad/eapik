@@ -122,6 +122,7 @@ class InovasiMasyarakatResource extends Resource
                     ->required(),
                 FileUpload::make('hki_inovasi')
                     ->label('Dokumen HKI (pdf)')
+                    ->acceptedFileTypes(['application/pdf'])
                     ->disk('public')
                     ->directory('hki-document')
                     ->visibility('public')
@@ -129,6 +130,7 @@ class InovasiMasyarakatResource extends Resource
                     ->openable(),
                 FileUpload::make('penghargaan_inovasi')
                     ->label('Penghargaan (pdf)')
+                    ->acceptedFileTypes(['application/pdf'])
                     ->disk('public')
                     ->directory('penghargaan-inovasi')
                     ->visibility('public')
@@ -136,6 +138,7 @@ class InovasiMasyarakatResource extends Resource
                     ->openable(),
                 FileUpload::make('skt')
                     ->label('SK / SKT (pdf)')
+                    ->acceptedFileTypes(['application/pdf'])
                     ->disk('public')
                     ->directory('skt')
                     ->visibility('public')

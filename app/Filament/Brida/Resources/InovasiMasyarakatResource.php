@@ -85,7 +85,7 @@ class InovasiMasyarakatResource extends Resource
                     ->columnSpanFull()
                     ->required(),
                 DatePicker::make('waktu_ujicoba_inovasi')
-                    ->label('Waktu Ujicoba (Min. 6 Bulan)')
+                    ->label('Waktu Ujicoba')
                     ->native(false)
                     ->displayFormat('d/m/Y')
                     ->timezone('Asia/Jakarta')
@@ -94,7 +94,7 @@ class InovasiMasyarakatResource extends Resource
                     ->default(now()->subMonths(6))
                     ->required(),
                 DatePicker::make('waktu_implementasi_inovasi')
-                    ->label('Waktu Implementasi (Min. 6 Bulan)')
+                    ->label('Waktu Implementasi')
                     ->native(false)
                     ->displayFormat('d/m/Y')
                     ->timezone('Asia/Jakarta')
