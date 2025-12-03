@@ -245,7 +245,7 @@ class InovasiPerangkatDaerahResource extends Resource
                     ->label('Bentuk Inovasi')
                     ->options([
                         'Inovasi Pelayanan Publik' => 'Inovasi Pelayanan Publik',
-                        'Inovasi Tata Kelola' => 'Inovasi Tata Kelola Pemerintahan Daerah',
+                        'Inovasi Tata Kelola Pemerintahan Daerah' => 'Inovasi Tata Kelola Pemerintahan Daerah',
                         'Inovasi Pendidikan' => 'Inovasi Pendidikan',
                         'Invosasi Daerah Lainnya' => 'Inovasi Daerah lainnya sesuai dengan Urusan Pemerintahan yang mejadi Kewenangan Daerah',
                     ]),
