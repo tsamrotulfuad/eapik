@@ -236,6 +236,7 @@ class InovasiPerangkatDaerahResource extends Resource
                         'success' => fn($record) => $record->is_kirim,
                     ]),
             ])
+            ->recordUrl(null)
             // ->modifyQueryUsing(function (Builder $query) {
             //     $query->where('user_id', auth()->id())->with('indikators'); // Filters records by the authenticated user's ID
             // })

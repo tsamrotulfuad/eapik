@@ -174,6 +174,7 @@ class InovasiMasyarakatResource extends Resource
                         'success' => fn($record) => $record->is_kirim,
                     ]),
             ])
+            ->recordUrl(null)
             ->emptyStateHeading('Tidak ada data inovasi')
             ->filters([
                 SelectFilter::make('bentuk_inovasi')
