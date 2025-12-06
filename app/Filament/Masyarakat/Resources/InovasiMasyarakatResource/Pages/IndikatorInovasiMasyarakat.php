@@ -58,7 +58,7 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                 ->schema([
                     Textarea::make('kemudahan_proses')
                         ->columnSpanFull()
-                        ->maxLength(3000)
+                        ->maxLength(6000)
                         ->rows(5)
                         ->required(),
                 ]),
@@ -68,7 +68,7 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                 ->schema([
                     Textarea::make('keterlibatan_aktor')
                         ->columnSpanFull()
-                        ->maxLength(3000)
+                        ->maxLength(6000)
                         ->rows(5)
                         ->required(),
                 ]),
@@ -78,7 +78,7 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                 ->schema([
                     Textarea::make('kemanfaatan')
                         ->columnSpanFull()
-                        ->maxLength(3000)
+                        ->maxLength(6000)
                         ->rows(5)
                         ->required(),
                     FileUpload::make('kemanfaatan_upload')
@@ -152,7 +152,7 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                             ->schema([
                                 Textarea::make('kemudahan_proses')
                                     ->columnSpanFull()
-                                    ->maxLength(3000)
+                                    ->maxLength(6000)
                                     ->rows(5)
                                     ->required(),
                             ]),
@@ -162,7 +162,7 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                             ->schema([
                                 Textarea::make('keterlibatan_aktor')
                                     ->columnSpanFull()
-                                    ->maxLength(3000)
+                                    ->maxLength(6000)
                                     ->rows(5)
                                     ->required(),
                             ]),
@@ -172,7 +172,7 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                             ->schema([
                                 Textarea::make('kemanfaatan')
                                     ->columnSpanFull()
-                                    ->maxLength(3000)
+                                    ->maxLength(6000)
                                     ->rows(5)
                                     ->required(),
                                 FileUpload::make('kemanfaatan_upload')
