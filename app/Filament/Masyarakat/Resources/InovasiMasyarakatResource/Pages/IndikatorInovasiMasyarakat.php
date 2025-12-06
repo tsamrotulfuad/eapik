@@ -83,6 +83,10 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                         ->required(),
                     FileUpload::make('kemanfaatan_upload')
                         ->label('Bukti Dukung Kemanfaatan')
+                        ->disk('public')
+                        ->directory('kemanfaatan/masyarakat')
+                        ->visibility('public')
+                        ->preserveFilenames()
                         ->required()
                 ]),
             Section::make('Sosialisasi')
@@ -99,6 +103,10 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                     ->native(false),
                     FileUpload::make('sosialisasi_upload')
                         ->label('Bukti Dukung Sosialisasi')
+                        ->disk('public')
+                        ->directory('sosialisasi/masyarakat')
+                        ->visibility('public')
+                        ->preserveFilenames()
                         ->required(),
                 ]),
             Section::make('Kualitas Inovasi (Video)')
@@ -177,6 +185,10 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                                     ->required(),
                                 FileUpload::make('kemanfaatan_upload')
                                     ->label('Bukti Dukung Kemanfaatan')
+                                    ->disk('public')
+                                    ->directory('kemanfaatan/masyarakat')
+                                    ->visibility('public')
+                                    ->preserveFilenames()
                                     ->required()
                             ]),
                         Section::make('Sosialisasi')
@@ -193,6 +205,10 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                                 ->native(false),
                                 FileUpload::make('sosialisasi_upload')
                                     ->label('Bukti Dukung Sosialisasi')
+                                    ->disk('public')
+                                    ->directory('sosialisasi/masyarakat')
+                                    ->visibility('public')
+                                    ->preserveFilenames()
                                     ->required(),
                             ]),
                         Section::make('Kualitas Inovasi (Video)')
@@ -200,7 +216,13 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                             ->aside()
                             ->schema([
                                 FileUpload::make('video_inovasi')
-                                ->required()
+                                ->label('Bukti Dukung Video')
+                                ->disk('public')
+                                ->maxSize(60000)
+                                ->directory('video/masyarakat')
+                                ->visibility('public')
+                                ->preserveFilenames()
+                                ->required(),
                             ])
                     ])
         ]);
