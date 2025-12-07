@@ -540,7 +540,7 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                         ->downloadable()
                         ->required(),
                 ]),
-            Section::make('Kualitas Inovasi (Video)')
+            Section::make('Kualitas Inovasi (Video / 60mb)')
                 ->description('Unsur Video Inovasi Daerah meliputi: Latar Belakang Inovasi, Penjaringan Ide Inovasi, Pemilihan Ide, Manfaat, Dampak')
                 ->aside()
                 ->schema([

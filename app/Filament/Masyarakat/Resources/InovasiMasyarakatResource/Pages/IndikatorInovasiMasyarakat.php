@@ -155,7 +155,7 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                     ->record($this->record)
                     ->form([
                         Section::make('Kemudahan Proses')
-                            ->description('Prevent abuse by limiting the number of requests per period')
+                            ->description('Penjelasan tentang Kemudahan proses inovasi, dari pembuatan, informasi inovasi dan lain-lain')
                             ->aside()
                             ->schema([
                                 Textarea::make('kemudahan_proses')
@@ -165,7 +165,7 @@ class IndikatorInovasiMasyarakat extends Page implements HasForms, HasTable
                                     ->required(),
                             ]),
                         Section::make('Keterlibatan Aktor')
-                            ->description('Prevent abuse by limiting the number of requests per period')
+                            ->description('Sebutkan Aktor aktor yang terlibat dalam inovasi')
                             ->aside()
                             ->schema([
                                 Textarea::make('keterlibatan_aktor')
