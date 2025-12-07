@@ -676,7 +676,8 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                                 + (float) $get('kemanfaatan_nilai')
                                                 + (float) $get('sosialisasi_nilai')
                                                 + (float) $get('kemudahan_proses_nilai')
-                                                + (float) $get('alat_kerja_nilai');
+                                                + (float) $get('alat_kerja_nilai')
+                                                + (float) $get('kualitas_nilai');
                                         $set('kematangan', $total);
                                 })
                                 ->native(false)
@@ -737,7 +738,8 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                                 + (float) $get('kemanfaatan_nilai')
                                                 + (float) $get('sosialisasi_nilai')
                                                 + (float) $get('kemudahan_proses_nilai')
-                                                + (float) $get('alat_kerja_nilai');
+                                                + (float) $get('alat_kerja_nilai')
+                                                + (float) $get('kualitas_nilai');
                                         $set('kematangan', $total);
                                     })
                                     ->native(false)
@@ -800,7 +802,8 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                         + (float) $get('kemanfaatan_nilai')
                                         + (float) $get('sosialisasi_nilai')
                                         + (float) $get('kemudahan_proses_nilai')
-                                        + (float) $get('alat_kerja_nilai');
+                                        + (float) $get('alat_kerja_nilai')
+                                        + (float) $get('kualitas_nilai');
                                 $set('kematangan', $total);
                             })
                             ->native(false)
@@ -860,7 +863,8 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                                 + (float) $get('kemanfaatan_nilai')
                                                 + (float) $get('sosialisasi_nilai')
                                                 + (float) $get('kemudahan_proses_nilai')
-                                                + (float) $get('alat_kerja_nilai');
+                                                + (float) $get('alat_kerja_nilai')
+                                                + (float) $get('kualitas_nilai');
                                         $set('kematangan', $total);
                                     })
                                     ->native(false)
@@ -1055,7 +1059,8 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                                 + (float) $get('kemanfaatan_nilai')
                                                 + (float) $get('sosialisasi_nilai')
                                                 + (float) $get('kemudahan_proses_nilai')
-                                                + (float) $get('alat_kerja_nilai');
+                                                + (float) $get('alat_kerja_nilai')
+                                                + (float) $get('kualitas_nilai');
                                         $set('kematangan', $total);
                                     })
                                     ->native(false)
@@ -1115,7 +1120,8 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                                 + (float) $get('kemanfaatan_nilai')
                                                 + (float) $get('sosialisasi_nilai')
                                                 + (float) $get('kemudahan_proses_nilai')
-                                                + (float) $get('alat_kerja_nilai');
+                                                + (float) $get('alat_kerja_nilai')
+                                                + (float) $get('kualitas_nilai');
                                         $set('kematangan', $total);
                                     })
                                     ->native(false)
@@ -1175,7 +1181,8 @@ class IndikatorInovasiPerangkatDaerah extends Page implements HasForms, HasTable
                                                 + (float) $get('kemanfaatan_nilai')
                                                 + (float) $get('sosialisasi_nilai')
                                                 + (float) $get('kemudahan_proses_nilai')
-                                                + (float) $get('alat_kerja_nilai');
+                                                + (float) $get('alat_kerja_nilai')
+                                                + (float) $get('kualitas_nilai');
                                         $set('kematangan', $total);
                                     })
                                     ->native(false)
