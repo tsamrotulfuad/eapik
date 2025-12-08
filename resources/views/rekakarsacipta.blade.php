@@ -213,6 +213,24 @@
 
         </section> -->
         <!-- /Features Section -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="pengumumanModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="background: transparent; border: none; box-shadow: none;">
+                    <div class="modal-body p-0 text-center">
+
+                        <!-- Konten gambar -->
+                        <a href="{{ url('https://eapik.pasuruankota.go.id/rekakarsacipta') }}">
+                            <img src="{{ asset('rkc/img/pengumuman-perpanjangan.webp') }}"
+                                class="img-fluid rounded"
+                                style="cursor:pointer;">
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer id="footer" class="footer dark-background">
@@ -291,6 +309,16 @@
 
     <!-- Main JS File -->
     <script src="{{ asset('rkc/assets/js/main.js') }}"></script>
+
+    {{-- Custom JS --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var myModal = new bootstrap.Modal(document.getElementById('pengumumanModal'), {
+                backdrop: true
+            });
+            myModal.show();
+        });
+    </script>
 
 </body>
 
