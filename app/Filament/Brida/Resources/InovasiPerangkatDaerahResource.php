@@ -253,20 +253,20 @@ class InovasiPerangkatDaerahResource extends Resource
                     ]),
             ])
             ->actions([
-            Tables\Actions\Action::make('toggle_kirim')
-                ->label(fn($record) => $record->is_kirim ? 'Draft' : 'Selesai')
-                ->icon(fn($record) => $record->is_kirim ? 'heroicon-o-arrow-uturn-left' : 'heroicon-o-check-circle')
-                ->color(fn($record) => $record->is_kirim ? 'warning' : 'success')
-                ->requiresConfirmation()
-                ->modalHeading('Ubah Status Pengiriman')
-                ->modalSubheading(fn($record) => $record->is_kirim
-                    ? 'Status akan dikembalikan menjadi Draft.'
-                    : 'Status akan diubah menjadi Selesai.')
-                ->modalButton('Ya, Lanjutkan')
-                ->action(function ($record) {
-                    $record->update([
-                        'is_kirim' => !$record->is_kirim
-                    ]);
+                Tables\Actions\Action::make('toggle_kirim')
+                    ->label(fn($record) => $record->is_kirim ? 'Draft' : 'Selesai')
+                    ->icon(fn($record) => $record->is_kirim ? 'heroicon-o-arrow-uturn-left' : 'heroicon-o-check-circle')
+                    ->color(fn($record) => $record->is_kirim ? 'warning' : 'success')
+                    ->requiresConfirmation()
+                    ->modalHeading('Ubah Status Pengiriman')
+                    ->modalSubheading(fn($record) => $record->is_kirim
+                        ? 'Status akan dikembalikan menjadi Draft.'
+                        : 'Status akan diubah menjadi Selesai.')
+                    ->modalButton('Ya, Lanjutkan')
+                    ->action(function ($record) {
+                        $record->update([
+                            'is_kirim' => !$record->is_kirim
+                        ]);
                 }),
                 Tables\Actions\Action::make('Indikator')
                     ->url(fn($record): string => InovasiPerangkatDaerahResource::getUrl('indikator', ['record' => $record]))
