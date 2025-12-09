@@ -165,7 +165,7 @@
         Anggaran
     </div>
     <div class="inovasi">
-        {{ $record->hasil_inovasi ? url('storage', $record->anggaran_inovasi) : '-' }}
+        {{ $record->anggaran_inovasi ? url('storage', $record->anggaran_inovasi) : '-' }}
     </div>
     <!--  -->
     <div class="nama-inovasi">
