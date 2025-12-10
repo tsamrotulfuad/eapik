@@ -111,7 +111,7 @@ class InovasiResource extends Resource
                 TextColumn::make('inisiator_inovasi')->label('Inisiator'),
                 TextColumn::make('jenis_inovasi')->label('Jenis'),
                 TextColumn::make('bentuk_inovasi')->label('Bentuk'),
-                TextColumn::make('urusan')->label('urusan'),
+                TextColumn::make('urusan_inovasi')->label('Urusan'),
                 TextColumn::make('kematangan_inovasi')->label('Kematangan')->sortable(),
                 TextColumn::make('tahun_iga')->label('Tahun'),
             ])
