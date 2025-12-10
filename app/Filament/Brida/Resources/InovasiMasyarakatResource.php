@@ -90,8 +90,6 @@ class InovasiMasyarakatResource extends Resource
                     ->displayFormat('d/m/Y')
                     ->timezone('Asia/Jakarta')
                     ->closeOnDateSelection()
-                    ->maxDate(now()->subMonths(6))
-                    ->default(now()->subMonths(6))
                     ->required(),
                 DatePicker::make('waktu_implementasi_inovasi')
                     ->label('Waktu Implementasi')
@@ -99,7 +97,6 @@ class InovasiMasyarakatResource extends Resource
                     ->displayFormat('d/m/Y')
                     ->timezone('Asia/Jakarta')
                     ->closeOnDateSelection()
-                    ->maxDate(now()->subMonths(6))
                     ->required(),
                 RichEditor::make('rancang_bangun_inovasi')
                     ->columnSpanFull()
