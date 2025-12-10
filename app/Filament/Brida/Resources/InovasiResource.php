@@ -26,9 +26,9 @@ class InovasiResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-wallet';
 
-    protected static ?string $navigationLabel = 'Klinik Inovasi';
+    protected static ?string $navigationLabel = 'Inovasi Pelayanan Publik ';
 
-    protected static ?string $navigationGroup = 'Riset dan Inovasi';
+    protected static ?string $navigationGroup = 'Kirim IGA';
 
     protected static ?string $breadcrumb = 'Inovasi';
 
@@ -111,6 +111,7 @@ class InovasiResource extends Resource
                 TextColumn::make('inisiator_inovasi')->label('Inisiator'),
                 TextColumn::make('jenis_inovasi')->label('Jenis'),
                 TextColumn::make('bentuk_inovasi')->label('Bentuk'),
+                TextColumn::make('urusan')->label('urusan'),
                 TextColumn::make('kematangan_inovasi')->label('Kematangan')->sortable(),
                 TextColumn::make('tahun_iga')->label('Tahun'),
             ])
