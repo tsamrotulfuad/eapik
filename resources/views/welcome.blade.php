@@ -136,7 +136,7 @@
     <main class="main">
         @yield('content')
 
-        <!-- Modal -->
+        {{-- <!-- Modal -->
         <div class="modal fade" id="popupImage" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
 
@@ -159,7 +159,7 @@
                 </div>
 
             </div>
-        </div>
+        </div> --}}
     </main>
 
     <footer id="footer" class="footer">
