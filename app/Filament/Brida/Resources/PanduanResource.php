@@ -6,6 +6,10 @@ use App\Filament\Brida\Resources\PanduanResource\Pages;
 use App\Filament\Brida\Resources\PanduanResource\RelationManagers;
 use App\Models\Panduan;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -17,13 +21,33 @@ class PanduanResource extends Resource
 {
     protected static ?string $model = Panduan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
+
+    protected static ?string $navigationLabel = 'Panduan';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('nama_panduan')
+                    ->required(),
+                FileUpload::make('file_panduan')
+                    ->label('File Panduan')
+                    ->disk('public')
+                    ->directory('panduan-inovasi')
+                    ->visibility('public')
+                    ->preserveFilenames()
+                    ->downloadable()
+                    ->openable()
+                    ->required(),
+                Textarea::make('keterangan_panduan')
+                    ->required(),
+                Select::make('tahun')
+                    ->options([
+                        '2025' => '2025',
+                    ]
+                    )->native(false)
+                    ->required(),
             ]);
     }
 

@@ -80,6 +80,7 @@ class InovasiPerangkatDaerahResource extends Resource
                     ->options([
                         'Inovasi Pelayanan Publik' => 'Inovasi Pelayanan Publik',
                         'Inovasi Tata Kelola' => 'Inovasi Tata Kelola Pemerintahan Daerah',
+                        'Inovasi Pendidikan' => 'Inovasi Pendidikan',
                         'Inovasi Daerah lainnya sesuai dengan Urusan Pemerintahan yang mejadi Kewenangan Daerah' => 'Inovasi Daerah lainnya sesuai dengan Urusan Pemerintahan yang mejadi Kewenangan Daerah',
                     ])->native(false)->required(),
                 Select::make('astacita_inovasi')
@@ -217,7 +218,8 @@ class InovasiPerangkatDaerahResource extends Resource
                     ->searchable()
                     ->wrap(),
                 TextColumn::make('nama_inisiator')
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap(),
                 TextColumn::make('tahapan_inovasi'),
                 TextColumn::make('jenis_inovasi'),
                 TextColumn::make('bentuk_inovasi')
