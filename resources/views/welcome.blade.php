@@ -112,7 +112,7 @@
                                     <li><a href="{{ route('rkc') }}">Reka Karsa Cipta</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="#"><span>Klinik KHI</span> <i
+                            <li class="dropdown"><a href="#"><span>Klinik HKI</span> <i
                                         class="bi bi-chevron-down toggle-dropdown"></i></a>
                                 <ul>
                                     <li><a href="#">Tata Cara Pengajuan HKI</a></li>
