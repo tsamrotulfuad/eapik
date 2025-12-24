@@ -25,8 +25,7 @@ class HomeController extends Controller
         $kajian = DB::table('kajians')
             ->join('bidangs', 'bidangs.id', '=', 'kajians.bidang_id')
             ->orderBy('tahun_kajian', 'desc')
-            ->limit(9)
-            ->get();
+            ->paginate(9);
 
         return view('kajian', compact('breadcrump', 'kajian'));
     }

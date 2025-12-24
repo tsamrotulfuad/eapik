@@ -47,6 +47,9 @@
           </div>
           @endforeach
         </div>
+        <div class="mt-3 d-flex justify-content-center">
+          {{ $kajian->links() }}
+        </div>
       </div>
     </section><!-- /Starter Section Section -->
 @endsection
