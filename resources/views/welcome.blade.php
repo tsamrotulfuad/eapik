@@ -90,7 +90,8 @@
                     <li class="dropdown"><a href="#"><span>Perencanaan</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="#">Comming Soon</a></li>
+                            <li><a href="https://kotapasuruan.kertaskerja.cc/">Kertas Kerja</a></li>
+                            <li><a href="">Usulan</a></li>
 
                         </ul>
                     </li>

@@ -215,7 +215,7 @@
         <!-- /Features Section -->
 
         <!-- Modal -->
-        <div class="modal fade" id="pengumumanModal" tabindex="-1">
+        {{-- <div class="modal fade" id="pengumumanModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content" style="background: transparent; border: none; box-shadow: none;">
                     <div class="modal-body p-0 text-center">
@@ -230,7 +230,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </main>
 
     <footer id="footer" class="footer dark-background">
