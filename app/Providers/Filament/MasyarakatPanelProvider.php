@@ -28,7 +28,7 @@ class MasyarakatPanelProvider extends PanelProvider
             ->id('masyarakat')
             ->path('rekakarsacipta/masyarakat')
             ->login()
-            ->registration(MasyarakatRegister::class)
+            // ->registration(MasyarakatRegister::class)
             ->emailVerification()
             ->passwordReset()
             ->maxContentWidth(MaxWidth::Full)

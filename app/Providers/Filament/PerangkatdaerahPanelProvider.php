@@ -28,7 +28,7 @@ class PerangkatdaerahPanelProvider extends PanelProvider
             ->id('perangkatdaerah')
             ->path('rekakarsacipta/perangkatdaerah')
             ->login()
-            ->registration(PerangkatDaerahRegister::class)
+            // ->registration(PerangkatDaerahRegister::class)
             ->emailVerification()
             ->passwordReset()
             ->maxContentWidth(MaxWidth::Full)
