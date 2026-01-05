@@ -32,7 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
             'juri'        => $this->hasRole('panel_juri'),
             'masyarakat'  => $this->hasRole('panel_masyarakat'),
             'perangkatdaerah' => $this->hasRole('panel_perangkat_daerah'),
-            'kelurahan' => $this->hasRole(['perangkat_daerah']),
+            'kelurahan' => $this->hasRole(['perangkat_daerah', 'kelurahan']),
         };
     }
 
