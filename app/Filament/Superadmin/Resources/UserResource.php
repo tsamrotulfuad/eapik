@@ -62,7 +62,8 @@ class UserResource extends Resource
                 TextColumn::make('username')
                     ->default('-')
                     ->searchable(),
-                TextColumn::make('name'),
+                TextColumn::make('name')
+                    ->searchable(),
                 TextColumn::make('email'),
                 TextColumn::make('roles.name')
             ])
