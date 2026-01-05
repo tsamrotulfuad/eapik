@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">{{ $kajian->nama_kajian }}</h5>
+                <h5 class="card-title"><b>{{ $kajian->nama_kajian }}</b></h5>
                 <p class="card-text mt-2">{{ $kajian->ringkasan_kajian }}</p>
                 <p class="card-text">{{ $kajian->bidang->nama_bidang }}</p>
                 <p class="card-text"><small class="text-body-secondary">{{ $kajian->tahun_kajian }}</small></p>

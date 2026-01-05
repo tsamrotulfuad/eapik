@@ -60,7 +60,8 @@ class UserResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('username')
-                    ->default('-'),
+                    ->default('-')
+                    ->searchable(),
                 TextColumn::make('name'),
                 TextColumn::make('email'),
                 TextColumn::make('roles.name')

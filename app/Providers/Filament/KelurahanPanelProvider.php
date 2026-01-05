@@ -2,40 +2,39 @@
 
 namespace App\Providers\Filament;
 
-use Filament\Pages;
-use Filament\Panel;
-use Filament\Widgets;
-use Filament\PanelProvider;
-use Filament\Support\Colors\Color;
 use Filament\Http\Middleware\Authenticate;
-use Illuminate\Session\Middleware\StartSession;
-use Illuminate\Cookie\Middleware\EncryptCookies;
 use Filament\Http\Middleware\AuthenticateSession;
-use Illuminate\Routing\Middleware\SubstituteBindings;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
-use A21ns1g4ts\FilamentShortUrl\FilamentShortUrlPlugin;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Filament\Pages;
+use Filament\Panel;
+use Filament\PanelProvider;
+use Filament\Support\Colors\Color;
+use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Routing\Middleware\SubstituteBindings;
+use Illuminate\Session\Middleware\StartSession;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class PerencanaanPanelProvider extends PanelProvider
+class KelurahanPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->id('perencanaan')
-            ->path('perencanaan')
+            ->id('kelurahan')
+            ->path('perencanaan/kelurahan')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
             ])
-            ->discoverResources(in: app_path('Filament/Perencanaan/Resources'), for: 'App\\Filament\\Perencanaan\\Resources')
-            ->discoverPages(in: app_path('Filament/Perencanaan/Pages'), for: 'App\\Filament\\Perencanaan\\Pages')
+            ->discoverResources(in: app_path('Filament/Kelurahan/Resources'), for: 'App\\Filament\\Kelurahan\\Resources')
+            ->discoverPages(in: app_path('Filament/Kelurahan/Pages'), for: 'App\\Filament\\Kelurahan\\Pages')
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Perencanaan/Widgets'), for: 'App\\Filament\\Perencanaan\\Widgets')
+            ->discoverWidgets(in: app_path('Filament/Kelurahan/Widgets'), for: 'App\\Filament\\Kelurahan\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,
@@ -53,9 +52,6 @@ class PerencanaanPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ])
-            ->plugins([
-                // FilamentShortUrlPlugin::make(),
             ]);
     }
 }

@@ -25,13 +25,14 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
             default => false,
             'superadmin'  => $this->hasRole('super_admin'),
             'admin'       => $this->hasRole(['panel_admin', 'super_admin']),
-            'kepegawaian' => $this->hasRole('panel_user') || $this->hasRole('super_admin'),
-            'kemiskinan'  => $this->hasRole('panel_user') || $this->hasRole('super_admin'),
-            'perencanaan' => $this->hasRole('panel_user') || $this->hasRole('super_admin'),
+            'kepegawaian' => $this->hasRole(['panel_user', 'panel_admin', 'super_admin']),
+            'kemiskinan'  => $this->hasRole(['panel_user', 'panel_admin', 'super_admin']),
+            'perencanaan' => $this->hasRole(['panel_user', 'perangkat_daerah','panel_admin', 'super_admin']),
             'brida'       => $this->hasRole(['panel_brida', 'super_admin', 'panel_admin']),
             'juri'        => $this->hasRole('panel_juri'),
             'masyarakat'  => $this->hasRole('panel_masyarakat'),
             'perangkatdaerah' => $this->hasRole('panel_perangkat_daerah'),
+            'kelurahan' => $this->hasRole(['perangkat_daerah']),
         };
     }
 

@@ -176,6 +176,7 @@ return [
         App\Providers\Filament\MasyarakatPanelProvider::class,
         App\Providers\Filament\PerangkatdaerahPanelProvider::class,
         App\Providers\Filament\JuriPanelProvider::class,
+        App\Providers\Filament\KelurahanPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
 

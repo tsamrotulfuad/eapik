@@ -96,16 +96,13 @@
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#"
-                            class="{{ request()->routeIs('kajian.*') ? 'active' : '' }}"><span>Riset dan Inovasi</span>
+                            class="{{ request()->routeIs('kajian') ? 'active' : '' }}"><span>Riset dan Inovasi</span>
                             <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="{{ route('kajian') }}"
-                                    class="{{ request()->routeIs('kajian') ? 'active' : '' }}">Kajian</a></li>
-                            <li><a href="{{ route('infografis') }}"
-                                    class="{{ request()->routeIs('infografis') ? 'active' : '' }}">Infografis</a></li>
+                            <li><a href="{{ route('kajian') }}" class="{{ request()->routeIs('kajian') ? 'active' : '' }}">Kajian</a></li>
+                            <li><a href="{{ route('infografis') }}" class="{{ request()->routeIs('infografis') ? 'active' : '' }}">Infografis</a></li>
                             <li><a href="#">Pengusulan Pelaksanaan dan Kerjasama Riset</a></li>
-                            <li class="dropdown"><a href="#"><span>Klinik Inovasi</span> <i
-                                        class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <li class="dropdown"><a href="#"><span>Klinik Inovasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                                 <ul>
                                     <li><a href="#">Daftar Inovasi Daerah Kota Pasuruan</a></li>
                                     <li><a href="#">Inovasi Unggulan Kota Pasuruan</a></li>
