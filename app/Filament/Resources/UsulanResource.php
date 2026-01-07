@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Perencanaan\Resources;
+namespace App\Filament\Resources;
 
 use Filament\Forms;
 use App\Models\User;
@@ -12,13 +12,13 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\UsulanResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Perencanaan\Resources\UsulanResource\Pages;
-use App\Filament\Perencanaan\Resources\UsulanResource\RelationManagers;
-use Filament\Tables\Columns\TextColumn;
+use App\Filament\Resources\UsulanResource\RelationManagers;
 
 class UsulanResource extends Resource
 {
@@ -26,7 +26,7 @@ class UsulanResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = "Pra Kamus";
+    protected static ?string $navigationGroup = "Perencanaan";
 
     protected static ?string $navigationLabel = 'Usulan';
 
@@ -109,13 +109,22 @@ class UsulanResource extends Resource
                     ->native(false)
                     ->required(),
                 Textarea::make('keterangan_usulan')->label('Keterangan Usulan'),
+                Select::make('status_usulan')
+                    ->label('Status Usulan')
+                        ->options([
+                            'verifikasi' => 'Verifikasi',
+                            'diterima' => 'Diterima',
+                            'ditolak' => 'Ditolak',
+                        ])
+                    ->native(false)
+                    ->required(),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+           ->columns([
                 TextColumn::make('nama_pengusul')->label('Nama Pengusul')
                 ->wrap()
                 ->searchable(),
@@ -127,11 +136,8 @@ class UsulanResource extends Resource
                     ->label('Status Usulan')
                     ->formatStateUsing(fn (string $state): string => ucwords($state))
                     ->badge(),
+                TextColumn::make('user.name')->label('Asal Usulan'),
             ])
-            ->modifyQueryUsing(function (Builder $query) {
-                $query->where('urusan_pd', '=', auth()->id())
-                ->where('status_usulan', '=', 'diterima'); // Filters records by the authenticated user's ID
-            })
             ->filters([
                 //
             ])

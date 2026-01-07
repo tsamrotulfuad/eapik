@@ -73,4 +73,10 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     {
         return $this->hasMany(Bantuan::class);
     }
+
+    public function usulan() : HasMany
+    {
+        return $this->hasMany(Usulan::class);
+    }
+
 }

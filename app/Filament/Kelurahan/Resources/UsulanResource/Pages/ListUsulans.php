@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Filament\Perencanaan\Resources\UsulanResource\Pages;
+namespace App\Filament\Kelurahan\Resources\UsulanResource\Pages;
 
-use App\Filament\Perencanaan\Resources\UsulanResource;
+use App\Filament\Kelurahan\Resources\UsulanResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
-use Illuminate\Database\Eloquent\Builder;
 
 class ListUsulans extends ListRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Perencanaan\Resources;
+namespace App\Filament\Kelurahan\Resources;
 
 use Filament\Forms;
 use App\Models\User;
@@ -12,13 +12,13 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Perencanaan\Resources\UsulanResource\Pages;
-use App\Filament\Perencanaan\Resources\UsulanResource\RelationManagers;
-use Filament\Tables\Columns\TextColumn;
+use App\Filament\Kelurahan\Resources\UsulanResource\Pages;
+use App\Filament\Kelurahan\Resources\UsulanResource\RelationManagers;
 
 class UsulanResource extends Resource
 {
@@ -116,21 +116,11 @@ class UsulanResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama_pengusul')->label('Nama Pengusul')
-                ->wrap()
-                ->searchable(),
-                TextColumn::make('tanggal_usulan')->label('Tanggal Usulan'),
-                TextColumn::make('lokasi_permasalahan')->label('Lokasi Permasalahan')
-                ->wrap(),
-                TextColumn::make('nama_usulan')->label('Nama Usulan'),
-                TextColumn::make('status_usulan')
-                    ->label('Status Usulan')
-                    ->formatStateUsing(fn (string $state): string => ucwords($state))
-                    ->badge(),
+                TextColumn::make('nama_pengusul'),
+                TextColumn::make('tanggal_usulan'),
             ])
             ->modifyQueryUsing(function (Builder $query) {
-                $query->where('urusan_pd', '=', auth()->id())
-                ->where('status_usulan', '=', 'diterima'); // Filters records by the authenticated user's ID
+                $query->where('user_id', auth()->id()); // Filters records by the authenticated user's ID
             })
             ->filters([
                 //
