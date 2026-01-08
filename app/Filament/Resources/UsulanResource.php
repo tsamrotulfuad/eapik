@@ -109,15 +109,23 @@ class UsulanResource extends Resource
                     ->native(false)
                     ->required(),
                 Textarea::make('keterangan_usulan')->label('Keterangan Usulan'),
+                Textarea::make('kamus_usulan')->label('Kamus Usulan'),
                 Select::make('status_usulan')
                     ->label('Status Usulan')
                         ->options([
                             'verifikasi' => 'Verifikasi',
                             'diterima' => 'Diterima',
-                            'ditolak' => 'Ditolak',
+                            'dikembalikan' => 'Dikembalikan',
                         ])
                     ->native(false)
-                    ->required(),
+                    ->required()
+                    ->live(),
+                Textarea::make('alasan_kembali')->label('Alasan Dikembalikan')
+                    ->hidden(fn (Get $get): bool => $get('status_usulan') !== 'dikembalikan')
+                    ->required(fn (Get $get): bool => $get('status_usulan') === 'dikembalikan')
+                    ->validationMessages([
+                        'required' => 'The company registration number is required for company types.',
+                    ]),
             ]);
     }
 

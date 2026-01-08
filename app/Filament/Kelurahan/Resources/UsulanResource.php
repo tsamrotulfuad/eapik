@@ -116,11 +116,21 @@ class UsulanResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama_pengusul'),
+                TextColumn::make('nama_pengusul')
+                ->searchable(),
                 TextColumn::make('tanggal_usulan'),
+                TextColumn::make('nama_usulan')
+                ->searchable()
+                ->wrap(),
+                TextColumn::make('status_usulan')
+                    ->label('Status Usulan')
+                    ->formatStateUsing(fn (string $state): string => ucwords($state))
+                    ->badge(),
             ])
             ->modifyQueryUsing(function (Builder $query) {
-                $query->where('user_id', auth()->id()); // Filters records by the authenticated user's ID
+                $query->where('user_id', auth()->id())
+                ->where('status_usulan', '=', 'dikembalikan')
+                ->orWhere('status_usulan', '=', 'verifikasi'); // Filters records by the authenticated user's ID
             })
             ->filters([
                 //

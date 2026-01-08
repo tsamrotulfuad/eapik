@@ -109,6 +109,16 @@ class UsulanResource extends Resource
                     ->native(false)
                     ->required(),
                 Textarea::make('keterangan_usulan')->label('Keterangan Usulan'),
+                Textarea::make('kamus_usulan')->label('Kamus Usulan'),
+                Select::make('status_usulan')
+                    ->label('Status Usulan')
+                        ->options([
+                            'verifikasi' => 'Verifikasi',
+                            'diterima' => 'Diterima',
+                            'ditunda' => 'Ditunda',
+                        ])
+                    ->native(false)
+                    ->required(),
             ]);
     }
 
