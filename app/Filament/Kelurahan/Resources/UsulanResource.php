@@ -136,6 +136,11 @@ class UsulanResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make()
+                    // set button view when status_usulan = dikembalikan
+                    ->visible(function ($record): bool {
+                        return $record->status_usulan === 'dikembalikan';
+                }),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

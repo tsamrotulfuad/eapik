@@ -27,6 +27,8 @@ class AgendaResource extends Resource
 
     protected static ?string $navigationLabel = 'Agenda';
 
+    protected static ?string $navigationGroup = 'Tools';
+
     public static function form(Form $form): Form
     {
         return $form

@@ -140,6 +140,7 @@ class UsulanResource extends Resource
                 TextColumn::make('lokasi_permasalahan')->label('Lokasi Permasalahan')
                 ->wrap(),
                 TextColumn::make('nama_usulan')->label('Nama Usulan'),
+                TextColumn::make('kamus_usulan')->label('Kamus Usulan')->default('-'),
                 TextColumn::make('status_usulan')
                     ->label('Status Usulan')
                     ->formatStateUsing(fn (string $state): string => ucwords($state))
@@ -150,6 +151,11 @@ class UsulanResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make()
+                    // set button view when status_usulan = dikembalikan
+                    ->visible(function ($record): bool {
+                        return $record->status_usulan === 'dikembalikan';
+                }),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
