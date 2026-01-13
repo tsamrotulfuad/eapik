@@ -87,16 +87,17 @@
                 <ul>
                     <li><a href="{{ route('beranda') }}" class="{{ request()->routeIs('/') ? 'active' : '' }}">Home</a>
                     </li>
-                    <li class="dropdown"><a href="#"><span>Perencanaan</span> <i
-                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <li class="dropdown"><a href="#" 
+                        class="{{ request()->routeIs('/perencanaan*') ? 'active' : '' }}"><span>Perencanaan</span> 
+                        <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="https://kotapasuruan.kertaskerja.cc/">Kertas Kerja</a></li>
-                            <li><a href="">Usulan</a></li>
-
+                            <li><a href="https://eapik.pasuruankota.go.id/perencanaan">Usulan</a></li>
+                            <li><a href="https://eapik.pasuruankota.go.id/perencanaan/kelurahan">Usulan Kelurahan</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#"
-                            class="{{ request()->routeIs('kajian') ? 'active' : '' }}"><span>Riset dan Inovasi</span>
+                            class="{{ request()->routeIs('kajian') || request()->routeIs('infografis')  ? 'active' : '' }}"><span>Riset dan Inovasi</span>
                             <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="{{ route('kajian') }}" class="{{ request()->routeIs('kajian') ? 'active' : '' }}">Kajian</a></li>
