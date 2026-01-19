@@ -93,7 +93,7 @@
                         <ul>
                             <li><a href="https://kotapasuruan.kertaskerja.cc/">Kertas Kerja</a></li>
                             <li><a href="https://eapik.pasuruankota.go.id/perencanaan">Usulan</a></li>
-                            <li><a href="https://eapik.pasuruankota.go.id/perencanaan/kelurahan">Usulan Kelurahan</a></li>
+                            <li><a href="https://eapik.pasuruankota.go.id/perencanaan/kelurahan">Usulan (Kelurahan)</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#"
@@ -214,7 +214,7 @@
 
                 <div class="col-lg-4 col-md-12">
                     <h4>Ikuti Kami</h4>
-                    <p>Bappelitbangda Kota Pasuruan</p>
+                    <p>Bapperida Kota Pasuruan</p>
                     <div class="social-links d-flex">
                         <a href=""><i class="bi bi-youtube"></i></a>
                         <a href=""><i class="bi bi-facebook"></i></a>
@@ -226,7 +226,7 @@
         </div>
 
         <div class="container copyright text-center mt-4">
-            <p>© <span></span> <strong class="px-1 sitename">e-APIK Bappelitbangda Kota Pasuruan</strong></p>
+            <p>© <span></span> <strong class="px-1 sitename">e-APIK Bapperida Kota Pasuruan</strong></p>
         </div>
 
     </footer>

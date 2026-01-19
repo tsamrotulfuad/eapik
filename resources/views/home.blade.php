@@ -1,5 +1,5 @@
 @extends('welcome')
-@section('title', 'e-APIK - Bappelitbangda Kota Pasuruan')
+@section('title', 'e-APIK - Bapperida Kota Pasuruan')
 @section('content')
     <!-- Hero Section -->
     <section id="hero" class="hero section">
@@ -8,7 +8,7 @@
             <div class="row gy-4">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
                     <h1>e-APIK</h1>
-                    <p>Sistem Informasi Terpadu Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Daerah Kota Pasuruan</p>
+                    <p>Sistem Informasi Terpadu Badan Perencanaan Pembangunan, Riset dan Inovasi Daerah Kota Pasuruan</p>
                     <div class="d-flex">
                         <a href="#about" class="btn-get-started">Mulai</a>
                         <a href="#" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Video</span></a>
@@ -29,7 +29,7 @@
         <div class="container section-title" data-aos="fade-up">
 
             <h2>Layanan Kami</h2>
-            <p>Berikut Beberapa Layanan yang ada di e-APIK Bappelitbangda Kota Pasuruan</p>
+            <p>Berikut Beberapa Layanan yang ada di e-APIK Bapperida Kota Pasuruan</p>
         </div><!-- End Section Title -->
 
         <div class="container">
